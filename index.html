@@ -3,1731 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luca Wall Sconce — Interactive Light Switch</title>
+  <title>In Common With — Interactive Lighting Studio & 98-Lamp Collection</title>
   
-  <!-- Modern Typography -->
+  <!-- Modern Typography (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ==========================================================================
-       DESIGN TOKENS & SYSTEM VARIABLES
-       ========================================================================== */
-    :root {
-      /* Background Wall Palettes */
-      --wall-base-light: #ded6cb;
-      --wall-radial-light: radial-gradient(circle at 50% 38%, #ece5dc 0%, #dbd2c6 50%, #c8bfb2 100%);
-      
-      --wall-base-dark: #141416;
-      --wall-radial-dark: radial-gradient(circle at 50% 38%, #1f2024 0%, #121215 55%, #09090b 100%);
-
-      /* Dynamic Ambient Glow Colors (Updated via JS / Canvas Auto-Detector) */
-      --glow-rgb-core: 255, 195, 115;
-      --glow-rgb-mid: 255, 160, 65;
-      --glow-rgb-outer: 255, 130, 45;
-
-      --amber-warm: #f59e0b;
-      --amber-glow: rgba(245, 158, 11, 0.45);
-
-      /* Switch Skeuomorphic Palette */
-      --plate-dark-1: #282a30;
-      --plate-dark-2: #16171a;
-
-      /* Typography Colors */
-      --text-primary-light: #201e1d;
-      --text-secondary-light: #6e6962;
-      
-      --text-primary-dark: #f5f3ef;
-      --text-secondary-dark: #a19c94;
-
-      /* Easing & Physics */
-      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* ==========================================================================
-       RESET & BASE ARCHITECTURE
-       ========================================================================== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      user-select: none;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: var(--wall-radial-light);
-      color: var(--text-primary-light);
-      overflow-x: hidden;
-      transition: background 0.7s var(--ease-smooth), color 0.7s ease;
-      position: relative;
-    }
-
-    body.dark-mode {
-      background: var(--wall-radial-dark);
-      color: var(--text-primary-dark);
-    }
-
-    /* Subtle Wall Micro-Texture */
-    .wall-texture {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.04;
-      background-image: radial-gradient(#000 1px, transparent 0);
-      background-size: 20px 20px;
-      z-index: 1;
-    }
-
-    body.dark-mode .wall-texture {
-      opacity: 0.07;
-      background-image: radial-gradient(#fff 1px, transparent 0);
-    }
-
-    /* ==========================================================================
-       HEADER & NAVIGATION
-       ========================================================================== */
-    .header {
-      position: relative;
-      z-index: 10;
-      padding: 1.5rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1300px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .brand-mark {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: #1e2025;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffd080;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    body.dark-mode .brand-logo {
-      background: #252830;
-      color: #f59e0b;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
-
-    .brand-logo svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .brand-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      line-height: 1.1;
-    }
-
-    .brand-tag {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      opacity: 0.65;
-      font-weight: 600;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .icon-btn {
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      color: inherit;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--ease-spring);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
-
-    body.dark-mode .icon-btn {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .icon-btn:hover {
-      transform: translateY(-2px) scale(1.05);
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    }
-
-    body.dark-mode .icon-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-    }
-
-    .icon-btn:active {
-      transform: scale(0.92);
-    }
-
-    .icon-btn svg {
-      width: 19px;
-      height: 19px;
-      stroke: currentColor;
-      stroke-width: 2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ==========================================================================
-       MAIN SHOWROOM DISPLAY
-       ========================================================================== */
-    .main-container {
-      position: relative;
-      z-index: 5;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 2rem 2rem;
-      max-width: 1240px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .stage-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 4rem;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin: auto 0;
-    }
-
-    @media (max-width: 960px) {
-      .stage-wrapper {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-    }
-
-    /* ==========================================================================
-       WALL SCONCE LIGHT FIXTURE & AMBIENT BLOOM
-       ========================================================================== */
-    .sconce-stage {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 440px;
-    }
-
-    .sconce-frame {
-      position: relative;
-      width: 310px;
-      height: 388px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* DYNAMIC AMBIENT GLOW HALO BEHIND SCONCE */
-    .ambient-glow-halo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 440px;
-      height: 440px;
-      transform: translate(-50%, -15%);
-      background: radial-gradient(
-        ellipse at 50% 32%,
-        rgba(var(--glow-rgb-core), 0.75) 0%,
-        rgba(var(--glow-rgb-mid), 0.42) 32%,
-        rgba(var(--glow-rgb-outer), 0.15) 58%,
-        transparent 75%
-      );
-      filter: blur(34px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s var(--ease-smooth), transform 0.6s ease;
-      z-index: 1;
-    }
-
-    /* Ketika opsi Gradien dimatikan user (OFF), halo disembunyikan total */
-    .gradient-disabled .ambient-glow-halo {
-      display: none !important;
-    }
-
-    .lamp-is-on .ambient-glow-halo {
-      opacity: 1;
-      transform: translate(-50%, -15%) scale(1.12);
-    }
-
-    body.dark-mode .ambient-glow-halo {
-      background: radial-gradient(
-        ellipse at 50% 32%,
-        rgba(var(--glow-rgb-core), 0.95) 0%,
-        rgba(var(--glow-rgb-mid), 0.65) 30%,
-        rgba(var(--glow-rgb-outer), 0.3) 58%,
-        transparent 80%
-      );
-      filter: blur(40px);
-    }
-
-    /* Image Stack Container */
-    .sconce-img-wrapper {
-      position: relative;
-      width: 290px;
-      height: 363px;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 
-        0 20px 40px -12px rgba(0, 0, 0, 0.12),
-        0 4px 10px rgba(0, 0, 0, 0.04);
-      z-index: 2;
-      transition: transform 0.35s var(--ease-smooth), box-shadow 0.35s ease;
-    }
-
-    body.dark-mode .sconce-img-wrapper {
-      box-shadow: 
-        0 25px 50px -10px rgba(0, 0, 0, 0.7),
-        0 0 1px rgba(255, 255, 255, 0.15);
-    }
-
-    .sconce-frame:hover .sconce-img-wrapper {
-      transform: translateY(-4px) scale(1.015);
-      box-shadow: 
-        0 28px 50px -10px rgba(0, 0, 0, 0.18),
-        0 8px 16px rgba(0, 0, 0, 0.06);
-    }
-
-    body.dark-mode .sconce-frame:hover .sconce-img-wrapper {
-      box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.85);
-    }
-
-    .sconce-frame:active .sconce-img-wrapper {
-      transform: scale(0.985);
-    }
-
-    .sconce-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      pointer-events: none;
-    }
-
-    /* Off Layer */
-    .sconce-layer.layer-off {
-      z-index: 1;
-      opacity: 1;
-      transition: filter 0.5s ease;
-    }
-
-    body.dark-mode .sconce-layer.layer-off {
-      filter: brightness(0.65) contrast(1.1);
-    }
-
-    /* On Layer (Smooth Lighting Dissolve) */
-    .sconce-layer.layer-on {
-      z-index: 2;
-      opacity: 0;
-      transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), filter 0.45s ease;
-      will-change: opacity;
-    }
-
-    .lamp-is-on .sconce-layer.layer-on {
-      opacity: 1;
-    }
-
-    body.dark-mode.lamp-is-on .sconce-layer.layer-on {
-      filter: brightness(1.08) contrast(1.05);
-    }
-
-    /* Tap Hint */
-    .tap-hint {
-      position: absolute;
-      bottom: -32px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-secondary-light);
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 6px 16px;
-      border-radius: 24px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      transition: var(--ease-smooth);
-      pointer-events: none;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-
-    body.dark-mode .tap-hint {
-      color: var(--text-secondary-dark);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .tap-hint svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-    }
-
-    /* ==========================================================================
-       CONTROL DECK & WALL SWITCH
-       ========================================================================== */
-    .control-deck {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      width: 100%;
-    }
-
-    .switch-plate-container {
-      background: linear-gradient(165deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.35) 100%);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 26px;
-      padding: 1.5rem;
-      box-shadow: 
-        0 30px 60px -15px rgba(0, 0, 0, 0.12),
-        0 10px 20px -5px rgba(0, 0, 0, 0.05),
-        inset 0 1px 2px rgba(255, 255, 255, 0.9);
-      transition: var(--ease-smooth);
-    }
-
-    body.dark-mode .switch-plate-container {
-      background: linear-gradient(165deg, rgba(34, 37, 43, 0.88) 0%, rgba(18, 20, 24, 0.88) 100%);
-      border-color: rgba(255, 255, 255, 0.09);
-      box-shadow: 
-        0 30px 60px -15px rgba(0, 0, 0, 0.6),
-        0 10px 20px -5px rgba(0, 0, 0, 0.35),
-        inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    }
-
-    .plate-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.1rem;
-    }
-
-    .plate-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 12px;
-      letter-spacing: 0.06em;
-      background: rgba(0, 0, 0, 0.06);
-      color: var(--text-secondary-light);
-      transition: var(--ease-smooth);
-    }
-
-    body.dark-mode .status-badge {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--text-secondary-dark);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #737373;
-      transition: var(--ease-smooth);
-    }
-
-    .lamp-is-on .status-badge {
-      background: rgba(245, 158, 11, 0.16);
-      color: #d97706;
-    }
-
-    body.dark-mode .lamp-is-on .status-badge {
-      background: rgba(245, 158, 11, 0.22);
-      color: #fbbf24;
-    }
-
-    .lamp-is-on .status-dot {
-      background: var(--amber-warm);
-      box-shadow: 0 0 10px var(--amber-warm);
-    }
-
-    /* Switch Style Mode Tabs */
-    .switch-mode-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      background: rgba(0, 0, 0, 0.05);
-      padding: 4px;
-      border-radius: 12px;
-      margin-bottom: 1.1rem;
-    }
-
-    body.dark-mode .switch-mode-tabs {
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: none;
-      padding: 6px 4px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      font-family: inherit;
-      color: inherit;
-      opacity: 0.65;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--ease-spring);
-      text-align: center;
-    }
-
-    .tab-btn:hover {
-      opacity: 1;
-    }
-
-    .tab-btn.active {
-      background: #ffffff;
-      opacity: 1;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      color: #111;
-    }
-
-    body.dark-mode .tab-btn.active {
-      background: #2b2e36;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      color: #fff;
-    }
-
-    /* ==========================================================================
-       STYLE 1: 3D ROCKER SWITCH
-       ========================================================================== */
-    .tactile-switch-bay {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 0;
-    }
-
-    .rocker-plate-bezel {
-      width: 140px;
-      height: 188px;
-      background: linear-gradient(145deg, #2c2f35, #17181c);
-      border-radius: 20px;
-      padding: 14px;
-      position: relative;
-      box-shadow: 
-        0 18px 36px rgba(0,0,0,0.38),
-        0 4px 8px rgba(0,0,0,0.22),
-        inset 0 1px 1.5px rgba(255,255,255,0.25),
-        inset 0 -1px 2px rgba(0,0,0,0.85);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .plate-screw {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #cca36e 0%, #8c6a38 70%, #59401f 100%);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.8), 0 1px 1px rgba(255,255,255,0.15);
-      position: absolute;
-    }
-    .plate-screw::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 15%;
-      right: 15%;
-      height: 1px;
-      background: #3a260e;
-      transform: translateY(-50%) rotate(42deg);
-    }
-    .plate-screw.screw-top { top: 10px; }
-    .plate-screw.screw-bot { bottom: 10px; }
-
-    .rocker-button {
-      position: relative;
-      width: 88px;
-      height: 130px;
-      border-radius: 12px;
-      background: #1a1b1f;
-      cursor: pointer;
-      outline: none;
-      border: none;
-      perspective: 700px;
-      transform-style: preserve-3d;
-      box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0,0,0,0.4);
-      padding: 3px;
-    }
-
-    .rocker-surface {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #32353c 0%, #22242a 50%, #17181c 100%);
-      box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.8),
-        0 6px 14px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 8px;
-      transition: transform 0.22s var(--ease-spring), box-shadow 0.22s ease, background 0.22s ease;
-      transform-origin: center center;
-      transform: perspective(600px) rotateX(13deg);
-    }
-
-    .rocker-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: #646873;
-      transition: color 0.2s ease, text-shadow 0.2s ease;
-    }
-
-    .rocker-indicator-bar {
-      width: 24px;
-      height: 3.5px;
-      border-radius: 2px;
-      background: #363942;
-      transition: background 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .lamp-is-on .rocker-surface {
-      transform: perspective(600px) rotateX(-13deg);
-      background: linear-gradient(180deg, #191a1e 0%, #24262c 50%, #353942 100%);
-      box-shadow: 
-        inset 0 1px 2px rgba(0, 0, 0, 0.8),
-        inset 0 -1px 1.5px rgba(255, 255, 255, 0.3),
-        0 -4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .lamp-is-on .rocker-label.label-on {
-      color: #ffd080;
-      text-shadow: 0 0 8px rgba(245, 158, 11, 0.65);
-    }
-
-    .lamp-is-on .rocker-label.label-off {
-      color: #3b3d45;
-    }
-
-    .lamp-is-on .rocker-indicator-bar {
-      background: var(--amber-warm);
-      box-shadow: 0 0 10px var(--amber-warm), 0 0 4px #ffedd5;
-    }
-
-    .rocker-button:active .rocker-surface {
-      transform: perspective(600px) scale(0.96) rotateX(0deg);
-    }
-
-    .switch-caption {
-      margin-top: 0.85rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--text-secondary-light);
-      text-align: center;
-    }
-
-    body.dark-mode .switch-caption {
-      color: var(--text-secondary-dark);
-    }
-
-    /* STYLE 2: PUSH BUTTON */
-    .push-switch-view {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      padding: 0.5rem 0;
-    }
-
-    .push-button-base {
-      width: 106px;
-      height: 106px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #2c2f35, #17181c);
-      box-shadow: 0 18px 36px rgba(0,0,0,0.38), inset 0 1px 2px rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .push-button-core {
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      border: none;
-      background: radial-gradient(circle at 40% 35%, #424652, #1f2127);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.45), inset 0 1px 1.5px rgba(255,255,255,0.35);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.18s var(--ease-spring);
-    }
-
-    .push-button-core:hover {
-      background: radial-gradient(circle at 40% 35%, #4e5361, #262930);
-    }
-
-    .push-button-core:active {
-      transform: scale(0.91);
-    }
-
-    .lamp-is-on .push-button-core {
-      box-shadow: 0 0 24px rgba(245, 158, 11, 0.4), 0 8px 18px rgba(0,0,0,0.45);
-    }
-
-    .push-icon {
-      width: 28px;
-      height: 28px;
-      stroke: #727685;
-      stroke-width: 2.3;
-      fill: none;
-      transition: stroke 0.25s ease, filter 0.25s ease;
-    }
-
-    .lamp-is-on .push-icon {
-      stroke: var(--amber-warm);
-      filter: drop-shadow(0 0 6px var(--amber-warm));
-    }
-
-    /* STYLE 3: TOGGLE LEVER */
-    .lever-switch-view {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      padding: 0.5rem 0;
-    }
-
-    .lever-plate {
-      width: 96px;
-      height: 144px;
-      background: linear-gradient(145deg, #2c2f35, #17181c);
-      border-radius: 18px;
-      box-shadow: 0 18px 36px rgba(0,0,0,0.38), inset 0 1px 1.5px rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .lever-handle {
-      width: 26px;
-      height: 70px;
-      position: relative;
-    }
-
-    .lever-knob {
-      width: 22px;
-      height: 52px;
-      border-radius: 11px;
-      background: linear-gradient(90deg, #b8860b 0%, #ffd700 50%, #8b6508 100%);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 1px 1px #fff;
-      position: absolute;
-      top: 0;
-      left: 2px;
-      transition: transform 0.24s var(--ease-spring), background 0.24s ease;
-      transform-origin: center bottom;
-      transform: rotate(-26deg);
-    }
-
-    .lamp-is-on .lever-knob {
-      transform: rotate(26deg);
-      background: linear-gradient(90deg, #d4af37 0%, #fff19e 50%, #aa820a 100%);
-      box-shadow: 0 0 14px rgba(245, 158, 11, 0.65), 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    /* DIMMER SLIDER */
-    .controls-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.07);
-      padding-top: 1.1rem;
-    }
-
-    body.dark-mode .controls-grid {
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-
-    .control-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .control-label-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.74rem;
-      font-weight: 600;
-      opacity: 0.85;
-    }
-
-    .control-value {
-      font-family: 'Space Grotesk', monospace;
-      font-weight: 700;
-      color: var(--amber-warm);
-    }
-
-    .slider-range {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 7px;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.12);
-      outline: none;
-      transition: var(--ease-spring);
-      cursor: pointer;
-    }
-
-    body.dark-mode .slider-range {
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .slider-range::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid #202227;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      cursor: pointer;
-      transition: transform 0.15s ease, background-color 0.2s ease;
-    }
-
-    .slider-range::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
-      background: #ffd080;
-    }
-
-    /* ==========================================================================
-       KONFIGURASI GRADIENT & AMBIENT GLOW SETTINGS CARD
-       ========================================================================== */
-    .config-card {
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(0, 0, 0, 0.07);
-      border-radius: 20px;
-      padding: 1.15rem 1.35rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      transition: var(--ease-smooth);
-    }
-
-    body.dark-mode .config-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.09);
-    }
-
-    .config-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .config-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      opacity: 0.8;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .config-title svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-    }
-
-    /* Custom Switch Toggle (On/Off) */
-    .toggle-switch-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .toggle-checkbox {
-      display: none;
-    }
-
-    .toggle-track {
-      width: 38px;
-      height: 22px;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 12px;
-      position: relative;
-      transition: background 0.25s ease;
-    }
-
-    body.dark-mode .toggle-track {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .toggle-handle {
-      width: 16px;
-      height: 16px;
-      background: #fff;
-      border-radius: 50%;
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      transition: transform 0.22s var(--ease-spring);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-
-    .toggle-checkbox:checked + .toggle-track {
-      background: #10b981;
-    }
-
-    .toggle-checkbox:checked + .toggle-track .toggle-handle {
-      transform: translateX(16px);
-    }
-
-    .toggle-state-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      min-width: 28px;
-    }
-
-    /* Preset Glow Color Selector */
-    .color-presets-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 2px;
-    }
-
-    .color-preset-pill {
-      flex: 1;
-      padding: 5px 6px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.4);
-      color: inherit;
-      cursor: pointer;
-      text-align: center;
-      transition: var(--ease-spring);
-    }
-
-    body.dark-mode .color-preset-pill {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.1);
-    }
-
-    .color-preset-pill.active {
-      background: #202227;
-      color: #fff;
-      border-color: #202227;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    body.dark-mode .color-preset-pill.active {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-    }
-
-    /* Comparison Note */
-    .config-note {
-      font-size: 0.68rem;
-      opacity: 0.65;
-      line-height: 1.35;
-    }
-
-    /* ==========================================================================
-       PRODUCT SPECIFICATIONS & FOOTER
-       ========================================================================== */
-    .specs-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2.25rem;
-      margin-top: 2.5rem;
-      padding: 1.1rem 2rem;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      max-width: 920px;
-      width: 100%;
-      transition: var(--ease-smooth);
-    }
-
-    body.dark-mode .specs-strip {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-
-    .spec-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      align-items: center;
-      text-align: center;
-    }
-
-    .spec-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.6;
-    }
-
-    .spec-value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .shortcuts-bar {
-      margin-top: 1.1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 0.9rem;
-      font-size: 0.72rem;
-      opacity: 0.7;
-    }
-
-    .key-badge {
-      display: inline-block;
-      padding: 2px 6px;
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.65rem;
-      font-weight: 700;
-      background: rgba(0, 0, 0, 0.08);
-      border-radius: 4px;
-      border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-    }
-
-    body.dark-mode .key-badge {
-      background: rgba(255, 255, 255, 0.12);
-      border-bottom-color: rgba(255, 255, 255, 0.25);
-    }
-  </style>
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="wall-texture"></div>
 
-  <!-- Wall Texture -->
-  <div class="wall-texture" aria-hidden="true"></div>
-
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="header">
-    <a href="#" class="brand-mark">
-      <div class="brand-logo">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
-        </svg>
-      </div>
-      <div class="brand-info">
-        <span class="brand-name">In Common With</span>
-        <span class="brand-tag">Luca Wall Sconce Studio</span>
-      </div>
-    </a>
+    <div class="brand" id="brandBtn">
+      <h1 class="brand-name">In Common With</h1>
+      <span class="brand-tag">Studio Lighting Collection</span>
+    </div>
 
+    <!-- Center Navigation Tabs -->
+    <nav class="view-switcher-nav">
+      <button class="view-nav-btn active" id="tabStudioBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+        Studio Switch
+      </button>
+      <button class="view-nav-btn" id="tabGalleryBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Collection Grid (<span id="totalHeaderCount">98</span>)
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
     <div class="header-actions">
-      <!-- Audio Toggle Button -->
-      <button class="icon-btn" id="soundToggleBtn" title="Saklar Suara (Klik Mekanikal)" aria-label="Toggle Sound">
-        <svg viewBox="0 0 24 24" id="soundIcon">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        </svg>
+      <!-- Drawer Toggle -->
+      <button class="icon-btn" id="drawerTriggerBtn" title="Pilih Lampu dari Daftar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </button>
 
-      <!-- Day/Night Room Ambiance Toggle -->
-      <button class="icon-btn" id="themeToggleBtn" title="Suasana Ruangan (Siang / Malam)" aria-label="Toggle Room Lighting">
-        <svg viewBox="0 0 24 24" id="themeIcon">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
+      <!-- Sound Toggle -->
+      <button class="icon-btn" id="soundToggleBtn" title="Suara Saklar Aktif">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      </button>
+
+      <!-- Day / Night Mood Toggle -->
+      <button class="icon-btn" id="themeToggleBtn" title="Beralih ke Suasana Malam (D)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- Main Showroom Area -->
-  <main class="main-container">
-    <div class="stage-wrapper">
-      
-      <!-- Sconce Fixture Visualization (Clickable) -->
-      <div class="sconce-stage">
-        <!-- The Ambient Halo Bloom (Toggleable via Config) -->
-        <div class="ambient-glow-halo" id="ambientHalo" aria-hidden="true"></div>
+  <!-- =========================================================================
+       VIEW 1: MAIN SHOWROOM DISPLAY (STUDIO SWITCH)
+       ========================================================================= -->
+  <main class="view-panel active" id="studioViewPanel">
+    <div class="main-container">
+      <div class="stage-wrapper">
         
-        <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Klik lampu atau gunakan saklar pencetan untuk toggle on/off" aria-label="Klik lampu untuk toggle on/off">
-          <div class="sconce-img-wrapper">
-            <!-- Off Layer -->
+        <!-- SCONCE LIGHT FIXTURE DISPLAY STAGE -->
+        <div class="sconce-stage">
+          <div class="lamp-meta-header">
+            <div>
+              <div class="lamp-category-tag" id="stageCategory">SCONCE</div>
+              <h2 class="lamp-main-title" id="stageTitle">Luca Wall Sconce</h2>
+            </div>
+            <div class="lamp-main-price" id="stagePrice">$1800</div>
+          </div>
+
+          <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Klik lampu untuk menyalakan/mematikan">
+            <!-- Dynamic Ambient Glow Halo -->
+            <div class="ambient-glow-halo" id="ambientHalo"></div>
+
+            <!-- Base Off Image -->
             <img 
-              src="InCommonWith_Luca_Wall_Sconce_Front_View_Off_Anthracite.jpg" 
-              alt="Luca Wall Sconce Front View Off Anthracite"
-              class="sconce-layer layer-off"
-              id="imgOff"
+              id="imgOff" 
+              class="sconce-img img-off" 
+              src="downloads/images/luca-wall-sconce-anthracite-blackened-brass/01_off_Incommonwith_LucaWallSconce_FrontView_Off_Anthracite_Small_f.jpg" 
+              alt="Lamp Off State"
             />
             
-            <!-- On Layer (Crossfade overlay) -->
+            <!-- Dynamic On Image Layer -->
             <img 
-              src="InCommonWith_Luca_Wall_Sconce_Front_View_On_Anthracite.jpg" 
-              alt="Luca Wall Sconce Front View On Anthracite"
-              class="sconce-layer layer-on"
-              id="imgOn"
+              id="imgOn" 
+              class="sconce-img img-on" 
+              src="downloads/images/luca-wall-sconce-anthracite-blackened-brass/02_on_Incommonwith_LucaWallSconce_FrontView_On_Anthracite_Small_ef.jpg" 
+              alt="Lamp On State"
             />
           </div>
+
+          <!-- Quick Navigation Bar Below Lamp -->
+          <div class="stage-quick-nav">
+            <button class="quick-pill-btn" id="prevLampBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+              Lampu Sebelumnya
+            </button>
+
+            <button class="quick-catalog-browse-btn" id="quickBrowseBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Katalog 98 Lampu
+            </button>
+
+            <button class="quick-pill-btn" id="nextLampBtn">
+              Lampu Selanjutnya
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTROL DECK (TACTILE WALL SWITCH + DIMMER + GRADIENT) -->
+        <section class="control-deck">
           
-          <div class="tap-hint">
-            <svg viewBox="0 0 24 24">
-              <path d="M15 15l-2 5-3-2-2 3-1-5-5-2 16-7z"></path>
-            </svg>
-            <span>Klik lampu atau saklar</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Control Deck -->
-      <section class="control-deck">
-        
-        <!-- 1. Tactile Wall Switch Plate -->
-        <div class="switch-plate-container">
-          <div class="plate-header">
-            <span class="plate-title">Wall Switch Control</span>
-            <div class="status-badge" id="powerBadge">
-              <span class="status-dot"></span>
-              <span id="powerText">OFF</span>
+          <!-- 1. Tactile Wall Switch Plate (EXACT ORIGINAL DESIGN) -->
+          <div class="switch-plate-container">
+            <div class="plate-header">
+              <span class="plate-title">Wall Switch Control</span>
+              <div class="status-badge" id="powerBadge">
+                <span class="status-dot"></span>
+                <span id="powerText">OFF</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Switch Mode Selector -->
-          <div class="switch-mode-tabs">
-            <button class="tab-btn active" data-switch="rocker">Rocker</button>
-            <button class="tab-btn" data-switch="push">Push Button</button>
-            <button class="tab-btn" data-switch="lever">Toggle Lever</button>
-          </div>
+            <!-- Switch Mode Selector -->
+            <div class="switch-mode-tabs">
+              <button class="tab-btn active" data-switch="rocker">Rocker</button>
+              <button class="tab-btn" data-switch="push">Push Button</button>
+              <button class="tab-btn" data-switch="lever">Toggle Lever</button>
+            </div>
 
-          <!-- STYLE 1: 3D Tactile Rocker Switch -->
-          <div class="tactile-switch-bay" id="rockerView">
-            <div class="rocker-plate-bezel">
-              <div class="plate-screw screw-top"></div>
-              
-              <button class="rocker-button" id="rockerSwitchBtn" aria-label="Saklar Lampu Rocker (Pencet)">
-                <div class="rocker-surface">
-                  <span class="rocker-label label-off">OFF</span>
-                  <div class="rocker-indicator-bar"></div>
-                  <span class="rocker-label label-on">ON</span>
+            <!-- STYLE 1: 3D Tactile Rocker Switch (EXACT ORIGINAL DESIGN) -->
+            <div class="tactile-switch-bay" id="rockerView">
+              <div class="rocker-plate-bezel">
+                <div class="plate-screw screw-top"></div>
+                
+                <button class="rocker-button" id="rockerSwitchBtn" aria-label="Saklar Lampu Rocker (Pencet)">
+                  <div class="rocker-surface">
+                    <span class="rocker-label label-off">OFF</span>
+                    <div class="rocker-indicator-bar"></div>
+                    <span class="rocker-label label-on">ON</span>
+                  </div>
+                </button>
+
+                <div class="plate-screw screw-bot"></div>
+              </div>
+              <p class="switch-caption">Klik saklar untuk toggle halus</p>
+            </div>
+
+            <!-- STYLE 2: Push Button -->
+            <div class="push-switch-view" id="pushView">
+              <div class="push-button-base">
+                <button class="push-button-core" id="pushSwitchBtn" aria-label="Saklar Lampu Push Button">
+                  <svg class="push-icon" viewBox="0 0 24 24">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
+                  </svg>
+                </button>
+              </div>
+              <p class="switch-caption">Push latch tactile button</p>
+            </div>
+
+            <!-- STYLE 3: Solid Brass Toggle Lever -->
+            <div class="lever-switch-view" id="leverView">
+              <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Saklar Tuas Lever">
+                <div class="lever-handle">
+                  <div class="lever-knob"></div>
                 </div>
-              </button>
-
-              <div class="plate-screw screw-bot"></div>
+              </div>
+              <p class="switch-caption">Solid brass toggle lever</p>
             </div>
-            <p class="switch-caption">Klik saklar untuk toggle halus</p>
-          </div>
 
-          <!-- STYLE 2: Push Button -->
-          <div class="push-switch-view" id="pushView">
-            <div class="push-button-base">
-              <button class="push-button-core" id="pushSwitchBtn" aria-label="Saklar Lampu Push Button">
-                <svg class="push-icon" viewBox="0 0 24 24">
-                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
-                </svg>
-              </button>
-            </div>
-            <p class="switch-caption">Push latch tactile button</p>
-          </div>
-
-          <!-- STYLE 3: Solid Brass Toggle Lever -->
-          <div class="lever-switch-view" id="leverView">
-            <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Saklar Tuas Lever">
-              <div class="lever-handle">
-                <div class="lever-knob"></div>
+            <!-- Dimmer Brightness Slider -->
+            <div class="controls-grid">
+              <div class="control-row">
+                <div class="control-label-wrap">
+                  <span>Dimmer & Kecerahan</span>
+                  <span class="control-value" id="brightnessValue">0%</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="100" 
+                  value="0" 
+                  class="slider-range" 
+                  id="brightnessSlider" 
+                  aria-label="Pengatur Kecerahan Lampu"
+                />
               </div>
             </div>
-            <p class="switch-caption">Solid brass toggle lever</p>
           </div>
 
-          <!-- Dimmer Brightness Slider -->
-          <div class="controls-grid">
-            <div class="control-row">
-              <div class="control-label-wrap">
-                <span>Dimmer & Kecerahan</span>
-                <span class="control-value" id="brightnessValue">0%</span>
+          <!-- 2. KONFIGURASI GRADIENT & AMBIENT GLOW SETTINGS CARD -->
+          <div class="config-card">
+            <div class="config-header">
+              <div class="config-title">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <span>Gradien Ambient Glow</span>
               </div>
-              <input 
-                type="range" 
-                min="0" 
-                max="100" 
-                value="0" 
-                class="slider-range" 
-                id="brightnessSlider" 
-                aria-label="Pengatur Kecerahan Lampu"
-              />
+              <label class="toggle-switch-wrap" title="Nyalakan atau matikan efek gradien halo">
+                <input type="checkbox" class="toggle-checkbox" id="gradientToggle" checked>
+                <div class="toggle-track">
+                  <div class="toggle-handle"></div>
+                </div>
+                <span class="toggle-status-label" id="gradientStateText">ON</span>
+              </label>
             </div>
-          </div>
-        </div>
 
-        <!-- 2. KONFIGURASI GRADIENT (ON / OFF & COLOR SOURCE) -->
-        <div class="config-card">
-          <div class="config-header">
-            <span class="config-title">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-              </svg>
-              Ambient Glow Gradient
-            </span>
-
-            <!-- Toggle On/Off Gradient Switch -->
-            <label class="toggle-switch-wrap" title="Aktifkan/Nonaktifkan gradien pendaran cahaya di dinding">
-              <input type="checkbox" class="toggle-checkbox" id="gradientToggleCheckbox" checked />
-              <div class="toggle-track">
-                <div class="toggle-handle"></div>
+            <!-- Pilihan Sumber Warna Gradien -->
+            <div class="color-source-group">
+              <span class="color-source-label">Warna Temperatur Ambient:</span>
+              <div class="color-preset-pills">
+                <button class="color-btn active" data-source="auto">Auto Pixel</button>
+                <button class="color-btn" data-source="2200k">2200K</button>
+                <button class="color-btn" data-source="2700k">2700K</button>
+                <button class="color-btn" data-source="3500k">3500K</button>
               </div>
-              <span class="toggle-state-text" id="gradientStateLabel">ON</span>
-            </label>
+            </div>
+
+            <!-- Link Official Store -->
+            <a class="official-link-btn" id="officialStoreLink" href="https://www.incommonwith.com" target="_blank" rel="noopener">
+              <span>Buka di In Common With Official Store</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
           </div>
 
-          <!-- Color Source Presets -->
-          <div class="color-presets-row" id="colorPresetsRow">
-            <button class="color-preset-pill active" data-source="auto" title="Ekstrak warna otomatis dari foto On via Canvas API">
-              Auto (Canvas)
-            </button>
-            <button class="color-preset-pill" data-source="2700k" title="Preset Warm White 2700K">
-              Warm 2700K
-            </button>
-            <button class="color-preset-pill" data-source="candle" title="Preset Cahaya Lilin Amber">
-              Candle
-            </button>
-            <button class="color-preset-pill" data-source="cyan" title="Preset Cool Cyan Neon">
-              Cyan
-            </button>
-          </div>
+        </section>
 
-          <p class="config-note" id="configNote">
-            <strong>Gradien ON:</strong> Menghasilkan pantulan cahaya radial di dinding sekitar. Jika <strong>OFF</strong>, hanya 2 foto mentah yang melakukan crossfade.
-          </p>
-        </div>
-
-      </section>
-
-    </div>
-
-    <!-- Product Specifications Strip -->
-    <footer class="specs-strip">
-      <div class="spec-item">
-        <span class="spec-label">Model</span>
-        <span class="spec-value">Luca Wall Sconce</span>
       </div>
-      <div class="spec-item">
-        <span class="spec-label">Material Finish</span>
-        <span class="spec-value">Anthracite & Solid Brass</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Color Temp</span>
-        <span class="spec-value">2700K Warm Ambiance</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Daya Listrik</span>
-        <span class="spec-value" id="specPower">0 Watt (Off)</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Luminous Flux</span>
-        <span class="spec-value" id="specLumen">0 Lumens</span>
-      </div>
-    </footer>
-
-    <!-- Shortcuts Helper -->
-    <div class="shortcuts-bar">
-      <span>Shortcut: <span class="key-badge">Space</span> / <span class="key-badge">Enter</span> untuk saklar</span>
-      <span>•</span>
-      <span><span class="key-badge">↑</span> <span class="key-badge">↓</span> Atur Dimmer</span>
-      <span>•</span>
-      <span><span class="key-badge">M</span> Suara</span>
-      <span>•</span>
-      <span><span class="key-badge">D</span> Mode Ruangan</span>
-      <span>•</span>
-      <span><span class="key-badge">G</span> Toggle Gradien</span>
     </div>
   </main>
 
-  <!-- ==========================================================================
-       JAVASCRIPT: CANVAS AUTO COLOR EXTRACTION & INTERACTIVE CONTROLLER
-       ========================================================================== -->
-  <script>
-    (function () {
-      'use strict';
+  <!-- =========================================================================
+       VIEW 2: CURATED COLLECTION GALLERY (98 LAMPS)
+       ========================================================================= -->
+  <section class="view-panel gallery-view" id="galleryViewPanel">
+    
+    <!-- Gallery Top Header -->
+    <div class="gallery-header-section">
+      <div class="gallery-title-row">
+        <div>
+          <h2 class="gallery-main-heading">All Lighting Collection</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary-light); margin-top: 0.35rem;">
+            Jelajahi seluruh 98 koleksi lampu desainer In Common With. Klik tombol Studio untuk membuka di mode sakelar interaktif.
+          </p>
+        </div>
+        <div class="gallery-counter-tag" id="galleryResultsCounter">Menampilkan 98 koleksi</div>
+      </div>
 
-      // --- STATE ---
-      const state = {
-        isOn: false,
-        brightness: 0,
-        soundEnabled: true,
-        isDarkMode: false,
-        currentSwitchMode: 'rocker',
-        gradientEnabled: true,
-        colorSource: 'auto'
-      };
+      <!-- Filter & Search Bar -->
+      <div class="gallery-filter-bar">
+        <div class="search-input-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="gallery-search-input" id="gallerySearchInput" placeholder="Cari berdasarkan nama lampu, material, kategori...">
+        </div>
 
-      // --- COLOR PALETTE DEFINITIONS ---
-      const colorPalettes = {
-        '2700k': { core: '255, 195, 115', mid: '255, 160, 65', outer: '255, 130, 45' },
-        'candle': { core: '255, 160, 70', mid: '235, 100, 30', outer: '180, 50, 15' },
-        'cyan': { core: '130, 240, 255', mid: '40, 180, 255', outer: '10, 110, 220' }
-      };
+        <select class="gallery-sort-select" id="gallerySortSelect" aria-label="Urutkan koleksi">
+          <option value="featured">Urutkan: Rekomendasi</option>
+          <option value="price-asc">Harga: Termurah ke Termahal</option>
+          <option value="price-desc">Harga: Termahal ke Termurah</option>
+          <option value="name-asc">Nama: A ke Z</option>
+        </select>
+      </div>
 
-      // --- DOM REFERENCES ---
-      const body = document.body;
-      const sconceLamp = document.getElementById('sconceLamp');
-      const imgOff = document.getElementById('imgOff');
-      const imgOn = document.getElementById('imgOn');
-      const ambientHalo = document.getElementById('ambientHalo');
-      const powerBadge = document.getElementById('powerBadge');
-      const powerText = document.getElementById('powerText');
-      const brightnessSlider = document.getElementById('brightnessSlider');
-      const brightnessValue = document.getElementById('brightnessValue');
-      const specPower = document.getElementById('specPower');
-      const specLumen = document.getElementById('specLumen');
-      const soundToggleBtn = document.getElementById('soundToggleBtn');
-      const themeToggleBtn = document.getElementById('themeToggleBtn');
-      
-      const rockerSwitchBtn = document.getElementById('rockerSwitchBtn');
-      const pushSwitchBtn = document.getElementById('pushSwitchBtn');
-      const leverSwitchBtn = document.getElementById('leverSwitchBtn');
-      const switchTabs = document.querySelectorAll('.tab-btn');
-      const rockerView = document.getElementById('rockerView');
-      const pushView = document.getElementById('pushView');
-      const leverView = document.getElementById('leverView');
+      <!-- Category Filter Pills -->
+      <div class="category-pills-row" id="categoryPillsRow">
+        <button class="category-pill-btn active" data-cat="all">Semua (98)</button>
+        <button class="category-pill-btn" data-cat="Pendant">Pendant (24)</button>
+        <button class="category-pill-btn" data-cat="Surface Mount">Surface Mount (22)</button>
+        <button class="category-pill-btn" data-cat="Sconce">Sconce (18)</button>
+        <button class="category-pill-btn" data-cat="Table Lamp">Table Lamp (16)</button>
+        <button class="category-pill-btn" data-cat="Floor Lamp">Floor Lamp (5)</button>
+        <button class="category-pill-btn" data-cat="Plug-in Sconce">Plug-in (4)</button>
+        <button class="category-pill-btn" data-cat="ADA Sconce">ADA Sconce (4)</button>
+        <button class="category-pill-btn" data-cat="Chandelier">Chandelier (3)</button>
+      </div>
+    </div>
 
-      // Gradient Config Controls
-      const gradientToggleCheckbox = document.getElementById('gradientToggleCheckbox');
-      const gradientStateLabel = document.getElementById('gradientStateLabel');
-      const colorPresetBtns = document.querySelectorAll('.color-preset-pill');
+    <!-- 98 Products Grid -->
+    <div class="lamp-products-grid" id="lampProductsGrid">
+      <!-- Rendered via JS -->
+    </div>
 
-      // --- DYNAMIC CANVAS COLOR SAMPLER (Auto-Extract Pixels) ---
-      function extractColorsFromImage(imgElement) {
-        try {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          canvas.width = imgElement.naturalWidth || 290;
-          canvas.height = imgElement.naturalHeight || 363;
-          ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
+  </section>
 
-          // Sample pixels directly from the glow zone (around lower-center)
-          const centerX = Math.floor(canvas.width / 2);
-          const coreY = Math.floor(canvas.height * 0.62);   // Inti cahaya
-          const midY = Math.floor(canvas.height * 0.72);    // Pendaran tengah
-          const outerY = Math.floor(canvas.height * 0.85);  // Pendaran luar
+  <!-- =========================================================================
+       DRAWER: QUICK LAMP SELECTOR DRAWER
+       ========================================================================= -->
+  <div class="lamp-drawer-backdrop" id="lampDrawerBackdrop">
+    <aside class="lamp-drawer">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Pilih Koleksi Lampu</h3>
+        <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Tutup drawer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
 
-          const corePix = ctx.getImageData(centerX, coreY, 1, 1).data;
-          const midPix = ctx.getImageData(centerX, midY, 1, 1).data;
-          const outerPix = ctx.getImageData(centerX, outerY, 1, 1).data;
+      <div class="search-input-wrapper" style="margin-bottom: 1rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="gallery-search-input" id="drawerSearchInput" placeholder="Cari lampu...">
+      </div>
 
-          return {
-            core: `${corePix[0]}, ${corePix[1]}, ${corePix[2]}`,
-            mid: `${midPix[0]}, ${midPix[1]}, ${midPix[2]}`,
-            outer: `${outerPix[0]}, ${outerPix[1]}, ${outerPix[2]}`
-          };
-        } catch (err) {
-          console.warn('Canvas pixel extraction fallback:', err);
-          return colorPalettes['2700k'];
-        }
-      }
+      <div class="drawer-list" id="drawerList">
+        <!-- Rendered via JS -->
+      </div>
+    </aside>
+  </div>
 
-      function applyGlowPalette(palette) {
-        document.documentElement.style.setProperty('--glow-rgb-core', palette.core);
-        document.documentElement.style.setProperty('--glow-rgb-mid', palette.mid);
-        document.documentElement.style.setProperty('--glow-rgb-outer', palette.outer);
-      }
+  <!-- Toast Notification Pill -->
+  <div class="toast-pill" id="toastPill">Memuat Lampu...</div>
 
-      function updateColorSource(source) {
-        state.colorSource = source;
-        colorPresetBtns.forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.source === source);
-        });
+  <!-- Hidden Auto-Sampler Canvas -->
+  <canvas id="colorSamplerCanvas" width="40" height="40" style="display:none;"></canvas>
 
-        if (source === 'auto') {
-          if (imgOn.complete) {
-            const autoPal = extractColorsFromImage(imgOn);
-            applyGlowPalette(autoPal);
-          } else {
-            imgOn.onload = () => applyGlowPalette(extractColorsFromImage(imgOn));
-          }
-        } else if (colorPalettes[source]) {
-          applyGlowPalette(colorPalettes[source]);
-        }
-      }
-
-      // --- WEB AUDIO API TACTILE CLICK SYNTHESIZER ---
-      let audioCtx = null;
-
-      function getAudioContext() {
-        if (!audioCtx) {
-          const AudioContext = window.AudioContext || window.webkitAudioContext;
-          if (AudioContext) {
-            audioCtx = new AudioContext();
-          }
-        }
-        if (audioCtx && audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-        return audioCtx;
-      }
-
-      function playSwitchSound(type) {
-        if (!state.soundEnabled) return;
-        try {
-          const ctx = getAudioContext();
-          if (!ctx) return;
-          const now = ctx.currentTime;
-          
-          if (type === 'on') {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            const filter = ctx.createBiquadFilter();
-
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(1400, now);
-            osc.frequency.exponentialRampToValueAtTime(180, now + 0.045);
-
-            filter.type = 'highpass';
-            filter.frequency.setValueAtTime(800, now);
-
-            gain.gain.setValueAtTime(0.35, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
-
-            osc.connect(filter);
-            filter.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start(now);
-            osc.stop(now + 0.05);
-
-            // Sub bounce
-            const osc2 = ctx.createOscillator();
-            const gain2 = ctx.createGain();
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(400, now + 0.012);
-            osc2.frequency.exponentialRampToValueAtTime(60, now + 0.06);
-            gain2.gain.setValueAtTime(0.2, now + 0.012);
-            gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-            osc2.connect(gain2);
-            gain2.connect(ctx.destination);
-            osc2.start(now + 0.012);
-            osc2.stop(now + 0.065);
-          } else {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(950, now);
-            osc.frequency.exponentialRampToValueAtTime(120, now + 0.05);
-            gain.gain.setValueAtTime(0.3, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start(now);
-            osc.stop(now + 0.055);
-          }
-        } catch (e) {
-          console.warn('AudioContext error:', e);
-        }
-      }
-
-      // --- SMOOTH LIGHTING UPDATE ---
-      function updateLighting(targetBrightness) {
-        state.brightness = targetBrightness;
-        const normalized = targetBrightness / 100;
-        
-        // Dissolve On-Layer smoothly
-        imgOn.style.opacity = normalized.toFixed(3);
-        
-        // Ambient Bloom halo (if gradient enabled)
-        if (state.gradientEnabled && normalized > 0) {
-          const extraGlow = (normalized * 0.9).toFixed(2);
-          ambientHalo.style.opacity = extraGlow;
-          ambientHalo.style.transform = `translate(-50%, -15%) scale(${1 + normalized * 0.12})`;
-        } else {
-          ambientHalo.style.opacity = '0';
-          ambientHalo.style.transform = `translate(-50%, -15%) scale(1)`;
-        }
-
-        // Update Slider & Values
-        brightnessSlider.value = targetBrightness;
-        brightnessValue.textContent = `${targetBrightness}%`;
-        
-        // Telemetry
-        if (targetBrightness > 0) {
-          const watts = ((targetBrightness / 100) * 8).toFixed(1);
-          const lumens = Math.round((targetBrightness / 100) * 600);
-          specPower.textContent = `${watts} Watt (Aktif)`;
-          specLumen.textContent = `${lumens} Lumens`;
-        } else {
-          specPower.textContent = '0 Watt (Off)';
-          specLumen.textContent = '0 Lumens';
-        }
-      }
-
-      // --- TOGGLE LIGHT ON / OFF ---
-      function toggleLight(forceState = null) {
-        const nextState = forceState !== null ? forceState : !state.isOn;
-        if (state.isOn === nextState && forceState !== null) return;
-
-        state.isOn = nextState;
-
-        if (state.isOn) {
-          body.classList.add('lamp-is-on');
-          powerText.textContent = 'ON';
-          updateLighting(100);
-          playSwitchSound('on');
-        } else {
-          body.classList.remove('lamp-is-on');
-          powerText.textContent = 'OFF';
-          updateLighting(0);
-          playSwitchSound('off');
-        }
-      }
-
-      // --- TOGGLE GRADIENT CONFIGURATION (ON / OFF) ---
-      function setGradientEnabled(enabled) {
-        state.gradientEnabled = enabled;
-        gradientToggleCheckbox.checked = enabled;
-        gradientStateLabel.textContent = enabled ? 'ON' : 'OFF';
-        gradientStateLabel.style.color = enabled ? '#10b981' : '#888';
-        
-        if (enabled) {
-          body.classList.remove('gradient-disabled');
-        } else {
-          body.classList.add('gradient-disabled');
-        }
-        
-        updateLighting(state.brightness);
-      }
-
-      gradientToggleCheckbox.addEventListener('change', (e) => {
-        setGradientEnabled(e.target.checked);
-      });
-
-      // Color Preset Buttons
-      colorPresetBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          updateColorSource(btn.dataset.source);
-        });
-      });
-
-      // --- EVENT HANDLERS ---
-      brightnessSlider.addEventListener('input', function (e) {
-        const val = parseInt(e.target.value, 10);
-        if (val > 0 && !state.isOn) {
-          state.isOn = true;
-          body.classList.add('lamp-is-on');
-          powerText.textContent = 'ON';
-          playSwitchSound('on');
-        } else if (val === 0 && state.isOn) {
-          state.isOn = false;
-          body.classList.remove('lamp-is-on');
-          powerText.textContent = 'OFF';
-          playSwitchSound('off');
-        }
-        updateLighting(val);
-      });
-
-      // Switch Clicks
-      rockerSwitchBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleLight();
-      });
-
-      pushSwitchBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleLight();
-      });
-
-      leverSwitchBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleLight();
-      });
-
-      leverSwitchBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleLight();
-        }
-      });
-
-      sconceLamp.addEventListener('click', () => {
-        toggleLight();
-      });
-
-      sconceLamp.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleLight();
-        }
-      });
-
-      // Tab Switching
-      switchTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          switchTabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-
-          const mode = tab.dataset.switch;
-          state.currentSwitchMode = mode;
-
-          rockerView.style.display = mode === 'rocker' ? 'flex' : 'none';
-          pushView.style.display = mode === 'push' ? 'flex' : 'none';
-          leverView.style.display = mode === 'lever' ? 'flex' : 'none';
-        });
-      });
-
-      // Sound Toggle
-      soundToggleBtn.addEventListener('click', () => {
-        state.soundEnabled = !state.soundEnabled;
-        soundToggleBtn.style.opacity = state.soundEnabled ? '1' : '0.4';
-        soundToggleBtn.title = state.soundEnabled ? 'Suara Aktif' : 'Suara Dimatikan';
-      });
-
-      // Room Atmosphere Theme Toggle
-      themeToggleBtn.addEventListener('click', () => {
-        state.isDarkMode = !state.isDarkMode;
-        body.classList.toggle('dark-mode', state.isDarkMode);
-        themeToggleBtn.title = state.isDarkMode ? 'Beralih ke Suasana Siang' : 'Beralih ke Suasana Malam';
-      });
-
-      // Keyboard Shortcuts
-      window.addEventListener('keydown', (e) => {
-        if (e.target === brightnessSlider && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
-          return;
-        }
-
-        if (e.key === ' ' || e.key === 'Enter' || e.key.toLowerCase() === 'o') {
-          if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'BUTTON')) {
-            return;
-          }
-          e.preventDefault();
-          toggleLight();
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          const newVal = Math.min(100, state.brightness + 10);
-          if (!state.isOn) toggleLight(true);
-          updateLighting(newVal);
-        } else if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          const newVal = Math.max(0, state.brightness - 10);
-          if (newVal === 0) toggleLight(false);
-          else updateLighting(newVal);
-        } else if (e.key.toLowerCase() === 'm') {
-          soundToggleBtn.click();
-        } else if (e.key.toLowerCase() === 'd') {
-          themeToggleBtn.click();
-        } else if (e.key.toLowerCase() === 'g') {
-          setGradientEnabled(!state.gradientEnabled);
-        }
-      });
-
-      // Initial startup
-      if (imgOn.complete) {
-        updateColorSource('auto');
-      } else {
-        imgOn.addEventListener('load', () => updateColorSource('auto'));
-      }
-      updateLighting(0);
-
-    })();
-  </script>
+  <!-- External Scripts -->
+  <script src="lampCatalog.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
