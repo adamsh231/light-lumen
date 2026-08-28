@@ -1,0 +1,171 @@
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+.header {
+  position: relative;
+  z-index: 20;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.5s ease, background 0.5s ease;
+}
+
+body.dark-mode .header {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  background: rgba(20, 20, 22, 0.4);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.brand-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.65;
+  font-weight: 600;
+}
+
+/* View Switcher Pills */
+.view-switcher-nav {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .view-switcher-nav {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.view-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary-light);
+  transition: all 0.25s ease;
+}
+
+body.dark-mode .view-nav-btn {
+  color: var(--text-secondary-dark);
+}
+
+.view-nav-btn.active {
+  background: #ffffff;
+  color: var(--text-primary-light);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .view-nav-btn.active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+.view-nav-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: inherit;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--ease-spring);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+body.dark-mode .icon-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .icon-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+.icon-btn svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==========================================================================
+   VIEW CONTAINER PANELS
+   ========================================================================== */
+.view-panel {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: none;
+  width: 100%;
+}
+
+.view-panel.active {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.35s var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

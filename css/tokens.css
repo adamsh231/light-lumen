@@ -1,0 +1,31 @@
+/* ==========================================================================
+   DESIGN TOKENS & SYSTEM VARIABLES
+   ========================================================================== */
+:root {
+  /* Background Wall Palettes */
+  --wall-base-light: #ded6cb;
+  --wall-radial-light: radial-gradient(circle at 50% 38%, #ece5dc 0%, #dbd2c6 50%, #c8bfb2 100%);
+  
+  --wall-base-dark: #141416;
+  --wall-radial-dark: radial-gradient(circle at 50% 38%, #1f2024 0%, #121215 55%, #09090b 100%);
+
+  /* Dynamic Ambient Glow Colors (Updated via JS / Canvas Auto-Detector) */
+  --glow-rgb-core: 255, 195, 115;
+  --glow-rgb-mid: 255, 160, 65;
+  --glow-rgb-outer: 255, 130, 45;
+
+  --amber-warm: #f59e0b;
+  --amber-glow: rgba(245, 158, 11, 0.45);
+
+  /* Typography Colors */
+  --text-primary-light: #201e1d;
+  --text-secondary-light: #6e6962;
+  
+  --text-primary-dark: #f5f3ef;
+  --text-secondary-dark: #a19c94;
+
+  /* Easing & Physics */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}

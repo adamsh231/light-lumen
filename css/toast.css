@@ -1,0 +1,28 @@
+/* ==========================================================================
+   TOAST NOTIFICATION & CANVAS UTILITIES
+   ========================================================================== */
+.toast-pill {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  padding: 0.6rem 1.4rem;
+  background: #1c1917;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 200;
+  transition: transform 0.35s var(--ease-spring);
+  pointer-events: none;
+}
+
+body.dark-mode .toast-pill {
+  background: #ffffff;
+  color: #121214;
+}
+
+.toast-pill.show {
+  transform: translateX(-50%) translateY(0);
+}

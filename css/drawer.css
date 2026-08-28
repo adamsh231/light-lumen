@@ -1,0 +1,125 @@
+/* ==========================================================================
+   DRAWER: QUICK LAMP SELECTOR DRAWER
+   ========================================================================== */
+.lamp-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.lamp-drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lamp-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease-smooth);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+body.dark-mode .lamp-drawer {
+  background: rgba(24, 24, 27, 0.88);
+  border-left-color: rgba(255, 255, 255, 0.12);
+}
+
+.lamp-drawer-backdrop.open .lamp-drawer {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.drawer-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.drawer-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.dark-mode .drawer-close-btn {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.drawer-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.5rem;
+}
+
+.drawer-item-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.dark-mode .drawer-item-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.drawer-item-card:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: translateX(-4px);
+}
+
+body.dark-mode .drawer-item-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.drawer-item-card.active {
+  border-color: var(--amber-warm);
+  background: var(--amber-glow);
+}
+
+.drawer-item-thumb {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.02);
+}

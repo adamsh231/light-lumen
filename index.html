@@ -241,11 +241,28 @@
       <div class="gallery-title-row">
         <div>
           <h2 class="gallery-main-heading">All Lighting Collection</h2>
-          <p style="font-size: 0.85rem; color: var(--text-secondary-light); margin-top: 0.35rem;">
-            Jelajahi seluruh 98 koleksi lampu desainer In Common With. Klik tombol Studio untuk membuka di mode sakelar interaktif.
+          <p class="gallery-sub-heading">
+            Jelajahi seluruh 98 koleksi lampu desainer In Common With. Sentuh / arahkan kursor untuk melihat sisi on &amp; off lampu secara interaktif.
           </p>
         </div>
-        <div class="gallery-counter-tag" id="galleryResultsCounter">Menampilkan 98 koleksi</div>
+
+        <!-- Master Wall Switch for All Lights -->
+        <div class="gallery-master-switch-card">
+          <div class="master-switch-meta">
+            <span class="master-status-indicator" id="masterStatusIndicator"></span>
+            <div class="master-text-block">
+              <span class="master-tag">MASTER LIGHT SWITCH</span>
+              <span class="master-status-label" id="masterSwitchStatusText">SEMUA MATI (0/98)</span>
+            </div>
+          </div>
+          
+          <button class="master-rocker-switch-btn" id="galleryMasterToggleBtn" aria-label="Toggle saklar semua lampu on / off" role="switch" aria-checked="false">
+            <span class="master-switch-track">
+              <span class="master-switch-thumb"></span>
+            </span>
+            <span class="master-switch-btn-label" id="masterSwitchBtnLabel">NYALAKAN SEMUA</span>
+          </button>
+        </div>
       </div>
 
       <!-- Filter & Search Bar -->
@@ -255,12 +272,25 @@
           <input type="text" class="gallery-search-input" id="gallerySearchInput" placeholder="Cari berdasarkan nama lampu, material, kategori...">
         </div>
 
-        <select class="gallery-sort-select" id="gallerySortSelect" aria-label="Urutkan koleksi">
-          <option value="featured">Urutkan: Rekomendasi</option>
-          <option value="price-asc">Harga: Termurah ke Termahal</option>
-          <option value="price-desc">Harga: Termahal ke Termurah</option>
-          <option value="name-asc">Nama: A ke Z</option>
-        </select>
+        <div class="gallery-toolbar-actions">
+          <!-- Grid n x n Columns Switcher -->
+          <div class="grid-columns-control" id="gridColumnsControl" title="Atur jumlah kolom grid (n × n)">
+            <span class="grid-control-label">GRID</span>
+            <div class="grid-col-btn-group" role="group" aria-label="Pilih Jumlah Kolom Grid">
+              <button type="button" class="grid-col-btn" data-cols="2" title="Tampilan 2 Kolom">2</button>
+              <button type="button" class="grid-col-btn" data-cols="3" title="Tampilan 3 Kolom">3</button>
+              <button type="button" class="grid-col-btn active" data-cols="4" title="Tampilan 4 Kolom (Default)">4</button>
+              <button type="button" class="grid-col-btn" data-cols="5" title="Tampilan 5 Kolom">5</button>
+              <button type="button" class="grid-col-btn" data-cols="6" title="Tampilan 6 Kolom">6</button>
+            </div>
+          </div>
+
+          <!-- Sort Select (By Name Only) -->
+          <select class="gallery-sort-select" id="gallerySortSelect" aria-label="Urutkan nama koleksi">
+            <option value="name-asc" selected>Nama: A ke Z</option>
+            <option value="name-desc">Nama: Z ke A</option>
+          </select>
+        </div>
       </div>
 
       <!-- Category Filter Pills -->
@@ -313,8 +343,15 @@
   <!-- Hidden Auto-Sampler Canvas -->
   <canvas id="colorSamplerCanvas" width="40" height="40" style="display:none;"></canvas>
 
-  <!-- External Scripts -->
+  <!-- External Scripts (Modular Architecture) -->
   <script src="lampCatalog.js"></script>
-  <script src="app.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/colorExtractor.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/drawer.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
