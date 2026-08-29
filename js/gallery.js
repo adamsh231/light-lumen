@@ -25,17 +25,6 @@ export function updateMasterSwitchUI() {
   const allOff = litCount === 0;
 
   const galleryMasterToggleBtn = document.getElementById('galleryMasterToggleBtn');
-  const galleryCountBadge = document.getElementById('galleryCountBadge');
-
-  if (galleryCountBadge) {
-    if (litCount > 0) {
-      galleryCountBadge.textContent = `${litCount}/${totalCount} on`;
-      galleryCountBadge.classList.add('lit');
-    } else {
-      galleryCountBadge.textContent = `${totalCount} pieces`;
-      galleryCountBadge.classList.remove('lit');
-    }
-  }
 
   if (galleryMasterToggleBtn) {
     galleryMasterToggleBtn.setAttribute('aria-checked', allLit ? 'true' : (allOff ? 'false' : 'mixed'));
@@ -270,7 +259,7 @@ export function setGridColumns(cols) {
     lampProductsGrid.style.setProperty('--gallery-grid-cols', cols);
   }
 
-  document.querySelectorAll('.grid-col-btn').forEach(btn => {
+  document.querySelectorAll('.dock-grid-btn, .grid-col-btn').forEach(btn => {
     btn.classList.toggle('active', parseInt(btn.dataset.cols, 10) === cols);
   });
 
@@ -280,9 +269,8 @@ export function setGridColumns(cols) {
 export function initGallery() {
   const { state } = getStore();
   const lampProductsGrid = document.getElementById('lampProductsGrid');
-  const categoryPillsRow = document.getElementById('categoryPillsRow');
+  const galleryCategorySelect = document.getElementById('galleryCategorySelect');
   const gallerySearchInput = document.getElementById('gallerySearchInput');
-  const gallerySortSelect = document.getElementById('gallerySortSelect');
   const galleryMasterToggleBtn = document.getElementById('galleryMasterToggleBtn');
 
   // Overlay Config UI Elements
@@ -300,7 +288,7 @@ export function initGallery() {
   }
 
   // Grid Density buttons
-  document.querySelectorAll('.grid-col-btn').forEach(btn => {
+  document.querySelectorAll('.dock-grid-btn, .grid-col-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const cols = parseInt(btn.dataset.cols, 10);
       if (cols >= 2 && cols <= 6) {
@@ -357,13 +345,10 @@ export function initGallery() {
     });
   }
 
-  if (categoryPillsRow) {
-    categoryPillsRow.addEventListener('click', (e) => {
-      const btn = e.target.closest('.category-pill-btn');
-      if (!btn) return;
-      document.querySelectorAll('.category-pill-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state.galleryFilter = btn.dataset.cat;
+  if (galleryCategorySelect) {
+    galleryCategorySelect.value = state.galleryFilter || 'all';
+    galleryCategorySelect.addEventListener('change', (e) => {
+      state.galleryFilter = e.target.value;
       renderGalleryGrid();
     });
   }
@@ -371,13 +356,6 @@ export function initGallery() {
   if (gallerySearchInput) {
     gallerySearchInput.addEventListener('input', (e) => {
       state.gallerySearch = e.target.value;
-      renderGalleryGrid();
-    });
-  }
-
-  if (gallerySortSelect) {
-    gallerySortSelect.addEventListener('change', (e) => {
-      state.gallerySort = e.target.value;
       renderGalleryGrid();
     });
   }

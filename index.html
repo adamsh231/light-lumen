@@ -6,6 +6,9 @@
   <base href="/">
   <title>Atelier Lumen — Interactive Lighting Studio & Collection</title>
   
+  <!-- Lamp SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
   <!-- Modern Typography (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -223,117 +226,114 @@
        ========================================================================= -->
   <section class="view-panel gallery-view active" id="galleryViewPanel">
     
-    <!-- Gallery Top Header -->
-    <div class="gallery-header-section compact-hero">
-      <div class="gallery-title-row compact-title-row">
-        <div class="title-with-badge">
-          <h2 class="gallery-main-heading compact-heading">All Lighting</h2>
-          <span class="gallery-count-badge" id="galleryCountBadge">82 pieces</span>
+    <!-- Floating Bottom Luxury Dock -->
+    <div class="floating-dock-wrapper" id="galleryFloatingDockWrapper">
+      <nav class="floating-dock" id="galleryFloatingDock" aria-label="Katalog Toolbar">
+        
+        <!-- Search Input Segment -->
+        <div class="dock-search-segment">
+          <svg class="dock-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="dock-search-input" id="gallerySearchInput" placeholder="Cari nama, material, tipe..." autocomplete="off">
         </div>
 
-        <!-- Compact Icon-Only Master Switch Toggle -->
-        <button type="button" class="master-icon-toggle-btn" id="galleryMasterToggleBtn" role="switch" aria-checked="false" title="Nyalakan / Matikan Semua Lampu">
-          <span class="master-toggle-bulb-icon">
+        <span class="dock-divider" aria-hidden="true"></span>
+
+        <!-- Category Dropdown Segment -->
+        <div class="dock-category-segment">
+          <select class="dock-category-select" id="galleryCategorySelect" aria-label="Filter Kategori">
+            <option value="all" selected>Semua Kategori (82)</option>
+            <option value="Surface Mount">Surface Mount (20)</option>
+            <option value="Pendant">Pendant (18)</option>
+            <option value="Sconce">Sconce (15)</option>
+            <option value="Table Lamp">Table Lamp (15)</option>
+            <option value="Floor Lamp">Floor Lamp (4)</option>
+            <option value="Plug-in Sconce">Plug-in (4)</option>
+            <option value="ADA Sconce">ADA Sconce (4)</option>
+            <option value="Chandelier">Chandelier (2)</option>
+          </select>
+        </div>
+
+        <span class="dock-divider" aria-hidden="true"></span>
+
+        <!-- Grid Columns Selector Segment -->
+        <div class="dock-grid-segment" id="gridColumnsControl" title="Jumlah Kolom Grid">
+          <svg class="dock-grid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <div class="dock-grid-btn-group" role="group" aria-label="Pilih Kolom">
+            <button type="button" class="dock-grid-btn" data-cols="2">2</button>
+            <button type="button" class="dock-grid-btn" data-cols="3">3</button>
+            <button type="button" class="dock-grid-btn active" data-cols="4">4</button>
+            <button type="button" class="dock-grid-btn" data-cols="5">5</button>
+            <button type="button" class="dock-grid-btn" data-cols="6">6</button>
+          </div>
+        </div>
+
+        <span class="dock-divider" aria-hidden="true"></span>
+
+        <!-- Info Grid Popover Segment -->
+        <div class="dock-overlay-segment" id="overlayConfigMenuWrapper">
+          <button type="button" class="dock-overlay-btn" id="overlayConfigTriggerBtn" aria-expanded="false" title="Pengaturan Info Gambar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Info</span>
+            <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <!-- Floating Glassmorphism Popover (Opens Upward) -->
+          <div class="overlay-config-popover" id="overlayConfigPopover" role="dialog" aria-label="Pengaturan Tampilan Overlay Grid">
+            <div class="overlay-popover-header">
+              <span class="overlay-popover-title">TAMPILAN OVERLAY</span>
+              <button type="button" class="overlay-popover-toggle-all" id="overlayToggleAllBtn">Tampilkan Semua</button>
+            </div>
+
+            <div class="overlay-options-list">
+              <label class="overlay-option-item">
+                <span class="overlay-option-label">Nama Produk</span>
+                <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTitle">
+                <span class="overlay-switch-slider"></span>
+              </label>
+
+              <label class="overlay-option-item">
+                <span class="overlay-option-label">Kategori / Label</span>
+                <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckCategory">
+                <span class="overlay-switch-slider"></span>
+              </label>
+
+              <label class="overlay-option-item">
+                <span class="overlay-option-label">Harga Lampu</span>
+                <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckPrice">
+                <span class="overlay-switch-slider"></span>
+              </label>
+
+              <label class="overlay-option-item">
+                <span class="overlay-option-label">Tombol Studio</span>
+                <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckStudio">
+                <span class="overlay-switch-slider"></span>
+              </label>
+
+              <label class="overlay-option-item">
+                <span class="overlay-option-label">Pojok Kanan Atas</span>
+                <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTopBar">
+                <span class="overlay-switch-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="dock-divider" aria-hidden="true"></span>
+
+        <!-- Master Switch Icon-Only Toggle Segment -->
+        <button type="button" class="dock-master-toggle" id="galleryMasterToggleBtn" role="switch" aria-checked="false" title="Nyalakan / Matikan Semua Lampu">
+          <span class="dock-toggle-bulb">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/>
               <path d="M9 18h6m-5 4h4M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-.8 2.3-1.5 3-.7.7-1 1.5-1 2.5h-2c0-1-.3-1.8-1-2.5C9.3 11.3 8.5 10.5 8.5 9a3.5 3.5 0 0 1 1-2.5"/>
             </svg>
           </span>
-          <span class="master-toggle-track">
-            <span class="master-toggle-thumb"></span>
+          <span class="dock-toggle-track">
+            <span class="dock-toggle-thumb"></span>
           </span>
         </button>
-      </div>
 
-      <!-- Filter & Search Bar -->
-      <div class="gallery-filter-bar">
-        <div class="search-input-wrapper">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" class="gallery-search-input" id="gallerySearchInput" placeholder="Cari berdasarkan nama lampu, material, kategori...">
-        </div>
-
-        <div class="gallery-toolbar-actions">
-          <!-- Grid n x n Columns Switcher -->
-          <div class="grid-columns-control" id="gridColumnsControl" title="Atur jumlah kolom grid (n × n)">
-            <span class="grid-control-label">GRID</span>
-            <div class="grid-col-btn-group" role="group" aria-label="Pilih Jumlah Kolom Grid">
-              <button type="button" class="grid-col-btn" data-cols="2" title="Tampilan 2 Kolom">2</button>
-              <button type="button" class="grid-col-btn" data-cols="3" title="Tampilan 3 Kolom">3</button>
-              <button type="button" class="grid-col-btn active" data-cols="4" title="Tampilan 4 Kolom (Default)">4</button>
-              <button type="button" class="grid-col-btn" data-cols="5" title="Tampilan 5 Kolom">5</button>
-              <button type="button" class="grid-col-btn" data-cols="6" title="Tampilan 6 Kolom">6</button>
-            </div>
-          </div>
-
-          <!-- Overlay Visibility Customizer Popover -->
-          <div class="overlay-config-menu-wrapper" id="overlayConfigMenuWrapper">
-            <button type="button" class="overlay-config-trigger-btn" id="overlayConfigTriggerBtn" aria-expanded="false" title="Pengaturan Tampilan Info (Overlay)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-              <span>Info Grid</span>
-              <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-
-            <!-- Floating Glassmorphism Popover -->
-            <div class="overlay-config-popover" id="overlayConfigPopover" role="dialog" aria-label="Pengaturan Tampilan Overlay Grid">
-              <div class="overlay-popover-header">
-                <span class="overlay-popover-title">TAMPILAN OVERLAY</span>
-                <button type="button" class="overlay-popover-toggle-all" id="overlayToggleAllBtn">Tampilkan Semua</button>
-              </div>
-
-              <div class="overlay-options-list">
-                <label class="overlay-option-item">
-                  <span class="overlay-option-label">Nama Produk</span>
-                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTitle">
-                  <span class="overlay-switch-slider"></span>
-                </label>
-
-                <label class="overlay-option-item">
-                  <span class="overlay-option-label">Kategori / Label</span>
-                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckCategory">
-                  <span class="overlay-switch-slider"></span>
-                </label>
-
-                <label class="overlay-option-item">
-                  <span class="overlay-option-label">Harga Lampu</span>
-                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckPrice">
-                  <span class="overlay-switch-slider"></span>
-                </label>
-
-                <label class="overlay-option-item">
-                  <span class="overlay-option-label">Tombol Studio</span>
-                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckStudio">
-                  <span class="overlay-switch-slider"></span>
-                </label>
-
-                <label class="overlay-option-item">
-                  <span class="overlay-option-label">Pojok Kanan Atas</span>
-                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTopBar">
-                  <span class="overlay-switch-slider"></span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sort Select (By Name Only) -->
-          <select class="gallery-sort-select" id="gallerySortSelect" aria-label="Urutkan nama koleksi">
-            <option value="name-asc" selected>Nama: A ke Z</option>
-            <option value="name-desc">Nama: Z ke A</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Category Filter Pills -->
-      <div class="category-pills-row" id="categoryPillsRow">
-        <button class="category-pill-btn active" data-cat="all">Semua (82)</button>
-        <button class="category-pill-btn" data-cat="Surface Mount">Surface Mount (20)</button>
-        <button class="category-pill-btn" data-cat="Pendant">Pendant (18)</button>
-        <button class="category-pill-btn" data-cat="Sconce">Sconce (15)</button>
-        <button class="category-pill-btn" data-cat="Table Lamp">Table Lamp (15)</button>
-        <button class="category-pill-btn" data-cat="Floor Lamp">Floor Lamp (4)</button>
-        <button class="category-pill-btn" data-cat="Plug-in Sconce">Plug-in (4)</button>
-        <button class="category-pill-btn" data-cat="ADA Sconce">ADA Sconce (4)</button>
-        <button class="category-pill-btn" data-cat="Chandelier">Chandelier (2)</button>
-      </div>
+      </nav>
     </div>
 
     <!-- Curated Products Grid -->
