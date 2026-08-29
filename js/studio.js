@@ -293,7 +293,7 @@ export function initStudio() {
     });
   }
 
-  // Switch Clicks (with stopPropagation to avoid double-toggle bubbling to sconceLamp)
+  // Switch Clicks (Exclusively toggled by the physical switch buttons)
   if (rockerSwitchBtn) {
     rockerSwitchBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -329,20 +329,6 @@ export function initStudio() {
   if (seamlessSwitchStage) {
     seamlessSwitchStage.addEventListener('click', (e) => {
       e.stopPropagation();
-    });
-  }
-
-  if (sconceLamp) {
-    sconceLamp.addEventListener('click', (e) => {
-      // Only toggle if clicking the canvas background or lamp image itself
-      if (e.target.closest('#seamlessSwitchStage')) return;
-      toggleLight();
-    });
-    sconceLamp.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleLight();
-      }
     });
   }
 

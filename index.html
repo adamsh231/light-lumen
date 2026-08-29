@@ -60,60 +60,63 @@
         </div>
       </div>
 
-      <!-- FULL-BLEED IMMERSIVE FIXTURE CANVAS -->
-      <div class="sconce-fullscreen-canvas" id="sconceLamp" role="button" tabindex="0" title="Click fixture to toggle light">
-        <!-- Dynamic Ambient Glow Halo Behind Lamp -->
+      <!-- ELEGANT ARCHITECTURAL SHOWCASE FRAME -->
+      <div class="sconce-fullscreen-canvas" id="sconceLamp">
+        <!-- Dynamic Ambient Glow Halo Behind Lamp Frame -->
         <div class="ambient-glow-halo" id="ambientHalo"></div>
 
-        <!-- Base Off Image Layer (Full Page) -->
-        <img 
-          id="imgOff" 
-          class="sconce-img img-off" 
-          src="/downloads/images/murano-glass-cosmos-chandelier-3-goto-bianco-polished-nickel-17-36-inches/01_off_InCommonWith_MuranoGlassCosmosChandelier_FrontView_Off_GotoB.jpg" 
-          alt="Lamp Off State"
-        />
-        
-        <!-- Dynamic On Image Layer (Full Page) -->
-        <img 
-          id="imgOn" 
-          class="sconce-img img-on" 
-          src="/downloads/images/murano-glass-cosmos-chandelier-3-goto-bianco-polished-nickel-17-36-inches/02_on_InCommonWith_MuranoGlassCosmosChandelier_FrontView_On_GotoBi.jpg" 
-          alt="Lamp On State"
-        />
+        <!-- Architectural Showcase Art Frame -->
+        <div class="studio-art-frame">
+          <!-- Base Off Image Layer -->
+          <img 
+            id="imgOff" 
+            class="sconce-img img-off" 
+            src="/downloads/images/murano-glass-cosmos-chandelier-3-goto-bianco-polished-nickel-17-36-inches/01_off_InCommonWith_MuranoGlassCosmosChandelier_FrontView_Off_GotoB.jpg" 
+            alt="Lamp Off State"
+          />
+          
+          <!-- Dynamic On Image Layer -->
+          <img 
+            id="imgOn" 
+            class="sconce-img img-on" 
+            src="/downloads/images/murano-glass-cosmos-chandelier-3-goto-bianco-polished-nickel-17-36-inches/02_on_InCommonWith_MuranoGlassCosmosChandelier_FrontView_On_GotoBi.jpg" 
+            alt="Lamp On State"
+          />
 
-        <!-- Seamless Wall-Mounted Switch Inside Upper-Right Corner of the Image -->
-        <div class="seamless-wall-switch-stage" id="seamlessSwitchStage">
-          <!-- STYLE 1: 3D Tactile Rocker Switch -->
-          <div class="tactile-switch-bay" id="rockerView">
-            <div class="rocker-plate-bezel">
-              <div class="plate-screw screw-top"></div>
-              <button class="rocker-button" id="rockerSwitchBtn" aria-label="Rocker Wall Switch" title="Toggle Light">
-                <div class="rocker-surface">
-                  <span class="rocker-label label-off">OFF</span>
-                  <div class="rocker-indicator-bar"></div>
-                  <span class="rocker-label label-on">ON</span>
+          <!-- Seamless Miniaturized Wall-Mounted Switch in Upper-Right of Frame -->
+          <div class="seamless-wall-switch-stage" id="seamlessSwitchStage">
+            <!-- STYLE 1: 3D Tactile Rocker Switch (50% Scale) -->
+            <div class="tactile-switch-bay" id="rockerView">
+              <div class="rocker-plate-bezel">
+                <div class="plate-screw screw-top"></div>
+                <button class="rocker-button" id="rockerSwitchBtn" aria-label="Rocker Wall Switch" title="Toggle Light">
+                  <div class="rocker-surface">
+                    <span class="rocker-label label-off">OFF</span>
+                    <div class="rocker-indicator-bar"></div>
+                    <span class="rocker-label label-on">ON</span>
+                  </div>
+                </button>
+                <div class="plate-screw screw-bot"></div>
+              </div>
+            </div>
+
+            <!-- STYLE 2: Push Button (50% Scale) -->
+            <div class="push-switch-view" id="pushView" style="display:none;">
+              <div class="push-button-base">
+                <button class="push-button-core" id="pushSwitchBtn" aria-label="Push Button Switch" title="Toggle Light">
+                  <svg class="push-icon" viewBox="0 0 24 24">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STYLE 3: Solid Brass Toggle Lever (50% Scale) -->
+            <div class="lever-switch-view" id="leverView" style="display:none;">
+              <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Toggle Lever Switch" title="Toggle Light">
+                <div class="lever-handle">
+                  <div class="lever-knob"></div>
                 </div>
-              </button>
-              <div class="plate-screw screw-bot"></div>
-            </div>
-          </div>
-
-          <!-- STYLE 2: Push Button -->
-          <div class="push-switch-view" id="pushView" style="display:none;">
-            <div class="push-button-base">
-              <button class="push-button-core" id="pushSwitchBtn" aria-label="Push Button Switch" title="Toggle Light">
-                <svg class="push-icon" viewBox="0 0 24 24">
-                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- STYLE 3: Solid Brass Toggle Lever -->
-          <div class="lever-switch-view" id="leverView" style="display:none;">
-            <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Toggle Lever Switch" title="Toggle Light">
-              <div class="lever-handle">
-                <div class="lever-knob"></div>
               </div>
             </div>
           </div>
