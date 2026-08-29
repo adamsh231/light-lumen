@@ -106,11 +106,18 @@ export function animateBrightnessTo(targetVal, duration = 2000) {
     return;
   }
 
-  const startTime = performance.now();
+  const startTimestamp = (typeof window !== 'undefined' && window.performance && typeof window.performance.now === 'function')
+    ? window.performance.now()
+    : Date.now();
 
   function step(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(1, elapsed / duration);
+    const currentNow = (typeof now === 'number' && !isNaN(now))
+      ? now
+      : ((typeof window !== 'undefined' && window.performance && typeof window.performance.now === 'function')
+          ? window.performance.now()
+          : Date.now());
+    const elapsed = currentNow - startTimestamp;
+    const progress = Math.min(1, Math.max(0, elapsed / duration));
     const eased = studioEase(progress);
     const currentVal = fromVal + (targetVal - fromVal) * eased;
 
