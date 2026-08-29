@@ -11,7 +11,6 @@ import './lampCatalog.js';
 // Modular Architecture
 import './js/state.js';
 import './js/audio.js';
-import './js/toast.js';
 import './js/colorExtractor.js';
 import './js/studio.js';
 import './js/gallery.js';

@@ -48,47 +48,53 @@ button, input, select {
 }
 
 /* ==========================================================================
-   CUSTOM LUXURY SCROLLBAR (DESKTOP & POPOVERS)
+   THEMED LUXURY SCROLLBAR (MATCHES ATELIER LUMEN PALETTE)
    ========================================================================== */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
+/* Light Theme: Warm Travertine Bronze */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.16);
+  background: rgba(110, 105, 98, 0.28);
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   background-clip: padding-box;
-  transition: background 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(180, 115, 30, 0.65);
   background-clip: padding-box;
 }
 
+/* Dark Theme: Sleek Warm Amber Obsidian */
 body.dark-mode ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(245, 158, 11, 0.25);
+  border-radius: 999px;
+  border: 2px solid transparent;
   background-clip: padding-box;
+  transition: all 0.25s ease;
 }
 
 body.dark-mode ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(245, 158, 11, 0.75);
   background-clip: padding-box;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+  scrollbar-color: rgba(110, 105, 98, 0.3) transparent;
 }
 
 body.dark-mode * {
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scrollbar-color: rgba(245, 158, 11, 0.3) transparent;
 }
 

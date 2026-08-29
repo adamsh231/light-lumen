@@ -3,7 +3,6 @@
  */
 import { AppStore } from './state.js';
 import { AppAudio } from './audio.js';
-import { AppToast } from './toast.js';
 
 function getStore() {
   return window.AppStore || AppStore;
@@ -11,10 +10,6 @@ function getStore() {
 
 function getAudio() {
   return window.AppAudio || AppAudio || { playSwitchSound: () => {} };
-}
-
-function getToast() {
-  return window.AppToast || AppToast || { showToast: () => {} };
 }
 
 export function updateMasterSwitchUI() {
@@ -29,7 +24,7 @@ export function updateMasterSwitchUI() {
   if (galleryMasterToggleBtn) {
     galleryMasterToggleBtn.setAttribute('aria-checked', allLit ? 'true' : (allOff ? 'false' : 'mixed'));
     galleryMasterToggleBtn.classList.toggle('is-lit', allLit);
-    galleryMasterToggleBtn.title = allLit ? 'Matikan Semua Lampu' : 'Nyalakan Semua Lampu';
+    galleryMasterToggleBtn.title = allLit ? 'Turn Off All Fixtures' : 'Turn On All Fixtures';
   }
 }
 
@@ -59,7 +54,7 @@ export function toggleMasterGallerySwitch() {
 
     const quickBtn = tile.querySelector('.tile-quick-toggle-btn');
     if (quickBtn) {
-      quickBtn.title = isLit ? 'Matikan Lampu' : 'Nyalakan Lampu';
+      quickBtn.title = isLit ? 'Turn Off Fixture' : 'Turn On Fixture';
     }
   });
 
@@ -119,7 +114,7 @@ export function applyOverlayVisibilityConfig() {
 
   const allActive = cfg.showTitle && cfg.showCategory && cfg.showPrice && cfg.showStudioBtn && cfg.showTopBar;
   if (toggleAllBtn) {
-    toggleAllBtn.textContent = allActive ? 'Sembunyikan Semua' : 'Tampilkan Semua';
+    toggleAllBtn.textContent = allActive ? 'Hide All' : 'Show All';
   }
 }
 
@@ -152,8 +147,8 @@ export function renderGalleryGrid() {
     lampProductsGrid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 5rem 1.5rem; color: var(--text-secondary-light);">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 1rem; opacity: 0.5;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">Tidak ada koleksi yang cocok</h3>
-        <p style="font-size: 0.88rem; margin-top: 0.5rem;">Coba sesuaikan filter kategori atau kata kunci pencarian Anda.</p>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">No matching fixtures found</h3>
+        <p style="font-size: 0.88rem; margin-top: 0.5rem;">Try adjusting your category filter or search keywords.</p>
       </div>
     `;
     return;
@@ -189,19 +184,19 @@ export function renderGalleryGrid() {
       <!-- Top Controls Overlay -->
       <div class="tile-top-bar">
         <span class="tile-category-pill">${lamp.category}</span>
-        <button class="tile-quick-toggle-btn" title="${isLit ? 'Matikan Lampu' : 'Nyalakan Lampu'}" aria-label="Toggle Saklar Lampu">
+        <button class="tile-quick-toggle-btn" title="${isLit ? 'Turn Off Fixture' : 'Turn On Fixture'}" aria-label="Toggle Light Switch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
         </button>
       </div>
 
-      <!-- Bottom Content Overlay: Nama & Harga di Atas Gambar di Bawah -->
+      <!-- Bottom Content Overlay -->
       <div class="tile-bottom-overlay">
         <div class="tile-category-label">${lamp.category}</div>
         <h3 class="tile-lamp-title" title="${lamp.title}">${lamp.shortTitle || lamp.title}</h3>
         
         <div class="tile-price-action-row">
           <span class="tile-price-tag">${lamp.price}</span>
-          <button class="tile-studio-link-btn" title="Buka kontrol studio saklar">
+          <button class="tile-studio-link-btn" title="Open Interactive Studio">
             <span>Studio</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
@@ -225,7 +220,7 @@ export function renderGalleryGrid() {
         }
 
         const nowLit = state.litLamps.has(lamp.id);
-        miniToggle.title = nowLit ? 'Matikan Lampu' : 'Nyalakan Lampu';
+        miniToggle.title = nowLit ? 'Turn Off Fixture' : 'Turn On Fixture';
 
         updateMasterSwitchUI();
       });

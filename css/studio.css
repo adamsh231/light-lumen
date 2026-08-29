@@ -145,8 +145,33 @@ body.dark-mode .lamp-category-tag {
 
 @media (max-width: 600px) {
   .sconce-frame {
-    width: 280px;
-    height: 350px;
+    width: 240px;
+    height: 300px;
+  }
+  .ambient-glow-halo {
+    width: 320px;
+    height: 320px;
+  }
+  .main-container {
+    padding: 0.5rem 1rem 3rem;
+  }
+  .lamp-main-title {
+    font-size: 1.65rem;
+  }
+  .lamp-main-price {
+    font-size: 1.1rem;
+  }
+  .stage-quick-nav {
+    gap: 0.4rem;
+    justify-content: center;
+  }
+  .quick-pill-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.68rem;
+  }
+  .quick-catalog-browse-btn {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.68rem;
   }
 }
 

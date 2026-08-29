@@ -39,8 +39,150 @@
 
 @media (max-width: 768px) {
   .floating-dock-wrapper {
-    bottom: 1rem;
+    bottom: 0.75rem;
     max-width: calc(100vw - 1rem);
+  }
+
+  .floating-dock {
+    height: 42px;
+    padding: 0.25rem 0.4rem;
+    gap: 0.25rem;
+    max-width: calc(100vw - 1rem);
+  }
+
+  .dock-search-segment {
+    min-width: 100px;
+    max-width: 130px;
+  }
+
+  .dock-search-input {
+    height: 28px;
+    font-size: 0.7rem;
+    padding: 0 0.5rem 0 1.65rem;
+  }
+
+  .dock-search-icon {
+    left: 7px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .dock-category-btn {
+    height: 28px;
+    padding: 0 0.45rem;
+    gap: 0.25rem;
+  }
+
+  .category-btn-label {
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.68rem;
+  }
+
+  .category-btn-badge {
+    font-size: 0.55rem;
+    padding: 0.05rem 0.3rem;
+  }
+
+  .dock-grid-segment {
+    height: 28px;
+    padding: 0 0.15rem 0 0.35rem;
+    gap: 1px;
+  }
+
+  .dock-grid-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .dock-grid-btn {
+    width: 18px;
+    height: 18px;
+    font-size: 0.62rem;
+  }
+
+  .dock-overlay-btn {
+    height: 28px;
+    padding: 0 0.5rem;
+    font-size: 0.68rem;
+    gap: 0.25rem;
+  }
+
+  .dock-master-toggle {
+    height: 28px;
+    padding: 0 0.25rem 0 0.4rem;
+  }
+
+  .dock-toggle-track {
+    width: 26px;
+    height: 15px;
+  }
+
+  .dock-toggle-thumb {
+    width: 11px;
+    height: 11px;
+  }
+
+  .dock-master-toggle.is-lit .dock-toggle-thumb {
+    transform: translateX(11px);
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-dock {
+    height: 40px;
+    padding: 0.2rem 0.35rem;
+    gap: 0.2rem;
+  }
+
+  .dock-search-segment {
+    min-width: 75px;
+    max-width: 95px;
+  }
+
+  .dock-search-input {
+    height: 26px;
+    font-size: 0.65rem;
+    padding: 0 0.4rem 0 1.5rem;
+  }
+
+  .dock-search-icon {
+    left: 6px;
+    width: 11px;
+    height: 11px;
+  }
+
+  .category-btn-label {
+    max-width: 55px;
+  }
+
+  .dock-grid-segment {
+    display: none;
+  }
+
+  .dock-divider:nth-of-type(3) {
+    display: none;
+  }
+
+  .custom-dropdown-menu.upward-menu {
+    position: fixed;
+    bottom: 4.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 1.5rem);
+    max-width: 320px;
+  }
+
+  .overlay-config-popover {
+    position: fixed;
+    bottom: 4.2rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100vw - 1.5rem);
+    max-width: 320px;
   }
 }
 

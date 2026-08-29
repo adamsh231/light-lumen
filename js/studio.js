@@ -5,7 +5,6 @@
 import { AppStore } from './state.js';
 import { AppAudio } from './audio.js';
 import { AppColorExtractor } from './colorExtractor.js';
-import { AppToast } from './toast.js';
 
 function getStore() {
   return window.AppStore || AppStore;
@@ -17,10 +16,6 @@ function getAudio() {
 
 function getColorExtractor() {
   return window.AppColorExtractor || AppColorExtractor || { extractColorsFromImage: () => {}, applyGlowPalette: () => {} };
-}
-
-function getToast() {
-  return window.AppToast || AppToast || { showToast: () => {} };
 }
 
 // Cubic Bezier (0.25, 1, 0.5, 1) timing solver
@@ -202,7 +197,6 @@ export function updateColorSource(source) {
 
 export function loadLampIntoStudio(index, updateRoute = false, showNotification = false) {
   const { catalog, state } = getStore();
-  const { showToast } = getToast();
   const { extractColorsFromImage, applyGlowPalette } = getColorExtractor();
 
   if (index < 0 || index >= catalog.length) return;

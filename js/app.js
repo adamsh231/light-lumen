@@ -2,17 +2,12 @@
  * Atelier Lumen — Main Application Orchestrator
  */
 import { AppStore } from './state.js';
-import { AppToast } from './toast.js';
 import { AppStudio } from './studio.js';
 import { AppGallery } from './gallery.js';
 import { AppRouter } from './router.js';
 
 function getStore() {
   return window.AppStore || AppStore;
-}
-
-function getToast() {
-  return window.AppToast || AppToast || { showToast: () => {} };
 }
 
 export function switchView(viewName, updateRoute = true) {
@@ -46,7 +41,6 @@ export function switchView(viewName, updateRoute = true) {
 
 export function initApp() {
   const { catalog, state } = getStore();
-  const { showToast } = getToast();
   const body = document.body;
 
   const brandBtn = document.getElementById('brandBtn');
@@ -94,13 +88,12 @@ export function initApp() {
     });
   }
 
-  // Sound & Theme Toggles
+  // Sound & Theme Toggles (Silent and clean)
   if (soundToggleBtn) {
     soundToggleBtn.addEventListener('click', () => {
       state.soundEnabled = !state.soundEnabled;
       soundToggleBtn.style.opacity = state.soundEnabled ? '1' : '0.4';
-      soundToggleBtn.title = state.soundEnabled ? 'Suara Aktif' : 'Suara Dimatikan';
-      showToast(state.soundEnabled ? 'Suara Saklar: Aktif' : 'Suara Saklar: Dimatikan');
+      soundToggleBtn.title = state.soundEnabled ? 'Switch Sound: Enabled (M)' : 'Switch Sound: Muted (M)';
     });
   }
 
@@ -108,8 +101,7 @@ export function initApp() {
     themeToggleBtn.addEventListener('click', () => {
       state.isDarkMode = !state.isDarkMode;
       body.classList.toggle('dark-mode', state.isDarkMode);
-      themeToggleBtn.title = state.isDarkMode ? 'Beralih ke Suasana Siang' : 'Beralih ke Suasana Malam';
-      showToast(state.isDarkMode ? 'Suasana Malam (Dark Mode)' : 'Suasana Siang (Light Mode)');
+      themeToggleBtn.title = state.isDarkMode ? 'Switch to Day Mood (D)' : 'Switch to Night Mood (D)';
     });
   }
 

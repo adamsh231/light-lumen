@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,12 +30,12 @@
     <!-- Header Actions -->
     <div class="header-actions">
       <!-- Sound Toggle -->
-      <button class="icon-btn" id="soundToggleBtn" title="Suara Saklar Aktif">
+      <button class="icon-btn" id="soundToggleBtn" title="Toggle Switch Sound (M)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
       </button>
 
       <!-- Day / Night Mood Toggle -->
-      <button class="icon-btn" id="themeToggleBtn" title="Beralih ke Suasana Malam (D)">
+      <button class="icon-btn" id="themeToggleBtn" title="Toggle Day / Night Mood (D)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
     </div>
@@ -49,9 +49,9 @@
       
       <!-- Studio Top Navigation (Back to Collection) -->
       <div class="studio-top-nav">
-        <a href="/" class="studio-back-btn" id="studioBackBtn" title="Kembali ke Galeri Koleksi">
+        <a href="/" class="studio-back-btn" id="studioBackBtn" title="Back to All Lighting">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          <span>Koleksi Lampu</span>
+          <span>All Lighting</span>
         </a>
       </div>
 
@@ -67,7 +67,7 @@
             <div class="lamp-main-price" id="stagePrice">$1800</div>
           </div>
 
-          <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Klik lampu untuk menyalakan/mematikan">
+          <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Click fixture to toggle light">
             <!-- Dynamic Ambient Glow Halo -->
             <div class="ambient-glow-halo" id="ambientHalo"></div>
 
@@ -92,16 +92,16 @@
           <div class="stage-quick-nav">
             <button class="quick-pill-btn" id="prevLampBtn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-              Lampu Sebelumnya
+              Previous Fixture
             </button>
 
             <button class="quick-catalog-browse-btn" id="quickBrowseBtn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              Katalog Koleksi Lampu
+              Browse Collection
             </button>
 
             <button class="quick-pill-btn" id="nextLampBtn">
-              Lampu Selanjutnya
+              Next Fixture
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
@@ -132,7 +132,7 @@
               <div class="rocker-plate-bezel">
                 <div class="plate-screw screw-top"></div>
                 
-                <button class="rocker-button" id="rockerSwitchBtn" aria-label="Saklar Lampu Rocker (Pencet)">
+                <button class="rocker-button" id="rockerSwitchBtn" aria-label="Rocker Wall Switch">
                   <div class="rocker-surface">
                     <span class="rocker-label label-off">OFF</span>
                     <div class="rocker-indicator-bar"></div>
@@ -142,24 +142,24 @@
 
                 <div class="plate-screw screw-bot"></div>
               </div>
-              <p class="switch-caption">Klik saklar untuk toggle halus</p>
+              <p class="switch-caption">Click switch to toggle lamp</p>
             </div>
 
             <!-- STYLE 2: Push Button -->
             <div class="push-switch-view" id="pushView">
               <div class="push-button-base">
-                <button class="push-button-core" id="pushSwitchBtn" aria-label="Saklar Lampu Push Button">
+                <button class="push-button-core" id="pushSwitchBtn" aria-label="Push Button Switch">
                   <svg class="push-icon" viewBox="0 0 24 24">
                     <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
                   </svg>
                 </button>
               </div>
-              <p class="switch-caption">Push latch tactile button</p>
+              <p class="switch-caption">Tactile push latch button</p>
             </div>
 
             <!-- STYLE 3: Solid Brass Toggle Lever -->
             <div class="lever-switch-view" id="leverView">
-              <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Saklar Tuas Lever">
+              <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Toggle Lever Switch">
                 <div class="lever-handle">
                   <div class="lever-knob"></div>
                 </div>
@@ -171,7 +171,7 @@
             <div class="controls-grid">
               <div class="control-row">
                 <div class="control-label-wrap">
-                  <span>Dimmer & Kecerahan</span>
+                  <span>Dimmer & Luminance</span>
                   <span class="control-value" id="brightnessValue">0%</span>
                 </div>
                 <input 
@@ -181,7 +181,7 @@
                   value="0" 
                   class="slider-range" 
                   id="brightnessSlider" 
-                  aria-label="Pengatur Kecerahan Lampu"
+                  aria-label="Dimmer Brightness Slider"
                 />
               </div>
             </div>
@@ -192,9 +192,9 @@
             <div class="config-header">
               <div class="config-title">
                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <span>Gradien Ambient Glow</span>
+                <span>Ambient Glow Halo</span>
               </div>
-              <label class="toggle-switch-wrap" title="Nyalakan atau matikan efek gradien halo">
+              <label class="toggle-switch-wrap" title="Toggle ambient gradient halo">
                 <input type="checkbox" class="toggle-checkbox" id="gradientToggle" checked>
                 <div class="toggle-track">
                   <div class="toggle-handle"></div>
@@ -205,9 +205,9 @@
 
             <!-- Pilihan Sumber Warna Gradien -->
             <div class="color-source-group">
-              <span class="color-source-label">Warna Temperatur Ambient:</span>
+              <span class="color-source-label">Color Temperature:</span>
               <div class="color-preset-pills">
-                <button class="color-btn active" data-source="auto">Auto Pixel</button>
+                <button class="color-btn active" data-source="auto">Auto Detect</button>
                 <button class="color-btn" data-source="2200k">2200K</button>
                 <button class="color-btn" data-source="2700k">2700K</button>
                 <button class="color-btn" data-source="3500k">3500K</button>
@@ -228,32 +228,32 @@
     
     <!-- Floating Bottom Luxury Dock -->
     <div class="floating-dock-wrapper" id="galleryFloatingDockWrapper">
-      <nav class="floating-dock" id="galleryFloatingDock" aria-label="Katalog Toolbar">
+      <nav class="floating-dock" id="galleryFloatingDock" aria-label="Lighting Controls Dock">
         
         <!-- Search Input Segment -->
         <div class="dock-search-segment">
           <svg class="dock-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" class="dock-search-input" id="gallerySearchInput" placeholder="Cari nama, material, tipe..." autocomplete="off">
+          <input type="text" class="dock-search-input" id="gallerySearchInput" placeholder="Search fixtures, materials, types..." autocomplete="off">
         </div>
 
         <span class="dock-divider" aria-hidden="true"></span>
 
         <!-- Custom Category Dropdown Segment -->
         <div class="dock-category-segment custom-dropdown" id="categoryDropdownWrapper">
-          <button type="button" class="dock-category-btn" id="categoryDropdownBtn" aria-haspopup="listbox" aria-expanded="false" title="Pilih Kategori">
-            <span class="category-btn-label" id="categoryBtnLabel">Semua Kategori</span>
+          <button type="button" class="dock-category-btn" id="categoryDropdownBtn" aria-haspopup="listbox" aria-expanded="false" title="Filter by Category">
+            <span class="category-btn-label" id="categoryBtnLabel">All Categories</span>
             <span class="category-btn-badge" id="categoryBtnBadge">82</span>
             <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
 
           <!-- Custom Glassmorphism Dropdown Menu (Opens Upward Above Dock) -->
-          <div class="custom-dropdown-menu upward-menu" id="categoryDropdownMenu" role="listbox" aria-label="Daftar Kategori Lampu">
+          <div class="custom-dropdown-menu upward-menu" id="categoryDropdownMenu" role="listbox" aria-label="Collection Categories List">
             <div class="dropdown-menu-header">
-              <span class="dropdown-menu-title">KATEGORI KOLEKSI</span>
+              <span class="dropdown-menu-title">COLLECTION CATEGORIES</span>
             </div>
             <div class="dropdown-options-list" id="categoryOptionsList">
               <button type="button" class="dropdown-option active" role="option" data-cat="all" aria-selected="true">
-                <span class="option-name">Semua Kategori</span>
+                <span class="option-name">All Categories</span>
                 <span class="option-count">82</span>
               </button>
               <button type="button" class="dropdown-option" role="option" data-cat="Surface Mount">
@@ -295,9 +295,9 @@
         <span class="dock-divider" aria-hidden="true"></span>
 
         <!-- Grid Columns Selector Segment -->
-        <div class="dock-grid-segment" id="gridColumnsControl" title="Jumlah Kolom Grid">
+        <div class="dock-grid-segment" id="gridColumnsControl" title="Grid Columns Density">
           <svg class="dock-grid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          <div class="dock-grid-btn-group" role="group" aria-label="Pilih Kolom">
+          <div class="dock-grid-btn-group" role="group" aria-label="Select Grid Columns">
             <button type="button" class="dock-grid-btn" data-cols="2">2</button>
             <button type="button" class="dock-grid-btn" data-cols="3">3</button>
             <button type="button" class="dock-grid-btn active" data-cols="4">4</button>
@@ -310,46 +310,46 @@
 
         <!-- Info Grid Popover Segment -->
         <div class="dock-overlay-segment" id="overlayConfigMenuWrapper">
-          <button type="button" class="dock-overlay-btn" id="overlayConfigTriggerBtn" aria-expanded="false" title="Pengaturan Info Gambar">
+          <button type="button" class="dock-overlay-btn" id="overlayConfigTriggerBtn" aria-expanded="false" title="Grid Info Overlay Settings">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             <span>Info</span>
             <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
 
           <!-- Floating Glassmorphism Popover (Opens Upward) -->
-          <div class="overlay-config-popover" id="overlayConfigPopover" role="dialog" aria-label="Pengaturan Tampilan Overlay Grid">
+          <div class="overlay-config-popover" id="overlayConfigPopover" role="dialog" aria-label="Grid Info Overlay Settings">
             <div class="overlay-popover-header">
-              <span class="overlay-popover-title">TAMPILAN OVERLAY</span>
-              <button type="button" class="overlay-popover-toggle-all" id="overlayToggleAllBtn">Tampilkan Semua</button>
+              <span class="overlay-popover-title">OVERLAY VISIBILITY</span>
+              <button type="button" class="overlay-popover-toggle-all" id="overlayToggleAllBtn">Show All</button>
             </div>
 
             <div class="overlay-options-list">
               <label class="overlay-option-item">
-                <span class="overlay-option-label">Nama Produk</span>
+                <span class="overlay-option-label">Fixture Title</span>
                 <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTitle">
                 <span class="overlay-switch-slider"></span>
               </label>
 
               <label class="overlay-option-item">
-                <span class="overlay-option-label">Kategori / Label</span>
+                <span class="overlay-option-label">Category Tag</span>
                 <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckCategory">
                 <span class="overlay-switch-slider"></span>
               </label>
 
               <label class="overlay-option-item">
-                <span class="overlay-option-label">Harga Lampu</span>
+                <span class="overlay-option-label">Price Tag</span>
                 <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckPrice">
                 <span class="overlay-switch-slider"></span>
               </label>
 
               <label class="overlay-option-item">
-                <span class="overlay-option-label">Tombol Studio</span>
+                <span class="overlay-option-label">Studio Link</span>
                 <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckStudio">
                 <span class="overlay-switch-slider"></span>
               </label>
 
               <label class="overlay-option-item">
-                <span class="overlay-option-label">Pojok Kanan Atas</span>
+                <span class="overlay-option-label">Quick Toggle Bar</span>
                 <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTopBar">
                 <span class="overlay-switch-slider"></span>
               </label>
@@ -360,7 +360,7 @@
         <span class="dock-divider" aria-hidden="true"></span>
 
         <!-- Master Switch Icon-Only Toggle Segment -->
-        <button type="button" class="dock-master-toggle" id="galleryMasterToggleBtn" role="switch" aria-checked="false" title="Nyalakan / Matikan Semua Lampu">
+        <button type="button" class="dock-master-toggle" id="galleryMasterToggleBtn" role="switch" aria-checked="false" title="Master Light Switch (Turn All On/Off)">
           <span class="dock-toggle-bulb">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/>
@@ -381,9 +381,6 @@
     </div>
 
   </section>
-
-  <!-- Toast Notification Pill -->
-  <div class="toast-pill" id="toastPill">Memuat Lampu...</div>
 
   <!-- Hidden Auto-Sampler Canvas -->
   <canvas id="colorSamplerCanvas" width="40" height="40" style="display:none;"></canvas>

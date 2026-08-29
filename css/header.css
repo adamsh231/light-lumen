@@ -43,6 +43,19 @@ body.dark-mode .header {
   font-weight: 600;
 }
 
+@media (max-width: 640px) {
+  .header {
+    padding: 0.85rem 1.15rem;
+  }
+  .brand-name {
+    font-size: 1.25rem;
+  }
+  .brand-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+}
+
 /* View Switcher Pills */
 .view-switcher-nav {
   display: flex;
