@@ -238,6 +238,11 @@ export function loadLampIntoStudio(index, updateRoute = false, showNotification 
   if (imgOff) imgOff.src = offSrc;
   if (imgOn) imgOn.src = onSrc;
 
+  const stageCounterBadge = document.getElementById('stageCounterBadge');
+  if (stageCounterBadge) {
+    stageCounterBadge.textContent = `${index + 1} / ${catalog.length}`;
+  }
+
   if (state.colorSource === 'auto') {
     if (imgOn && imgOn.complete) {
       applyGlowPalette(extractColorsFromImage(imgOn));
@@ -265,6 +270,13 @@ export function initStudio() {
   const powerText = document.getElementById('powerText');
   const gradientToggleCheckbox = document.getElementById('gradientToggle');
   const colorPresetBtns = document.querySelectorAll('.color-preset-pills .color-btn');
+
+  // Studio Dock Dropdown & Popover Elements
+  const switchStyleDropdownBtn = document.getElementById('switchStyleDropdownBtn');
+  const switchStyleDropdownMenu = document.getElementById('switchStyleDropdownMenu');
+  const switchStyleBtnLabel = document.getElementById('switchStyleBtnLabel');
+  const studioAmbienceBtn = document.getElementById('studioAmbienceBtn');
+  const studioAmbiencePopover = document.getElementById('studioAmbiencePopover');
 
   // Previous & Next Navigation
   if (prevLampBtn) {
@@ -319,18 +331,61 @@ export function initStudio() {
     });
   }
 
-  // Switch Mode Tabs
+  // Switch Style Popover Trigger
+  if (switchStyleDropdownBtn && switchStyleDropdownMenu) {
+    switchStyleDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (studioAmbiencePopover) studioAmbiencePopover.classList.remove('open');
+      const isOpen = switchStyleDropdownMenu.classList.toggle('open');
+      switchStyleDropdownBtn.classList.toggle('active', isOpen);
+      switchStyleDropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  // Ambience Popover Trigger
+  if (studioAmbienceBtn && studioAmbiencePopover) {
+    studioAmbienceBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (switchStyleDropdownMenu) switchStyleDropdownMenu.classList.remove('open');
+      const isOpen = studioAmbiencePopover.classList.toggle('open');
+      studioAmbienceBtn.classList.toggle('active', isOpen);
+      studioAmbienceBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  // Close Studio Popovers on Click Outside
+  document.addEventListener('click', (e) => {
+    if (switchStyleDropdownMenu && !switchStyleDropdownMenu.contains(e.target) && !switchStyleDropdownBtn?.contains(e.target)) {
+      switchStyleDropdownMenu.classList.remove('open');
+      if (switchStyleDropdownBtn) switchStyleDropdownBtn.classList.remove('active');
+    }
+    if (studioAmbiencePopover && !studioAmbiencePopover.contains(e.target) && !studioAmbienceBtn?.contains(e.target)) {
+      studioAmbiencePopover.classList.remove('open');
+      if (studioAmbienceBtn) studioAmbienceBtn.classList.remove('active');
+    }
+  });
+
+  // Switch Mode Tabs (Inside Dock Menu)
   switchTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', (e) => {
+      e.stopPropagation();
       switchTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
       const mode = tab.dataset.switch;
       state.currentSwitchMode = mode;
 
+      if (switchStyleBtnLabel) {
+        const labelMap = { rocker: 'Rocker', push: 'Push Button', lever: 'Toggle Lever' };
+        switchStyleBtnLabel.textContent = labelMap[mode] || 'Rocker';
+      }
+
       if (rockerView) rockerView.style.display = mode === 'rocker' ? 'flex' : 'none';
       if (pushView) pushView.style.display = mode === 'push' ? 'flex' : 'none';
       if (leverView) leverView.style.display = mode === 'lever' ? 'flex' : 'none';
+
+      if (switchStyleDropdownMenu) switchStyleDropdownMenu.classList.remove('open');
+      if (switchStyleDropdownBtn) switchStyleDropdownBtn.classList.remove('active');
     });
   });
 

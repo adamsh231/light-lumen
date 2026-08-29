@@ -45,179 +45,192 @@
        VIEW 1: MAIN SHOWROOM DISPLAY (STUDIO SWITCH)
        ========================================================================= -->
   <main class="view-panel" id="studioViewPanel">
-    <div class="main-container">
+    <div class="studio-showroom-viewport">
       
-      <!-- Studio Top Navigation (Back to Collection) -->
-      <div class="studio-top-nav">
-        <a href="/" class="studio-back-btn" id="studioBackBtn" title="Back to All Lighting">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          <span>All Lighting</span>
-        </a>
-      </div>
-
-      <div class="stage-wrapper">
-        
-        <!-- SCONCE LIGHT FIXTURE DISPLAY STAGE -->
-        <div class="sconce-stage">
-          <div class="lamp-meta-header">
-            <div>
-              <div class="lamp-category-tag" id="stageCategory">SCONCE</div>
-              <h2 class="lamp-main-title" id="stageTitle">Luca Wall Sconce</h2>
-            </div>
-            <div class="lamp-main-price" id="stagePrice">$1800</div>
-          </div>
-
-          <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Click fixture to toggle light">
-            <!-- Dynamic Ambient Glow Halo -->
-            <div class="ambient-glow-halo" id="ambientHalo"></div>
-
-            <!-- Base Off Image -->
-            <img 
-              id="imgOff" 
-              class="sconce-img img-off" 
-              src="/downloads/images/luca-wall-sconce-anthracite-blackened-brass/01_off_Incommonwith_LucaWallSconce_FrontView_Off_Anthracite_Small_f.jpg" 
-              alt="Lamp Off State"
-            />
-            
-            <!-- Dynamic On Image Layer -->
-            <img 
-              id="imgOn" 
-              class="sconce-img img-on" 
-              src="/downloads/images/luca-wall-sconce-anthracite-blackened-brass/02_on_Incommonwith_LucaWallSconce_FrontView_On_Anthracite_Small_ef.jpg" 
-              alt="Lamp On State"
-            />
-          </div>
-
-          <!-- Quick Navigation Bar Below Lamp -->
-          <div class="stage-quick-nav">
-            <button class="quick-pill-btn" id="prevLampBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-              Previous Fixture
-            </button>
-
-            <button class="quick-catalog-browse-btn" id="quickBrowseBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              Browse Collection
-            </button>
-
-            <button class="quick-pill-btn" id="nextLampBtn">
-              Next Fixture
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+      <!-- Top Meta & Seamless Wall Switch Bar -->
+      <div class="studio-top-bar">
+        <div class="studio-meta-group">
+          <a href="/" class="studio-back-btn" id="studioBackBtn" title="Back to All Lighting">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>All Lighting</span>
+          </a>
+          <div class="studio-fixture-info">
+            <span class="studio-category-tag" id="stageCategory">SCONCE</span>
+            <h2 class="studio-main-title" id="stageTitle">Luca Wall Sconce</h2>
+            <span class="studio-main-price" id="stagePrice">$1800</span>
           </div>
         </div>
 
-        <!-- CONTROL DECK (TACTILE WALL SWITCH + DIMMER + GRADIENT) -->
-        <section class="control-deck">
-          
-          <!-- 1. Tactile Wall Switch Plate (EXACT ORIGINAL DESIGN) -->
-          <div class="switch-plate-container">
-            <div class="plate-header">
-              <span class="plate-title">Wall Switch Control</span>
-              <div class="status-badge" id="powerBadge">
-                <span class="status-dot"></span>
-                <span id="powerText">OFF</span>
-              </div>
-            </div>
-
-            <!-- Switch Mode Selector -->
-            <div class="switch-mode-tabs">
-              <button class="tab-btn active" data-switch="rocker">Rocker</button>
-              <button class="tab-btn" data-switch="push">Push Button</button>
-              <button class="tab-btn" data-switch="lever">Toggle Lever</button>
-            </div>
-
-            <!-- STYLE 1: 3D Tactile Rocker Switch (EXACT ORIGINAL DESIGN) -->
-            <div class="tactile-switch-bay" id="rockerView">
-              <div class="rocker-plate-bezel">
-                <div class="plate-screw screw-top"></div>
-                
-                <button class="rocker-button" id="rockerSwitchBtn" aria-label="Rocker Wall Switch">
-                  <div class="rocker-surface">
-                    <span class="rocker-label label-off">OFF</span>
-                    <div class="rocker-indicator-bar"></div>
-                    <span class="rocker-label label-on">ON</span>
-                  </div>
-                </button>
-
-                <div class="plate-screw screw-bot"></div>
-              </div>
-              <p class="switch-caption">Click switch to toggle lamp</p>
-            </div>
-
-            <!-- STYLE 2: Push Button -->
-            <div class="push-switch-view" id="pushView">
-              <div class="push-button-base">
-                <button class="push-button-core" id="pushSwitchBtn" aria-label="Push Button Switch">
-                  <svg class="push-icon" viewBox="0 0 24 24">
-                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
-                  </svg>
-                </button>
-              </div>
-              <p class="switch-caption">Tactile push latch button</p>
-            </div>
-
-            <!-- STYLE 3: Solid Brass Toggle Lever -->
-            <div class="lever-switch-view" id="leverView">
-              <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Toggle Lever Switch">
-                <div class="lever-handle">
-                  <div class="lever-knob"></div>
+        <!-- Seamless Wall-Mounted Switch in Upper-Right Corner (No Box/Container) -->
+        <div class="seamless-wall-switch-stage" id="seamlessSwitchStage">
+          <!-- STYLE 1: 3D Tactile Rocker Switch -->
+          <div class="tactile-switch-bay" id="rockerView">
+            <div class="rocker-plate-bezel">
+              <div class="plate-screw screw-top"></div>
+              <button class="rocker-button" id="rockerSwitchBtn" aria-label="Rocker Wall Switch" title="Toggle Light">
+                <div class="rocker-surface">
+                  <span class="rocker-label label-off">OFF</span>
+                  <div class="rocker-indicator-bar"></div>
+                  <span class="rocker-label label-on">ON</span>
                 </div>
-              </div>
-              <p class="switch-caption">Solid brass toggle lever</p>
-            </div>
-
-            <!-- Dimmer Brightness Slider -->
-            <div class="controls-grid">
-              <div class="control-row">
-                <div class="control-label-wrap">
-                  <span>Dimmer & Luminance</span>
-                  <span class="control-value" id="brightnessValue">0%</span>
-                </div>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="100" 
-                  value="0" 
-                  class="slider-range" 
-                  id="brightnessSlider" 
-                  aria-label="Dimmer Brightness Slider"
-                />
-              </div>
+              </button>
+              <div class="plate-screw screw-bot"></div>
             </div>
           </div>
 
-          <!-- 2. KONFIGURASI GRADIENT & AMBIENT GLOW SETTINGS CARD -->
-          <div class="config-card">
-            <div class="config-header">
-              <div class="config-title">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <span>Ambient Glow Halo</span>
-              </div>
-              <label class="toggle-switch-wrap" title="Toggle ambient gradient halo">
-                <input type="checkbox" class="toggle-checkbox" id="gradientToggle" checked>
-                <div class="toggle-track">
-                  <div class="toggle-handle"></div>
-                </div>
-                <span class="toggle-status-label" id="gradientStateText">ON</span>
-              </label>
-            </div>
-
-            <!-- Pilihan Sumber Warna Gradien -->
-            <div class="color-source-group">
-              <span class="color-source-label">Color Temperature:</span>
-              <div class="color-preset-pills">
-                <button class="color-btn active" data-source="auto">Auto Detect</button>
-                <button class="color-btn" data-source="2200k">2200K</button>
-                <button class="color-btn" data-source="2700k">2700K</button>
-                <button class="color-btn" data-source="3500k">3500K</button>
-              </div>
+          <!-- STYLE 2: Push Button -->
+          <div class="push-switch-view" id="pushView" style="display:none;">
+            <div class="push-button-base">
+              <button class="push-button-core" id="pushSwitchBtn" aria-label="Push Button Switch" title="Toggle Light">
+                <svg class="push-icon" viewBox="0 0 24 24">
+                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"></path>
+                </svg>
+              </button>
             </div>
           </div>
 
-        </section>
-
+          <!-- STYLE 3: Solid Brass Toggle Lever -->
+          <div class="lever-switch-view" id="leverView" style="display:none;">
+            <div class="lever-plate" id="leverSwitchBtn" role="button" tabindex="0" aria-label="Toggle Lever Switch" title="Toggle Light">
+              <div class="lever-handle">
+                <div class="lever-knob"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- CENTER GRAND FIXTURE DISPLAY WITH AMBIENT GLOW HALO -->
+      <div class="studio-center-stage">
+        <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Click fixture to toggle light">
+          <!-- Dynamic Ambient Glow Halo -->
+          <div class="ambient-glow-halo" id="ambientHalo"></div>
+
+          <!-- Base Off Image Layer -->
+          <img 
+            id="imgOff" 
+            class="sconce-img img-off" 
+            src="/downloads/images/luca-wall-sconce-anthracite-blackened-brass/01_off_Incommonwith_LucaWallSconce_FrontView_Off_Anthracite_Small_f.jpg" 
+            alt="Lamp Off State"
+          />
+          
+          <!-- Dynamic On Image Layer -->
+          <img 
+            id="imgOn" 
+            class="sconce-img img-on" 
+            src="/downloads/images/luca-wall-sconce-anthracite-blackened-brass/02_on_Incommonwith_LucaWallSconce_FrontView_On_Anthracite_Small_ef.jpg" 
+            alt="Lamp On State"
+          />
+        </div>
+      </div>
+
+      <!-- STUDIO LUXURY FLOATING BOTTOM DOCK -->
+      <div class="floating-dock-wrapper studio-dock-wrapper" id="studioFloatingDockWrapper">
+        <div class="floating-dock studio-dock">
+          
+          <!-- Segment 1: Previous & Next Navigation -->
+          <div class="studio-dock-nav-segment">
+            <button class="dock-nav-btn" id="prevLampBtn" title="Previous Fixture">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="studio-dock-counter" id="stageCounterBadge">1 / 82</span>
+            <button class="dock-nav-btn" id="nextLampBtn" title="Next Fixture">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <div class="dock-divider"></div>
+
+          <!-- Segment 2: Switch Style Dropdown Selector -->
+          <div class="dock-category-segment custom-dropdown" id="switchStyleDropdownContainer">
+            <button class="dock-category-btn" id="switchStyleDropdownBtn" type="button" aria-haspopup="listbox" aria-expanded="false" title="Select Wall Switch Model">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v10"/></svg>
+              <span class="category-btn-label" id="switchStyleBtnLabel">Rocker</span>
+              <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <!-- Upward Switch Style Menu -->
+            <div class="custom-dropdown-menu upward-menu switch-style-menu" id="switchStyleDropdownMenu" role="listbox">
+              <div class="dropdown-menu-header">
+                <span class="dropdown-menu-title">SWITCH MODEL</span>
+              </div>
+              <div class="dropdown-options-list switch-mode-tabs">
+                <button class="dropdown-option tab-btn active" data-switch="rocker">
+                  <span>Rocker Switch</span>
+                </button>
+                <button class="dropdown-option tab-btn" data-switch="push">
+                  <span>Push Button</span>
+                </button>
+                <button class="dropdown-option tab-btn" data-switch="lever">
+                  <span>Toggle Lever</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dock-divider"></div>
+
+          <!-- Segment 3: Dimmer Luminance Slider -->
+          <div class="studio-dock-dimmer-segment">
+            <div class="studio-dimmer-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+            </div>
+            <input 
+              type="range" 
+              min="0" 
+              max="100" 
+              value="0" 
+              class="studio-dock-slider" 
+              id="brightnessSlider" 
+              aria-label="Dimmer Luminance Slider"
+              title="Adjust Luminance"
+            />
+            <span class="studio-dimmer-percent" id="brightnessValue">0%</span>
+          </div>
+
+          <div class="dock-divider"></div>
+
+          <!-- Segment 4: Ambience & Halo Configuration Popover Trigger -->
+          <div class="dock-overlay-segment" id="studioAmbienceContainer">
+            <button class="dock-overlay-btn" id="studioAmbienceBtn" type="button" aria-haspopup="dialog" aria-expanded="false" title="Ambient Glow & Color Temperature Settings">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+              <span>Ambience</span>
+              <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <!-- Upward Ambience Config Popover -->
+            <div class="overlay-config-popover studio-ambience-popover" id="studioAmbiencePopover">
+              <div class="overlay-popover-header">
+                <span class="overlay-popover-title">AMBIENCE & GLOW</span>
+              </div>
+
+              <!-- Halo Toggle Row -->
+              <div class="overlay-option-item" id="ambientGlowToggleRow">
+                <span class="overlay-option-label">Ambient Glow Halo</span>
+                <label class="toggle-switch-wrap" title="Toggle ambient glow halo">
+                  <input type="checkbox" class="toggle-checkbox" id="gradientToggle" checked>
+                  <div class="toggle-track">
+                    <div class="toggle-handle"></div>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Color Temperature Presets -->
+              <div class="studio-temp-picker">
+                <span class="studio-temp-title">Color Temperature:</span>
+                <div class="color-preset-pills">
+                  <button class="color-btn active" data-source="auto">Auto</button>
+                  <button class="color-btn" data-source="2200k">2200K</button>
+                  <button class="color-btn" data-source="2700k">2700K</button>
+                  <button class="color-btn" data-source="3500k">3500K</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </main>
 
