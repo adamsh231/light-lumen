@@ -76,7 +76,11 @@ export function handleRouteChange() {
 
       if (lampIndex !== -1) {
         state.activeLampIndex = lampIndex;
+      } else {
+        state.activeLampIndex = 0;
       }
+    } else {
+      state.activeLampIndex = 0;
     }
 
     state.currentView = 'studio';

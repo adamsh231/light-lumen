@@ -126,18 +126,24 @@ export function renderGalleryGrid() {
 
   lampProductsGrid.innerHTML = '';
 
+  const filterCat = (state.galleryFilter || 'all').toLowerCase();
+  const q = (state.gallerySearch || '').toLowerCase().trim();
+
   let filtered = catalog.filter(lamp => {
-    const matchCat = state.galleryFilter === 'all' || lamp.category.toLowerCase() === state.galleryFilter.toLowerCase();
-    const q = state.gallerySearch.toLowerCase().trim();
-    const matchSearch = !q || lamp.title.toLowerCase().includes(q) || lamp.category.toLowerCase().includes(q) || (lamp.handle && lamp.handle.toLowerCase().includes(q));
+    const lampCat = (lamp.category || '').toLowerCase();
+    const lampTitle = (lamp.title || '').toLowerCase();
+    const lampHandle = (lamp.handle || '').toLowerCase();
+
+    const matchCat = filterCat === 'all' || lampCat === filterCat;
+    const matchSearch = !q || lampTitle.includes(q) || lampCat.includes(q) || lampHandle.includes(q);
     return matchCat && matchSearch;
   });
 
   // Sorting (By Name Only: A to Z or Z to A)
   if (state.gallerySort === 'name-desc') {
-    filtered.sort((a, b) => b.title.localeCompare(a.title));
+    filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
   } else {
-    filtered.sort((a, b) => a.title.localeCompare(b.title));
+    filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
   }
 
   updateMasterSwitchUI();
@@ -269,7 +275,7 @@ export function initGallery() {
   const categoryDropdownMenu = document.getElementById('categoryDropdownMenu');
   const categoryBtnLabel = document.getElementById('categoryBtnLabel');
   const categoryBtnBadge = document.getElementById('categoryBtnBadge');
-  const categoryOptions = document.querySelectorAll('.dropdown-option');
+  const categoryOptions = document.querySelectorAll('#categoryDropdownMenu .dropdown-option');
 
   // Overlay Config UI Elements
   const overlayConfigTriggerBtn = document.getElementById('overlayConfigTriggerBtn');
@@ -311,7 +317,7 @@ export function initGallery() {
     categoryOptions.forEach(opt => {
       opt.addEventListener('click', (e) => {
         e.stopPropagation();
-        const cat = opt.dataset.cat;
+        const cat = opt.dataset.cat || 'all';
         state.galleryFilter = cat;
         categoryOptions.forEach(o => {
           const isCurrent = o.dataset.cat === cat;

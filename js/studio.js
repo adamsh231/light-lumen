@@ -293,10 +293,11 @@ export function initStudio() {
     });
   }
 
-  // Switch Clicks
+  // Switch Clicks (with stopPropagation to avoid double-toggle bubbling to sconceLamp)
   if (rockerSwitchBtn) {
     rockerSwitchBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       toggleLight();
     });
   }
@@ -304,6 +305,7 @@ export function initStudio() {
   if (pushSwitchBtn) {
     pushSwitchBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       toggleLight();
     });
   }
@@ -311,18 +313,31 @@ export function initStudio() {
   if (leverSwitchBtn) {
     leverSwitchBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       toggleLight();
     });
     leverSwitchBtn.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
+        e.stopPropagation();
         toggleLight();
       }
     });
   }
 
+  const seamlessSwitchStage = document.getElementById('seamlessSwitchStage');
+  if (seamlessSwitchStage) {
+    seamlessSwitchStage.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
   if (sconceLamp) {
-    sconceLamp.addEventListener('click', () => toggleLight());
+    sconceLamp.addEventListener('click', (e) => {
+      // Only toggle if clicking the canvas background or lamp image itself
+      if (e.target.closest('#seamlessSwitchStage')) return;
+      toggleLight();
+    });
     sconceLamp.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();

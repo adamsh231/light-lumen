@@ -42,26 +42,46 @@
   </header>
 
   <!-- =========================================================================
-       VIEW 1: MAIN SHOWROOM DISPLAY (STUDIO SWITCH)
+       VIEW 1: MAIN SHOWROOM DISPLAY (FULL-PAGE IMMERSIVE FIXTURE CANVAS)
        ========================================================================= -->
   <main class="view-panel" id="studioViewPanel">
-    <div class="studio-showroom-viewport">
+    <div class="studio-fullscreen-viewport">
       
-      <!-- Top Meta & Seamless Wall Switch Bar -->
-      <div class="studio-top-bar">
-        <div class="studio-meta-group">
-          <a href="/" class="studio-back-btn" id="studioBackBtn" title="Back to All Lighting">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-            <span>All Lighting</span>
-          </a>
-          <div class="studio-fixture-info">
-            <span class="studio-category-tag" id="stageCategory">SCONCE</span>
-            <h2 class="studio-main-title" id="stageTitle">Luca Wall Sconce</h2>
-            <span class="studio-main-price" id="stagePrice">$1800</span>
-          </div>
+      <!-- Top-Left Floating Overlay: Back Button + Fixture Metadata -->
+      <div class="studio-top-overlay">
+        <a href="/" class="studio-back-btn" id="studioBackBtn" title="Back to All Lighting">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>All Lighting</span>
+        </a>
+        <div class="studio-fixture-info">
+          <span class="studio-category-tag" id="stageCategory">CHANDELIER</span>
+          <h2 class="studio-main-title" id="stageTitle">Murano Glass Cosmos Chandelier</h2>
+          <span class="studio-main-price" id="stagePrice">$8000</span>
         </div>
+      </div>
 
-        <!-- Seamless Wall-Mounted Switch in Upper-Right Corner (No Box/Container) -->
+      <!-- FULL-BLEED IMMERSIVE FIXTURE CANVAS -->
+      <div class="sconce-fullscreen-canvas" id="sconceLamp" role="button" tabindex="0" title="Click fixture to toggle light">
+        <!-- Dynamic Ambient Glow Halo Behind Lamp -->
+        <div class="ambient-glow-halo" id="ambientHalo"></div>
+
+        <!-- Base Off Image Layer (Full Page) -->
+        <img 
+          id="imgOff" 
+          class="sconce-img img-off" 
+          src="/downloads/images/murano-glass-cosmos-chandelier-3-goto-bianco-polished-nickel-17-36-inches/01_off_InCommonWith_MuranoGlassCosmosChandelier_FrontView_Off_GotoB.jpg" 
+          alt="Lamp Off State"
+        />
+        
+        <!-- Dynamic On Image Layer (Full Page) -->
+        <img 
+          id="imgOn" 
+          class="sconce-img img-on" 
+          src="/downloads/images/murano-glass-cosmos-chandelier-3-goto-bianco-polished-nickel-17-36-inches/02_on_InCommonWith_MuranoGlassCosmosChandelier_FrontView_On_GotoBi.jpg" 
+          alt="Lamp On State"
+        />
+
+        <!-- Seamless Wall-Mounted Switch Inside Upper-Right Corner of the Image -->
         <div class="seamless-wall-switch-stage" id="seamlessSwitchStage">
           <!-- STYLE 1: 3D Tactile Rocker Switch -->
           <div class="tactile-switch-bay" id="rockerView">
@@ -97,30 +117,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- CENTER GRAND FIXTURE DISPLAY WITH AMBIENT GLOW HALO -->
-      <div class="studio-center-stage">
-        <div class="sconce-frame" id="sconceLamp" role="button" tabindex="0" title="Click fixture to toggle light">
-          <!-- Dynamic Ambient Glow Halo -->
-          <div class="ambient-glow-halo" id="ambientHalo"></div>
-
-          <!-- Base Off Image Layer -->
-          <img 
-            id="imgOff" 
-            class="sconce-img img-off" 
-            src="/downloads/images/luca-wall-sconce-anthracite-blackened-brass/01_off_Incommonwith_LucaWallSconce_FrontView_Off_Anthracite_Small_f.jpg" 
-            alt="Lamp Off State"
-          />
-          
-          <!-- Dynamic On Image Layer -->
-          <img 
-            id="imgOn" 
-            class="sconce-img img-on" 
-            src="/downloads/images/luca-wall-sconce-anthracite-blackened-brass/02_on_Incommonwith_LucaWallSconce_FrontView_On_Anthracite_Small_ef.jpg" 
-            alt="Lamp On State"
-          />
         </div>
       </div>
 
