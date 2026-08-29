@@ -1,13 +1,18 @@
 /**
- * Atelier Lumen — Web Audio API Synthesizer (Tactile Switch Sounds)
+ * Atelier Lumen — Click Audio Player (MP3 Asset with Web Audio API Zero-Latency Playback)
  */
+import clickSoundUrl from './click-sound.mp3';
 
 let audioCtx = null;
+let clickBuffer = null;
+let isLoadingBuffer = false;
 
 function getAudioContext() {
   if (!audioCtx && typeof window !== 'undefined') {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (AudioContext) audioCtx = new AudioContext();
+    if (AudioContext) {
+      audioCtx = new AudioContext();
+    }
   }
   if (audioCtx && audioCtx.state === 'suspended') {
     audioCtx.resume();
@@ -15,64 +20,80 @@ function getAudioContext() {
   return audioCtx;
 }
 
-export function playSwitchSound(type) {
+// Pre-load and decode audio buffer for instantaneous zero-latency clicking
+async function loadClickBuffer() {
+  if (clickBuffer || isLoadingBuffer) return clickBuffer;
+  isLoadingBuffer = true;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return null;
+    const response = await fetch(clickSoundUrl);
+    const arrayBuffer = await response.arrayBuffer();
+    clickBuffer = await ctx.decodeAudioData(arrayBuffer);
+    return clickBuffer;
+  } catch (err) {
+    console.warn('Could not decode click sound buffer:', err);
+    return null;
+  } finally {
+    isLoadingBuffer = false;
+  }
+}
+
+// Preload on initial user gesture or page load
+if (typeof window !== 'undefined') {
+  window.addEventListener('pointerdown', () => {
+    const ctx = getAudioContext();
+    if (ctx && ctx.state === 'suspended') {
+      ctx.resume();
+    }
+    loadClickBuffer();
+  }, { once: true });
+}
+
+export async function playSwitchSound(type = 'on') {
   if (typeof window === 'undefined') return;
   const store = window.AppStore;
   if (store && store.state && !store.state.soundEnabled) return;
 
   try {
     const ctx = getAudioContext();
-    if (!ctx) return;
-    const now = ctx.currentTime;
+    if (!ctx) {
+      const audio = new Audio(clickSoundUrl);
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+      return;
+    }
 
-    if (type === 'on') {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
+    if (ctx.state === 'suspended') {
+      ctx.resume();
+    }
 
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(1400, now);
-      osc.frequency.exponentialRampToValueAtTime(180, now + 0.045);
+    let buffer = clickBuffer;
+    if (!buffer) {
+      buffer = await loadClickBuffer();
+    }
 
-      filter.type = 'highpass';
-      filter.frequency.setValueAtTime(800, now);
+    if (buffer) {
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
 
-      gain.gain.setValueAtTime(0.35, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+      const gainNode = ctx.createGain();
+      gainNode.gain.setValueAtTime(0.95, ctx.currentTime);
 
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.05);
-
-      // Sub bounce
-      const osc2 = ctx.createOscillator();
-      const gain2 = ctx.createGain();
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(400, now + 0.012);
-      osc2.frequency.exponentialRampToValueAtTime(60, now + 0.06);
-      gain2.gain.setValueAtTime(0.2, now + 0.012);
-      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-      osc2.connect(gain2);
-      gain2.connect(ctx.destination);
-      osc2.start(now + 0.012);
-      osc2.stop(now + 0.065);
+      source.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      source.start(ctx.currentTime);
     } else {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(950, now);
-      osc.frequency.exponentialRampToValueAtTime(120, now + 0.05);
-      gain.gain.setValueAtTime(0.3, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.055);
+      const audio = new Audio(clickSoundUrl);
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
     }
   } catch (e) {
-    console.warn('AudioContext error:', e);
+    try {
+      const audio = new Audio(clickSoundUrl);
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    } catch (_) {}
   }
 }
 
