@@ -184,8 +184,16 @@ export function renderGalleryGrid() {
     tile.className = `lamp-tile ${isLit ? 'is-lit' : ''}`;
     tile.dataset.lampId = lamp.id;
 
-    const offUrl = lamp.offImage || (lamp.images && lamp.images[0] ? lamp.images[0].url : '');
-    const onUrl = lamp.onImage || (lamp.images && lamp.images[1] ? lamp.images[1].url : offUrl);
+    function fixAssetUrl(url) {
+      if (!url) return '';
+      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('/')) {
+        return url;
+      }
+      return '/' + url;
+    }
+
+    const offUrl = fixAssetUrl(lamp.offImage || (lamp.images && lamp.images[0] ? lamp.images[0].url : ''));
+    const onUrl = fixAssetUrl(lamp.onImage || (lamp.images && lamp.images[1] ? lamp.images[1].url : offUrl));
 
     tile.innerHTML = `
       <!-- Background Ambient Glow Bloom -->

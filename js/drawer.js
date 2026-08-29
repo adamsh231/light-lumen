@@ -24,7 +24,15 @@ export function renderDrawerList() {
     item.className = `drawer-item-card ${originalIdx === state.activeLampIndex ? 'active' : ''}`;
     item.dataset.index = originalIdx;
 
-    const thumbSrc = lamp.offImage || (lamp.images && lamp.images[0] ? lamp.images[0].url : '');
+    function fixAssetUrl(url) {
+      if (!url) return '';
+      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('/')) {
+        return url;
+      }
+      return '/' + url;
+    }
+
+    const thumbSrc = fixAssetUrl(lamp.offImage || (lamp.images && lamp.images[0] ? lamp.images[0].url : ''));
 
     item.innerHTML = `
       <img class="drawer-item-thumb" src="${thumbSrc}" alt="${lamp.title}" loading="lazy">

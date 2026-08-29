@@ -142,8 +142,16 @@ export function loadLampIntoStudio(index, updateRoute = false, showNotification 
   if (stageTitle) stageTitle.textContent = lamp.shortTitle || lamp.title;
   if (stagePrice) stagePrice.textContent = lamp.price;
 
-  const offSrc = lamp.offImage || (lamp.images && lamp.images[0] ? lamp.images[0].url : '');
-  const onSrc = lamp.onImage || (lamp.images && lamp.images[1] ? lamp.images[1].url : offSrc);
+  function fixAssetUrl(url) {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('/')) {
+      return url;
+    }
+    return '/' + url;
+  }
+
+  const offSrc = fixAssetUrl(lamp.offImage || (lamp.images && lamp.images[0] ? lamp.images[0].url : ''));
+  const onSrc = fixAssetUrl(lamp.onImage || (lamp.images && lamp.images[1] ? lamp.images[1].url : offSrc));
 
   if (imgOff) imgOff.src = offSrc;
   if (imgOn) imgOn.src = onSrc;
