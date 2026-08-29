@@ -1,5 +1,5 @@
 // Generated Lamp Catalog - Atelier Lumen All Lighting Collection
-// Total Products: 82
+// Total Products: 81
 export const LAMP_CATALOG = [
   {
     "id": 8425374384298,
@@ -2329,43 +2329,8 @@ export const LAMP_CATALOG = [
     "tags": []
   },
   {
-    "id": 7918011580586,
-    "index": 59,
-    "handle": "dome-pendant-black-clay-black",
-    "title": "Dome Pendant – Black Clay / Black",
-    "shortTitle": "Dome Pendant",
-    "subtitle": "Black Clay / Black",
-    "category": "Pendant",
-    "price": "$2600",
-    "rawPrice": 2600,
-    "url": "https://www.incommonwith.com/products/dome-pendant-black-clay-black",
-    "offImage": "downloads/images/dome-pendant-black-clay-black/01_off_Incommonwith_DomePendant_FrontView_Off_BlackClay_Black_db912.jpg",
-    "onImage": "downloads/images/dome-pendant-black-clay-black/02_on_Incommonwith_DomePendant_FrontView_On_BlackClay_Black_9d2136.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "off",
-        "fileName": "01_off_Incommonwith_DomePendant_FrontView_Off_BlackClay_Black_db912.jpg",
-        "url": "downloads/images/dome-pendant-black-clay-black/01_off_Incommonwith_DomePendant_FrontView_Off_BlackClay_Black_db912.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "on",
-        "fileName": "02_on_Incommonwith_DomePendant_FrontView_On_BlackClay_Black_9d2136.jpg",
-        "url": "downloads/images/dome-pendant-black-clay-black/02_on_Incommonwith_DomePendant_FrontView_On_BlackClay_Black_9d2136.jpg",
-        "width": 2000,
-        "height": 2500
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
     "id": 7918012006570,
-    "index": 60,
+    "index": 59,
     "handle": "dome-table-lamp-tan-clay-black-plug-in",
     "title": "Dome Table Lamp – Tan Clay / Black / Plug-in",
     "shortTitle": "Dome Table Lamp",
@@ -2400,7 +2365,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7956520632490,
-    "index": 61,
+    "index": 60,
     "handle": "fixed-down-sconce-oxide-red-hardwire",
     "title": "Fixed Down Sconce – Oxide Red / Hardwire",
     "shortTitle": "Fixed Down Sconce",
@@ -2439,7 +2404,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917776994474,
-    "index": 62,
+    "index": 61,
     "handle": "augustus-surface-mount-chestnut",
     "title": "Augustus Surface Mount – Chestnut",
     "shortTitle": "Augustus Surface Mount",
@@ -2474,7 +2439,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917785612458,
-    "index": 63,
+    "index": 62,
     "handle": "brass-calla-sconce-small-blackened-brass-patina-brass-square-backplate",
     "title": "Brass Calla Sconce – Blackened Brass / Patina Brass / Square Backplate",
     "shortTitle": "Brass Calla Sconce",
@@ -2520,7 +2485,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917788037290,
-    "index": 64,
+    "index": 63,
     "handle": "brass-gemma-sconce-small-pewter-blackened-brass-square-backplate",
     "title": "Brass Gemma Sconce – Pewter / Blackened Brass / Square Backplate",
     "shortTitle": "Brass Gemma Sconce",
@@ -2566,7 +2531,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917807730858,
-    "index": 65,
+    "index": 64,
     "handle": "calla-floor-lamp-opaline-with-pistachio-embellishments-pewter",
     "title": "Calla Floor Lamp – Opaline with Pistachio Embellishments / Pewter",
     "shortTitle": "Calla Floor Lamp",
@@ -2601,7 +2566,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7918160838826,
-    "index": 66,
+    "index": 65,
     "handle": "seneca-table-lamp-large-24-in-h-lapis",
     "title": "Seneca Table Lamp – Large / Lapis",
     "shortTitle": "Seneca Table Lamp",
@@ -2636,7 +2601,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917786890410,
-    "index": 67,
+    "index": 66,
     "handle": "brass-calla-table-lamp-small-pewter-blackened-brass",
     "title": "Brass Calla Table Lamp, Small – Pewter / Blackened Brass",
     "shortTitle": "Brass Calla Table Lamp, Small",
@@ -2674,7 +2639,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 8395877515434,
-    "index": 68,
+    "index": 67,
     "handle": "calla-sconce-lilac-with-pistachio-embellishments-blackened-brass-medium",
     "title": "Calla Sconce – Lilac with Pistachio Embellishments / Blackened Brass / Medium / Hardwire",
     "shortTitle": "Calla Sconce",
@@ -2711,7 +2676,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7948206112938,
-    "index": 69,
+    "index": 68,
     "handle": "calla-table-lamp-pistachio-with-pistachio-embellishments-blackened-brass-large",
     "title": "Calla Table Lamp – Pistachio with Pistachio Embellishments / Blackened Brass / Large",
     "shortTitle": "Calla Table Lamp",
@@ -2746,7 +2711,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 8395891736746,
-    "index": 70,
+    "index": 69,
     "handle": "fazzo-pendant-poppy-with-poppy-embellishments-brass-medium",
     "title": "Fazzo Pendant – Poppy with Poppy Embellishments / Brass / Medium",
     "shortTitle": "Fazzo Pendant",
@@ -2781,7 +2746,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7918022033578,
-    "index": 71,
+    "index": 70,
     "handle": "fazzo-table-lamp-opaline-with-amber-embellishments-pewter",
     "title": "Fazzo Table Lamp – Opaline with Amber Embellishments / Pewter",
     "shortTitle": "Fazzo Table Lamp",
@@ -2816,7 +2781,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7918050640042,
-    "index": 72,
+    "index": 71,
     "handle": "gemma-floor-lamp-opaline-with-opaline-embellishments-patina-brass",
     "title": "Gemma Floor Lamp – Opaline with Opaline Embellishments / Patina Brass",
     "shortTitle": "Gemma Floor Lamp",
@@ -2851,7 +2816,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7948215713962,
-    "index": 73,
+    "index": 72,
     "handle": "gemma-sconce-opaline-with-opaline-embellishments-brass-medium",
     "title": "Gemma Sconce – Opaline with Opaline Embellishments / Brass / Medium / Hardwire",
     "shortTitle": "Gemma Sconce",
@@ -2888,7 +2853,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7948212699306,
-    "index": 74,
+    "index": 73,
     "handle": "gemma-table-lamp-lilac-with-lilac-embellishments-blackened-brass-medium",
     "title": "Gemma Table Lamp – Lilac with Lilac Embellishments / Blackened Brass / Medium",
     "shortTitle": "Gemma Table Lamp",
@@ -2923,7 +2888,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 8388233887914,
-    "index": 75,
+    "index": 74,
     "handle": "ceramic-up-down-sconce-tan-clay-green-clay-black-plug-in-inline-dimmer-switch-1",
     "title": "Ceramic Up Down Sconce – Tan Clay / Green Clay / Black / Plug-in, inline dimmer switch",
     "shortTitle": "Ceramic Up Down Sconce",
@@ -2968,7 +2933,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 8383238439082,
-    "index": 76,
+    "index": 75,
     "handle": "up-down-sconce-bone-reed-green-black-slim-1",
     "title": "Up Down Sconce – Bone / Reed Green / Black / Slim",
     "shortTitle": "Up Down Sconce",
@@ -3014,7 +2979,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917966753962,
-    "index": 77,
+    "index": 76,
     "handle": "chromatic-glass-up-down-sconce-pistachio-reed-green-plug-in-inline-dimmer-switch",
     "title": "Chromatic Glass Up Down Sconce – Pistachio / Reed Green / Plug-in, inline dimmer switch",
     "shortTitle": "Chromatic Glass Up Down Sconce",
@@ -3051,7 +3016,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 8383274778794,
-    "index": 78,
+    "index": 77,
     "handle": "up-down-sconce-bone-bone-reed-green-plug-in-inline-dimmer-switch-1",
     "title": "Up Down Sconce – Bone / Bone / Reed Green / Plug-in, inline dimmer switch",
     "shortTitle": "Up Down Sconce",
@@ -3096,7 +3061,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7918125777066,
-    "index": 79,
+    "index": 78,
     "handle": "glass-up-down-sconce-bone-plug-in-inline-dimmer-switch",
     "title": "Glass Up Down Sconce – Bone / Plug-in, inline dimmer switch",
     "shortTitle": "Glass Up Down Sconce",
@@ -3133,7 +3098,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7918127218858,
-    "index": 80,
+    "index": 79,
     "handle": "glass-up-down-sconce-slim-oxide-red",
     "title": "Glass Up Down Sconce, Slim – Oxide Red",
     "shortTitle": "Glass Up Down Sconce, Slim",
@@ -3171,7 +3136,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 8388191486122,
-    "index": 81,
+    "index": 80,
     "handle": "ceramic-up-down-sconce-slim-green-clay-terracotta-pewter-1",
     "title": "Ceramic Up Down Sconce – Green Clay / Terracotta / Pewter / Slim",
     "shortTitle": "Ceramic Up Down Sconce",
@@ -3217,7 +3182,7 @@ export const LAMP_CATALOG = [
   },
   {
     "id": 7917973078186,
-    "index": 82,
+    "index": 81,
     "handle": "chromatic-glass-up-down-sconce-slim-sandblasted-white-reed-green",
     "title": "Chromatic Glass Up Down Sconce, Slim – Sandblasted White / Reed Green",
     "shortTitle": "Chromatic Glass Up Down Sconce, Slim",
