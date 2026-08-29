@@ -159,10 +159,6 @@ export function loadLampIntoStudio(index, updateRoute = false, showNotification 
   if (window.AppDrawer && window.AppDrawer.updateDrawerActiveCard) {
     window.AppDrawer.updateDrawerActiveCard();
   }
-
-  if (showNotification) {
-    showToast(`Memuat: ${lamp.shortTitle || lamp.title}`);
-  }
 }
 
 export function initStudio() {

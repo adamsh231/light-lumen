@@ -66,11 +66,9 @@ export function toggleMasterGallerySwitch() {
   if (turnOn) {
     catalog.forEach(lamp => state.litLamps.add(lamp.id));
     playSwitchSound('on');
-    showToast(`Master Switch: Menyalakan seluruh ${totalCount} lampu`);
   } else {
     state.litLamps.clear();
     playSwitchSound('off');
-    showToast('Master Switch: Memadamkan semua lampu');
   }
 
   // Update all existing DOM tiles in place for fast rendering
