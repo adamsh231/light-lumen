@@ -129,7 +129,7 @@ export function loadLampIntoStudio(index, updateRoute = false, showNotification 
   const lamp = catalog[index];
 
   if (updateRoute && window.AppRouter && lamp && lamp.handle) {
-    window.location.hash = `#/studio/${lamp.handle}`;
+    window.AppRouter.navigate('/studio/' + lamp.handle);
   }
 
   const stageCategory = document.getElementById('stageCategory');

@@ -22,10 +22,10 @@ export function switchView(viewName, updateRoute = true) {
 
   if (updateRoute && window.AppRouter && window.AppRouter.navigate) {
     if (viewName === 'gallery') {
-      window.AppRouter.navigate('#/');
+      window.AppRouter.navigate('/');
     } else if (viewName === 'studio') {
       const activeLamp = catalog[state.activeLampIndex];
-      window.AppRouter.navigate('#/studio/' + (activeLamp ? activeLamp.handle : ''));
+      window.AppRouter.navigate('/studio/' + (activeLamp ? activeLamp.handle : ''));
     }
   }
 
@@ -66,7 +66,7 @@ export function initApp() {
     brandBtn.addEventListener('click', (e) => {
       e.preventDefault();
       if (window.AppRouter && window.AppRouter.navigate) {
-        window.AppRouter.navigate('#/');
+        window.AppRouter.navigate('/');
       } else {
         switchView('gallery');
       }
@@ -77,7 +77,7 @@ export function initApp() {
     studioBackBtn.addEventListener('click', (e) => {
       e.preventDefault();
       if (window.AppRouter && window.AppRouter.navigate) {
-        window.AppRouter.navigate('#/');
+        window.AppRouter.navigate('/');
       } else {
         switchView('gallery');
       }
@@ -88,7 +88,7 @@ export function initApp() {
     quickBrowseBtn.addEventListener('click', (e) => {
       e.preventDefault();
       if (window.AppRouter && window.AppRouter.navigate) {
-        window.AppRouter.navigate('#/');
+        window.AppRouter.navigate('/');
       } else {
         switchView('gallery');
       }
@@ -181,11 +181,11 @@ export function initApp() {
       if (themeToggleBtn) themeToggleBtn.click();
     } else if (e.key.toLowerCase() === 'g') {
       if (state.currentView === 'studio') {
-        if (window.AppRouter) window.AppRouter.navigate('#/');
+        if (window.AppRouter) window.AppRouter.navigate('/');
         else switchView('gallery');
       } else {
         const lamp = catalog[state.activeLampIndex];
-        if (window.AppRouter && lamp) window.AppRouter.navigate('#/studio/' + lamp.handle);
+        if (window.AppRouter && lamp) window.AppRouter.navigate('/studio/' + lamp.handle);
         else switchView('studio');
       }
     } else if (e.key === 'Escape') {

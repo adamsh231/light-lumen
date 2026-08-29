@@ -1,7 +1,6 @@
 /**
- * Atelier Lumen — Client-Side SPA Hash Router
- * Handles hash routes (e.g. #/ for collection, #/studio/:handle for lamp studio)
- * Guarantees view and active lamp persistence on page refresh.
+ * Atelier Lumen — HTML5 History API SPA Router (Clean URLs without '#')
+ * Provides clean paths: '/' (Collection Grid) and '/studio/:handle' (Interactive Studio)
  */
 import { AppStore } from './state.js';
 
@@ -9,17 +8,22 @@ function getStore() {
   return window.AppStore || AppStore;
 }
 
-export function parseHash() {
+export function parsePath(pathname = (typeof window !== 'undefined' ? window.location.pathname : '/')) {
   if (typeof window === 'undefined') return { path: 'gallery', param: null };
-  let hash = window.location.hash.trim();
-  if (hash.startsWith('#')) {
-    hash = hash.substring(1);
+
+  let path = pathname.trim();
+  // Support migration if user opens legacy hash URL
+  if (window.location.hash && window.location.hash.startsWith('#/')) {
+    path = window.location.hash.substring(1);
   }
-  if (!hash || hash === '/') {
+
+  // Remove trailing slash
+  path = path.replace(/\/+$/, '');
+  if (!path || path === '') {
     return { path: 'gallery', param: null };
   }
 
-  const segments = hash.split('/').filter(Boolean);
+  const segments = path.split('/').filter(Boolean);
   if (segments.length === 0) {
     return { path: 'gallery', param: null };
   }
@@ -28,31 +32,34 @@ export function parseHash() {
     return { path: 'studio', param: segments[1] || null };
   }
 
-  if (segments[0] === 'gallery' || segments[0] === 'collection') {
-    return { path: 'gallery', param: null };
-  }
-
   return { path: 'gallery', param: null };
 }
 
-export function navigate(path) {
+export function navigate(targetPath, replace = false) {
   if (typeof window === 'undefined') return;
-  if (!path.startsWith('#')) {
-    path = '#' + (path.startsWith('/') ? path : '/' + path);
+
+  // Clean path format (e.g. /studio/lamp-handle or /)
+  let cleanPath = targetPath.startsWith('#') ? targetPath.substring(1) : targetPath;
+  if (!cleanPath.startsWith('/')) {
+    cleanPath = '/' + cleanPath;
   }
-  if (window.location.hash === path) {
-    handleRouteChange();
-  } else {
-    window.location.hash = path;
+
+  if (window.location.pathname !== cleanPath) {
+    if (replace) {
+      window.history.replaceState({}, '', cleanPath);
+    } else {
+      window.history.pushState({}, '', cleanPath);
+    }
   }
+
+  handleRouteChange();
 }
 
 export function handleRouteChange() {
-  const route = parseHash();
+  const route = parsePath();
   const { catalog, state } = getStore();
 
   if (route.path === 'studio') {
-    // Find lamp by handle or numeric ID or default
     if (route.param) {
       const decodedParam = decodeURIComponent(route.param).toLowerCase();
       let lampIndex = catalog.findIndex(l => 
@@ -83,14 +90,22 @@ export function handleRouteChange() {
 
 export function initRouter() {
   if (typeof window === 'undefined') return;
-  window.addEventListener('hashchange', handleRouteChange);
+
+  window.addEventListener('popstate', handleRouteChange);
+
+  // Convert legacy hash to clean URL if present
+  if (window.location.hash && window.location.hash.startsWith('#/')) {
+    const clean = window.location.hash.substring(1);
+    window.history.replaceState({}, '', clean);
+  }
+
   handleRouteChange();
 }
 
 export const AppRouter = {
   initRouter,
   navigate,
-  parseHash,
+  parsePath,
   handleRouteChange
 };
 

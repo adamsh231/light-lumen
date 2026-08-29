@@ -38,7 +38,7 @@ export function renderDrawerList() {
     item.addEventListener('click', () => {
       if (lampDrawerBackdrop) lampDrawerBackdrop.classList.remove('open');
       if (window.AppRouter && window.AppRouter.navigate && lamp.handle) {
-        window.AppRouter.navigate('#/studio/' + lamp.handle);
+        window.AppRouter.navigate('/studio/' + lamp.handle);
       } else {
         if (window.AppStudio && window.AppStudio.loadLampIntoStudio) {
           window.AppStudio.loadLampIntoStudio(originalIdx, false, true);

@@ -98,7 +98,7 @@ export function openLampInStudio(lampId) {
   const lamp = catalog.find(l => l.id === lampId);
   if (lamp) {
     if (window.AppRouter && window.AppRouter.navigate) {
-      window.AppRouter.navigate('#/studio/' + lamp.handle);
+      window.AppRouter.navigate('/studio/' + lamp.handle);
     } else {
       const idx = catalog.indexOf(lamp);
       if (window.AppStudio && window.AppStudio.loadLampIntoStudio) {
