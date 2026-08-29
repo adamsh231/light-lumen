@@ -1,5 +1,5 @@
 // Generated Lamp Catalog from In Common With - All Lighting Collection
-// Total Products: 98
+// Total Products: 82
 (function(root, factory) {
   if (typeof module === 'object' && module.exports) {
     module.exports = factory();
@@ -1060,69 +1060,8 @@
     ]
   },
   {
-    "id": 8075473027242,
-    "index": 27,
-    "handle": "szilvassy-ceramic-disc-surface-mount",
-    "title": "Szilvassy Ceramic Disc Surface Mount",
-    "shortTitle": "Szilvassy Ceramic Disc Surface Mount",
-    "subtitle": "",
-    "category": "Surface Mount",
-    "price": "$2800",
-    "rawPrice": 2800,
-    "url": "https://www.incommonwith.com/products/szilvassy-ceramic-disc-surface-mount",
-    "offImage": "downloads/images/szilvassy-ceramic-disc-surface-mount/01_view_InCommonWith_Szilvassy_WJL_9.jpg",
-    "onImage": "downloads/images/szilvassy-ceramic-disc-surface-mount/02_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_1.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_InCommonWith_Szilvassy_WJL_9.jpg",
-        "url": "downloads/images/szilvassy-ceramic-disc-surface-mount/01_view_InCommonWith_Szilvassy_WJL_9.jpg",
-        "width": 2023,
-        "height": 2529
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_1.jpg",
-        "url": "downloads/images/szilvassy-ceramic-disc-surface-mount/02_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_1.jpg",
-        "width": 2023,
-        "height": 2529
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_4.jpg",
-        "url": "downloads/images/szilvassy-ceramic-disc-surface-mount/03_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_4.jpg",
-        "width": 2066,
-        "height": 2583
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_5.jpg",
-        "url": "downloads/images/szilvassy-ceramic-disc-surface-mount/04_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_5.jpg",
-        "width": 1953,
-        "height": 2441
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_6.jpg",
-        "url": "downloads/images/szilvassy-ceramic-disc-surface-mount/05_view_InCommonWith_SzilvassyCeramicDiscSurfaceMount_Tan_WJL_6.jpg",
-        "width": 2066,
-        "height": 2583
-      }
-    ],
-    "variantsCount": 1,
-    "tags": [
-      "Parent"
-    ]
-  },
-  {
     "id": 7917755400362,
-    "index": 28,
+    "index": 27,
     "handle": "arundel-low-table-lamp-black-plug-in",
     "title": "Arundel Low Table Lamp – Black / Plug-in",
     "shortTitle": "Arundel Low Table Lamp",
@@ -1157,7 +1096,7 @@
   },
   {
     "id": 7917755138218,
-    "index": 29,
+    "index": 28,
     "handle": "arundel-floor-lamp-peach-black",
     "title": "Arundel Floor Lamp – Peach / Black",
     "shortTitle": "Arundel Floor Lamp",
@@ -1192,7 +1131,7 @@
   },
   {
     "id": 7946058465450,
-    "index": 30,
+    "index": 29,
     "handle": "double-puck-pendant-black-hardwire",
     "title": "Double Puck Pendant – Black / Hardwire",
     "shortTitle": "Double Puck Pendant",
@@ -1230,7 +1169,7 @@
   },
   {
     "id": 7946057121962,
-    "index": 31,
+    "index": 30,
     "handle": "mushroom-pendant-bone-hardwire",
     "title": "Mushroom Pendant – Bone / Hardwire",
     "shortTitle": "Mushroom Pendant",
@@ -1267,7 +1206,7 @@
   },
   {
     "id": 7918132297898,
-    "index": 32,
+    "index": 31,
     "handle": "mushroom-surface-mount-black-hardwire",
     "title": "Mushroom Surface Mount – Black / Hardwire",
     "shortTitle": "Mushroom Surface Mount",
@@ -1322,7 +1261,7 @@
   },
   {
     "id": 7918157955242,
-    "index": 33,
+    "index": 32,
     "handle": "double-puck-surface-mount-peach-hardwire",
     "title": "Double Puck Surface Mount – Peach / Hardwire",
     "shortTitle": "Double Puck Surface Mount",
@@ -1377,7 +1316,7 @@
   },
   {
     "id": 7946060071082,
-    "index": 34,
+    "index": 33,
     "handle": "arundel-mushroom-pendant-peach-black-hardwire",
     "title": "Arundel Mushroom Pendant – Peach / Black / Hardwire",
     "shortTitle": "Arundel Mushroom Pendant",
@@ -1414,7 +1353,7 @@
   },
   {
     "id": 7917757825194,
-    "index": 35,
+    "index": 34,
     "handle": "arundel-mushroom-surface-mount-reed-green-reed-green-hardwire",
     "title": "Arundel Mushroom Surface Mount – Reed Green / Reed Green / Hardwire",
     "shortTitle": "Arundel Mushroom Surface Mount",
@@ -1469,7 +1408,7 @@
   },
   {
     "id": 7946050076842,
-    "index": 36,
+    "index": 35,
     "handle": "dune-table-lamp-black",
     "title": "Dune Table Lamp – Black",
     "shortTitle": "Dune Table Lamp",
@@ -1507,7 +1446,7 @@
   },
   {
     "id": 7917761265834,
-    "index": 37,
+    "index": 36,
     "handle": "arundel-orb-surface-mount-black-oxide-red-hardwire",
     "title": "Arundel Orb Surface Mount – Black / Oxide Red / Hardwire",
     "shortTitle": "Arundel Orb Surface Mount",
@@ -1564,7 +1503,7 @@
   },
   {
     "id": 7946055221418,
-    "index": 38,
+    "index": 37,
     "handle": "orb-pendant-bone-orb-8-hardwire",
     "title": "Orb Pendant – Orb 8 / Bone / Hardwire",
     "shortTitle": "Orb Pendant",
@@ -1601,7 +1540,7 @@
   },
   {
     "id": 7918133313706,
-    "index": 39,
+    "index": 38,
     "handle": "mushroom-table-lamp-black-plug-in",
     "title": "Mushroom Table Lamp – Black / Plug-in",
     "shortTitle": "Mushroom Table Lamp",
@@ -1636,7 +1575,7 @@
   },
   {
     "id": 7946051977386,
-    "index": 40,
+    "index": 39,
     "handle": "orb-surface-mount-reed-green-orb-8-hardwire",
     "title": "Orb Surface Mount – Orb 8 / Reed Green / Hardwire",
     "shortTitle": "Orb Surface Mount",
@@ -1692,7 +1631,7 @@
   },
   {
     "id": 8388265541802,
-    "index": 41,
+    "index": 40,
     "handle": "ceramic-up-down-sconce-black-clay-green-clay-bone-hardwire-1",
     "title": "Ceramic Up Down Sconce – Black Clay / Green Clay / Bone / Hardwire",
     "shortTitle": "Ceramic Up Down Sconce",
@@ -1737,7 +1676,7 @@
   },
   {
     "id": 7918124499114,
-    "index": 42,
+    "index": 41,
     "handle": "glass-up-down-sconce-black-hardwire",
     "title": "Glass Up Down Sconce – Black / Hardwire",
     "shortTitle": "Glass Up Down Sconce",
@@ -1774,7 +1713,7 @@
   },
   {
     "id": 7918137147562,
-    "index": 43,
+    "index": 42,
     "handle": "orb-table-lamp-bone-orb-5-plug-in",
     "title": "Orb Table Lamp – Orb 5 / Bone / Plug-in",
     "shortTitle": "Orb Table Lamp",
@@ -1809,7 +1748,7 @@
   },
   {
     "id": 7946057842858,
-    "index": 44,
+    "index": 43,
     "handle": "puck-pendant-oxide-red-hardwire",
     "title": "Puck Pendant – Oxide Red / Hardwire",
     "shortTitle": "Puck Pendant",
@@ -1846,7 +1785,7 @@
   },
   {
     "id": 7918159364266,
-    "index": 45,
+    "index": 44,
     "handle": "puck-table-lamp-bone-plug-in",
     "title": "Puck Table Lamp – Bone / Plug-in",
     "shortTitle": "Puck Table Lamp",
@@ -1881,7 +1820,7 @@
   },
   {
     "id": 7917882966186,
-    "index": 46,
+    "index": 45,
     "handle": "ceramic-disc-pendant-tan-clay-blackened-brass-13-36-inches",
     "title": "Ceramic Disc Pendant – Tan Clay / Blackened Brass / 13-36 inches",
     "shortTitle": "Ceramic Disc Pendant",
@@ -1916,7 +1855,7 @@
   },
   {
     "id": 7917878247594,
-    "index": 47,
+    "index": 46,
     "handle": "ceramic-disc-surface-mount-terracotta-peach-hardwire",
     "title": "Ceramic Disc Surface Mount – Terracotta / Peach / Hardwire",
     "shortTitle": "Ceramic Disc Surface Mount",
@@ -1954,7 +1893,7 @@
   },
   {
     "id": 7917987397802,
-    "index": 48,
+    "index": 47,
     "handle": "disc-pendant-medium-sandblasted-amber-patina-brass-13-36-inches",
     "title": "Disc Pendant – Medium / Sandblasted Amber / Patina Brass / 13-36 inches",
     "shortTitle": "Disc Pendant",
@@ -1989,7 +1928,7 @@
   },
   {
     "id": 7917974454442,
-    "index": 49,
+    "index": 48,
     "handle": "disc-surface-mount-medium-opaline-red-rim-blackened-brass-hardwire",
     "title": "Disc Surface Mount – Medium / Opaline, Red Rim / Blackened Brass / Hardwire",
     "shortTitle": "Disc Surface Mount",
@@ -2027,7 +1966,7 @@
   },
   {
     "id": 7946050633898,
-    "index": 50,
+    "index": 49,
     "handle": "ridge-surface-mount-pool",
     "title": "Ridge Surface Mount – Pool / Driver Included",
     "shortTitle": "Ridge Surface Mount",
@@ -2065,7 +2004,7 @@
   },
   {
     "id": 7946050994346,
-    "index": 51,
+    "index": 50,
     "handle": "ripple-sconce-bone",
     "title": "Ripple Sconce – Bone / Driver Included",
     "shortTitle": "Ripple Sconce",
@@ -2111,7 +2050,7 @@
   },
   {
     "id": 7918167130282,
-    "index": 52,
+    "index": 51,
     "handle": "eave-floor-lamp-oxide-red-black",
     "title": "Eave Floor Lamp – Oxide Red / Black",
     "shortTitle": "Eave Floor Lamp",
@@ -2146,7 +2085,7 @@
   },
   {
     "id": 7946069606570,
-    "index": 53,
+    "index": 52,
     "handle": "eave-pendant-black-orb-hardwire",
     "title": "Eave Orb Pendant – Black / Hardwire",
     "shortTitle": "Eave Orb Pendant",
@@ -2183,7 +2122,7 @@
   },
   {
     "id": 7918169260202,
-    "index": 54,
+    "index": 53,
     "handle": "eave-table-lamp-bone-oxide-red-plug-in",
     "title": "Eave Table Lamp – Bone / Oxide Red / Plug-in",
     "shortTitle": "Eave Table Lamp",
@@ -2210,7 +2149,7 @@
   },
   {
     "id": 7917754187946,
-    "index": 55,
+    "index": 54,
     "handle": "alien-low-table-lamp-terracotta-plug-in",
     "title": "Alien Low Table Lamp – Terracotta / Plug-in",
     "shortTitle": "Alien Low Table Lamp",
@@ -2245,7 +2184,7 @@
   },
   {
     "id": 7917746716842,
-    "index": 56,
+    "index": 55,
     "handle": "alien-orb-surface-mount-tan-clay-patina-brass-hardwire",
     "title": "Alien Orb Surface Mount – Tan Clay / Patina Brass / Hardwire",
     "shortTitle": "Alien Orb Surface Mount",
@@ -2283,7 +2222,7 @@
   },
   {
     "id": 7917750583466,
-    "index": 57,
+    "index": 56,
     "handle": "alien-pendant-tan-clay-brass",
     "title": "Alien Pendant – Tan Clay / Brass",
     "shortTitle": "Alien Pendant",
@@ -2318,7 +2257,7 @@
   },
   {
     "id": 7917752058026,
-    "index": 58,
+    "index": 57,
     "handle": "alien-surface-mount-terracotta-patina-brass-hardwire",
     "title": "Alien Surface Mount – Terracotta / Patina Brass / Hardwire",
     "shortTitle": "Alien Surface Mount",
@@ -2363,7 +2302,7 @@
   },
   {
     "id": 7917892141226,
-    "index": 59,
+    "index": 58,
     "handle": "ceramic-spot-pendant-black-clay-reed-green",
     "title": "Ceramic Spot Pendant – Black Clay / Reed Green",
     "shortTitle": "Ceramic Spot Pendant",
@@ -2398,7 +2337,7 @@
   },
   {
     "id": 7918011580586,
-    "index": 60,
+    "index": 59,
     "handle": "dome-pendant-black-clay-black",
     "title": "Dome Pendant – Black Clay / Black",
     "shortTitle": "Dome Pendant",
@@ -2433,7 +2372,7 @@
   },
   {
     "id": 7918012006570,
-    "index": 61,
+    "index": 60,
     "handle": "dome-table-lamp-tan-clay-black-plug-in",
     "title": "Dome Table Lamp – Tan Clay / Black / Plug-in",
     "shortTitle": "Dome Table Lamp",
@@ -2468,7 +2407,7 @@
   },
   {
     "id": 7956520632490,
-    "index": 62,
+    "index": 61,
     "handle": "fixed-down-sconce-oxide-red-hardwire",
     "title": "Fixed Down Sconce – Oxide Red / Hardwire",
     "shortTitle": "Fixed Down Sconce",
@@ -2507,7 +2446,7 @@
   },
   {
     "id": 7917776994474,
-    "index": 63,
+    "index": 62,
     "handle": "augustus-surface-mount-chestnut",
     "title": "Augustus Surface Mount – Chestnut",
     "shortTitle": "Augustus Surface Mount",
@@ -2542,7 +2481,7 @@
   },
   {
     "id": 7917785612458,
-    "index": 64,
+    "index": 63,
     "handle": "brass-calla-sconce-small-blackened-brass-patina-brass-square-backplate",
     "title": "Brass Calla Sconce – Blackened Brass / Patina Brass / Square Backplate",
     "shortTitle": "Brass Calla Sconce",
@@ -2588,7 +2527,7 @@
   },
   {
     "id": 7917788037290,
-    "index": 65,
+    "index": 64,
     "handle": "brass-gemma-sconce-small-pewter-blackened-brass-square-backplate",
     "title": "Brass Gemma Sconce – Pewter / Blackened Brass / Square Backplate",
     "shortTitle": "Brass Gemma Sconce",
@@ -2634,7 +2573,7 @@
   },
   {
     "id": 7917807730858,
-    "index": 66,
+    "index": 65,
     "handle": "calla-floor-lamp-opaline-with-pistachio-embellishments-pewter",
     "title": "Calla Floor Lamp – Opaline with Pistachio Embellishments / Pewter",
     "shortTitle": "Calla Floor Lamp",
@@ -2669,7 +2608,7 @@
   },
   {
     "id": 7918160838826,
-    "index": 67,
+    "index": 66,
     "handle": "seneca-table-lamp-large-24-in-h-lapis",
     "title": "Seneca Table Lamp – Large / Lapis",
     "shortTitle": "Seneca Table Lamp",
@@ -2704,7 +2643,7 @@
   },
   {
     "id": 7917786890410,
-    "index": 68,
+    "index": 67,
     "handle": "brass-calla-table-lamp-small-pewter-blackened-brass",
     "title": "Brass Calla Table Lamp, Small – Pewter / Blackened Brass",
     "shortTitle": "Brass Calla Table Lamp, Small",
@@ -2742,7 +2681,7 @@
   },
   {
     "id": 8395877515434,
-    "index": 69,
+    "index": 68,
     "handle": "calla-sconce-lilac-with-pistachio-embellishments-blackened-brass-medium",
     "title": "Calla Sconce – Lilac with Pistachio Embellishments / Blackened Brass / Medium / Hardwire",
     "shortTitle": "Calla Sconce",
@@ -2779,7 +2718,7 @@
   },
   {
     "id": 7948206112938,
-    "index": 70,
+    "index": 69,
     "handle": "calla-table-lamp-pistachio-with-pistachio-embellishments-blackened-brass-large",
     "title": "Calla Table Lamp – Pistachio with Pistachio Embellishments / Blackened Brass / Large",
     "shortTitle": "Calla Table Lamp",
@@ -2814,7 +2753,7 @@
   },
   {
     "id": 8395891736746,
-    "index": 71,
+    "index": 70,
     "handle": "fazzo-pendant-poppy-with-poppy-embellishments-brass-medium",
     "title": "Fazzo Pendant – Poppy with Poppy Embellishments / Brass / Medium",
     "shortTitle": "Fazzo Pendant",
@@ -2849,7 +2788,7 @@
   },
   {
     "id": 7918022033578,
-    "index": 72,
+    "index": 71,
     "handle": "fazzo-table-lamp-opaline-with-amber-embellishments-pewter",
     "title": "Fazzo Table Lamp – Opaline with Amber Embellishments / Pewter",
     "shortTitle": "Fazzo Table Lamp",
@@ -2884,7 +2823,7 @@
   },
   {
     "id": 7918050640042,
-    "index": 73,
+    "index": 72,
     "handle": "gemma-floor-lamp-opaline-with-opaline-embellishments-patina-brass",
     "title": "Gemma Floor Lamp – Opaline with Opaline Embellishments / Patina Brass",
     "shortTitle": "Gemma Floor Lamp",
@@ -2919,7 +2858,7 @@
   },
   {
     "id": 7948215713962,
-    "index": 74,
+    "index": 73,
     "handle": "gemma-sconce-opaline-with-opaline-embellishments-brass-medium",
     "title": "Gemma Sconce – Opaline with Opaline Embellishments / Brass / Medium / Hardwire",
     "shortTitle": "Gemma Sconce",
@@ -2956,7 +2895,7 @@
   },
   {
     "id": 7948212699306,
-    "index": 75,
+    "index": 74,
     "handle": "gemma-table-lamp-lilac-with-lilac-embellishments-blackened-brass-medium",
     "title": "Gemma Table Lamp – Lilac with Lilac Embellishments / Blackened Brass / Medium",
     "shortTitle": "Gemma Table Lamp",
@@ -2990,918 +2929,8 @@
     "tags": []
   },
   {
-    "id": 7918178336938,
-    "index": 76,
-    "handle": "vera-sconce-cherry-patina-brass",
-    "title": "Vera Sconce – Cherry / Patina Brass",
-    "shortTitle": "Vera Sconce",
-    "subtitle": "Cherry / Patina Brass",
-    "category": "Sconce",
-    "price": "$1850",
-    "rawPrice": 1850,
-    "url": "https://www.incommonwith.com/products/vera-sconce-cherry-patina-brass",
-    "offImage": "downloads/images/vera-sconce-cherry-patina-brass/01_off_Incommonwith_VeraSconce_FrontView_Off_PatinaBrass_Cherry_191.jpg",
-    "onImage": "downloads/images/vera-sconce-cherry-patina-brass/02_on_Incommonwith_VeraSconce_FrontView_On_PatinaBrass_Cherry_b573.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "off",
-        "fileName": "01_off_Incommonwith_VeraSconce_FrontView_Off_PatinaBrass_Cherry_191.jpg",
-        "url": "downloads/images/vera-sconce-cherry-patina-brass/01_off_Incommonwith_VeraSconce_FrontView_Off_PatinaBrass_Cherry_191.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "on",
-        "fileName": "02_on_Incommonwith_VeraSconce_FrontView_On_PatinaBrass_Cherry_b573.jpg",
-        "url": "downloads/images/vera-sconce-cherry-patina-brass/02_on_Incommonwith_VeraSconce_FrontView_On_PatinaBrass_Cherry_b573.jpg",
-        "width": 2000,
-        "height": 2500
-      }
-    ],
-    "variantsCount": 1,
-    "tags": [
-      "ADA",
-      "Surface Mount"
-    ]
-  },
-  {
-    "id": 7917770080426,
-    "index": 77,
-    "handle": "augustus-pendant",
-    "title": "Augustus Pendant",
-    "shortTitle": "Augustus Pendant",
-    "subtitle": "",
-    "category": "Pendant",
-    "price": "$4500",
-    "rawPrice": 4500,
-    "url": "https://www.incommonwith.com/products/augustus-pendant",
-    "offImage": "downloads/images/augustus-pendant/03_off_InCommonWith_AugustusPendant_SideView_Off_Anthracite.jpg",
-    "onImage": "downloads/images/augustus-pendant/01_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_1.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "on",
-        "fileName": "01_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_1.jpg",
-        "url": "downloads/images/augustus-pendant/01_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_1.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "on",
-        "fileName": "02_on_InCommonWith_AugustusPendant_FrontView_On_Anthracite.jpg",
-        "url": "downloads/images/augustus-pendant/02_on_InCommonWith_AugustusPendant_FrontView_On_Anthracite.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 3,
-        "state": "off",
-        "fileName": "03_off_InCommonWith_AugustusPendant_SideView_Off_Anthracite.jpg",
-        "url": "downloads/images/augustus-pendant/03_off_InCommonWith_AugustusPendant_SideView_Off_Anthracite.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 4,
-        "state": "on",
-        "fileName": "04_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_1_3f8039e2-6f3.jpg",
-        "url": "downloads/images/augustus-pendant/04_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_1_3f8039e2-6f3.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 5,
-        "state": "on",
-        "fileName": "05_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_2.jpg",
-        "url": "downloads/images/augustus-pendant/05_on_InCommonWith_AugustusPendant_FrontView_On_Ivy_2.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 6,
-        "state": "off",
-        "fileName": "06_off_InCommonWith_AugustusPendant_FrontView_Off_Stone.jpg",
-        "url": "downloads/images/augustus-pendant/06_off_InCommonWith_AugustusPendant_FrontView_Off_Stone.jpg",
-        "width": 2000,
-        "height": 2500
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 7917864583338,
-    "index": 78,
-    "handle": "cassia-pendant",
-    "title": "Cassia Pendant",
-    "shortTitle": "Cassia Pendant",
-    "subtitle": "",
-    "category": "Pendant",
-    "price": "$4000",
-    "rawPrice": 4000,
-    "url": "https://www.incommonwith.com/products/cassia-pendant",
-    "offImage": "downloads/images/cassia-pendant/04_off_InCommonWith_CassiaPendant_FrontView_Off_Lapis.jpg",
-    "onImage": "downloads/images/cassia-pendant/03_on_InCommonWith_CassiaPendant_SideView_On_Lapis_7bc289c8-36b8-4.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_InCommonWith_CassiaPendant_WilliamJessLaird.jpg",
-        "url": "downloads/images/cassia-pendant/01_view_InCommonWith_CassiaPendant_WilliamJessLaird.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_InCommonWith_CassiaPendant_WilliamJessLaird_50c3aab5-80f5-41.jpg",
-        "url": "downloads/images/cassia-pendant/02_view_InCommonWith_CassiaPendant_WilliamJessLaird_50c3aab5-80f5-41.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 3,
-        "state": "on",
-        "fileName": "03_on_InCommonWith_CassiaPendant_SideView_On_Lapis_7bc289c8-36b8-4.jpg",
-        "url": "downloads/images/cassia-pendant/03_on_InCommonWith_CassiaPendant_SideView_On_Lapis_7bc289c8-36b8-4.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 4,
-        "state": "off",
-        "fileName": "04_off_InCommonWith_CassiaPendant_FrontView_Off_Lapis.jpg",
-        "url": "downloads/images/cassia-pendant/04_off_InCommonWith_CassiaPendant_FrontView_Off_Lapis.jpg",
-        "width": 2000,
-        "height": 2499
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 7918127775914,
-    "index": 79,
-    "handle": "helena-floor-lamp",
-    "title": "Helena Floor Lamp",
-    "shortTitle": "Helena Floor Lamp",
-    "subtitle": "",
-    "category": "Floor Lamp",
-    "price": "$16000",
-    "rawPrice": 16000,
-    "url": "https://www.incommonwith.com/products/helena-floor-lamp",
-    "offImage": "downloads/images/helena-floor-lamp/04_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_1.jpg",
-    "onImage": "downloads/images/helena-floor-lamp/03_on_InCommonWith_HelenaFloorLamp_FrontView_On_Stone.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_InCommonWith_Quarters_WilliamJessLaird_26.jpg",
-        "url": "downloads/images/helena-floor-lamp/01_view_InCommonWith_Quarters_WilliamJessLaird_26.jpg",
-        "width": 2091,
-        "height": 2614
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_InCommonWith_Quarters_WilliamJessLaird_27.jpg",
-        "url": "downloads/images/helena-floor-lamp/02_view_InCommonWith_Quarters_WilliamJessLaird_27.jpg",
-        "width": 2153,
-        "height": 2692
-      },
-      {
-        "index": 3,
-        "state": "on",
-        "fileName": "03_on_InCommonWith_HelenaFloorLamp_FrontView_On_Stone.jpg",
-        "url": "downloads/images/helena-floor-lamp/03_on_InCommonWith_HelenaFloorLamp_FrontView_On_Stone.jpg",
-        "width": 2000,
-        "height": 1125
-      },
-      {
-        "index": 4,
-        "state": "off",
-        "fileName": "04_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_1.jpg",
-        "url": "downloads/images/helena-floor-lamp/04_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_1.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 5,
-        "state": "off",
-        "fileName": "05_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_2_3052f918-3.jpg",
-        "url": "downloads/images/helena-floor-lamp/05_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_2_3052f918-3.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 6,
-        "state": "off",
-        "fileName": "06_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_3.jpg",
-        "url": "downloads/images/helena-floor-lamp/06_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_3.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 7,
-        "state": "off",
-        "fileName": "07_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_4.jpg",
-        "url": "downloads/images/helena-floor-lamp/07_off_InCommonWith_HelenaFloorLamp_SideView_Off_Stone_4.jpg",
-        "width": 2000,
-        "height": 2500
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 7918128431274,
-    "index": 80,
-    "handle": "helena-table-lamp",
-    "title": "Helena Table Lamp",
-    "shortTitle": "Helena Table Lamp",
-    "subtitle": "",
-    "category": "Table Lamp",
-    "price": "$9650",
-    "rawPrice": 9650,
-    "url": "https://www.incommonwith.com/products/helena-table-lamp",
-    "offImage": "downloads/images/helena-table-lamp/02_off_InCommonWith_HelenaTableLamp_FrontView_Off_Anthracite_2d59bf.jpg",
-    "onImage": "downloads/images/helena-table-lamp/02_off_InCommonWith_HelenaTableLamp_FrontView_Off_Anthracite_2d59bf.jpg",
-    "hasOnOffPair": false,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_260504_Quarters_Lifestyle_WilliamJessLaird_EastsideLoungeCha.jpg",
-        "url": "downloads/images/helena-table-lamp/01_view_260504_Quarters_Lifestyle_WilliamJessLaird_EastsideLoungeCha.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "off",
-        "fileName": "02_off_InCommonWith_HelenaTableLamp_FrontView_Off_Anthracite_2d59bf.jpg",
-        "url": "downloads/images/helena-table-lamp/02_off_InCommonWith_HelenaTableLamp_FrontView_Off_Anthracite_2d59bf.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_260504_Quarters_Lifestyle_WilliamJessLaird_EastsideLoungeCha.jpg",
-        "url": "downloads/images/helena-table-lamp/03_view_260504_Quarters_Lifestyle_WilliamJessLaird_EastsideLoungeCha.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 4,
-        "state": "off",
-        "fileName": "04_off_InCommonWith_HelenaTableLamp_SideView_Off_Anthracite_1.jpg",
-        "url": "downloads/images/helena-table-lamp/04_off_InCommonWith_HelenaTableLamp_SideView_Off_Anthracite_1.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 5,
-        "state": "off",
-        "fileName": "05_off_InCommonWith_HelenaTableLamp_SideView_Off_Anthracite_2.jpg",
-        "url": "downloads/images/helena-table-lamp/05_off_InCommonWith_HelenaTableLamp_SideView_Off_Anthracite_2.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 6,
-        "state": "off",
-        "fileName": "06_off_InCommonWith_HelenaTableLamp_SideView_Off_Anthracite_3.jpg",
-        "url": "downloads/images/helena-table-lamp/06_off_InCommonWith_HelenaTableLamp_SideView_Off_Anthracite_3.jpg",
-        "width": 2000,
-        "height": 1334
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 8134489931946,
-    "index": 81,
-    "handle": "scala-flush-mount",
-    "title": "Scala Flush Mount",
-    "shortTitle": "Scala Flush Mount",
-    "subtitle": "",
-    "category": "Chandelier",
-    "price": "$38000",
-    "rawPrice": 38000,
-    "url": "https://www.incommonwith.com/products/scala-flush-mount",
-    "offImage": "downloads/images/scala-flush-mount/01_view_InCommonWith_Strata_Quarters_WilliamJessLaird_6.jpg",
-    "onImage": "downloads/images/scala-flush-mount/02_view_InCommonWith_Strata_Quarters_WilliamJessLaird_6_89866f64-fe5.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_InCommonWith_Strata_Quarters_WilliamJessLaird_6.jpg",
-        "url": "downloads/images/scala-flush-mount/01_view_InCommonWith_Strata_Quarters_WilliamJessLaird_6.jpg",
-        "width": 2151,
-        "height": 2688
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_InCommonWith_Strata_Quarters_WilliamJessLaird_6_89866f64-fe5.jpg",
-        "url": "downloads/images/scala-flush-mount/02_view_InCommonWith_Strata_Quarters_WilliamJessLaird_6_89866f64-fe5.jpg",
-        "width": 2151,
-        "height": 2688
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_InCommonWith_Strata_Quarters_WilliamJessLaird_5.jpg",
-        "url": "downloads/images/scala-flush-mount/03_view_InCommonWith_Strata_Quarters_WilliamJessLaird_5.jpg",
-        "width": 3155,
-        "height": 2103
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_InCommonWith_Strata_Quarters_WilliamJessLaird_45.jpg",
-        "url": "downloads/images/scala-flush-mount/04_view_InCommonWith_Strata_Quarters_WilliamJessLaird_45.jpg",
-        "width": 2111,
-        "height": 2638
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_InCommonWith_Strata_Quarters_WilliamJessLaird_46.jpg",
-        "url": "downloads/images/scala-flush-mount/05_view_InCommonWith_Strata_Quarters_WilliamJessLaird_46.jpg",
-        "width": 2006,
-        "height": 2507
-      },
-      {
-        "index": 6,
-        "state": "view",
-        "fileName": "06_view_InCommonWith_Strata_Quarters_WilliamJessLaird_47.jpg",
-        "url": "downloads/images/scala-flush-mount/06_view_InCommonWith_Strata_Quarters_WilliamJessLaird_47.jpg",
-        "width": 2081,
-        "height": 2601
-      },
-      {
-        "index": 7,
-        "state": "view",
-        "fileName": "07_view_InCommonWith_Strata_Quarters_WilliamJessLaird_48.jpg",
-        "url": "downloads/images/scala-flush-mount/07_view_InCommonWith_Strata_Quarters_WilliamJessLaird_48.jpg",
-        "width": 2157,
-        "height": 2696
-      },
-      {
-        "index": 8,
-        "state": "view",
-        "fileName": "08_view_InCommonWith_Strata_Quarters_WilliamJessLaird_49.jpg",
-        "url": "downloads/images/scala-flush-mount/08_view_InCommonWith_Strata_Quarters_WilliamJessLaird_49.jpg",
-        "width": 3062,
-        "height": 2041
-      },
-      {
-        "index": 9,
-        "state": "view",
-        "fileName": "09_view_InCommonWith_Strata_Quarters_WilliamJessLaird_50.jpg",
-        "url": "downloads/images/scala-flush-mount/09_view_InCommonWith_Strata_Quarters_WilliamJessLaird_50.jpg",
-        "width": 2151,
-        "height": 2688
-      }
-    ],
-    "variantsCount": 1,
-    "tags": [
-      "Inquiry Only",
-      "Parent"
-    ]
-  },
-  {
-    "id": 7918138818730,
-    "index": 82,
-    "handle": "paloma-pendant",
-    "title": "Paloma Pendant",
-    "shortTitle": "Paloma Pendant",
-    "subtitle": "",
-    "category": "Pendant",
-    "price": "$4000",
-    "rawPrice": 4000,
-    "url": "https://www.incommonwith.com/products/paloma-pendant",
-    "offImage": "downloads/images/paloma-pendant/01_off_InCommonWith_PalomaPendant_Large_FrontView_Off_Anthracite.jpg",
-    "onImage": "downloads/images/paloma-pendant/02_off_InCommonWith_PalomaPendant_Large_FrontView_Off_Anthracite_4e.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "off",
-        "fileName": "01_off_InCommonWith_PalomaPendant_Large_FrontView_Off_Anthracite.jpg",
-        "url": "downloads/images/paloma-pendant/01_off_InCommonWith_PalomaPendant_Large_FrontView_Off_Anthracite.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "off",
-        "fileName": "02_off_InCommonWith_PalomaPendant_Large_FrontView_Off_Anthracite_4e.jpg",
-        "url": "downloads/images/paloma-pendant/02_off_InCommonWith_PalomaPendant_Large_FrontView_Off_Anthracite_4e.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 3,
-        "state": "off",
-        "fileName": "03_off_InCommonWith_PalomaPendant_Large_SideView_Off_Anthracite.jpg",
-        "url": "downloads/images/paloma-pendant/03_off_InCommonWith_PalomaPendant_Large_SideView_Off_Anthracite.jpg",
-        "width": 2000,
-        "height": 2500
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 8290439757994,
-    "index": 83,
-    "handle": "opaline-orb-pendant-artist-edition-garden-talk",
-    "title": "Opaline Orb Pendant, Artist Edition: Garden Talk",
-    "shortTitle": "Opaline Orb Pendant, Artist Edition: Garden Talk",
-    "subtitle": "",
-    "category": "Pendant",
-    "price": "$6000",
-    "rawPrice": 6000,
-    "url": "https://www.incommonwith.com/products/opaline-orb-pendant-artist-edition-garden-talk",
-    "offImage": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-    "onImage": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2084,
-        "height": 2605
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2136,
-        "height": 2669
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/03_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2084,
-        "height": 2605
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/04_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 3054,
-        "height": 2036
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-garden-talk/05_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 3172,
-        "height": 2115
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 8290439790762,
-    "index": 84,
-    "handle": "vera-sconce-artist-edition-swans-in-love",
-    "title": "Vera Sconce, Artist Edition: Swans in Love",
-    "shortTitle": "Vera Sconce, Artist Edition: Swans in Love",
-    "subtitle": "",
-    "category": "Sconce",
-    "price": "$4800",
-    "rawPrice": 4800,
-    "url": "https://www.incommonwith.com/products/vera-sconce-artist-edition-swans-in-love",
-    "offImage": "downloads/images/vera-sconce-artist-edition-swans-in-love/01_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-    "onImage": "downloads/images/vera-sconce-artist-edition-swans-in-love/02_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/01_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 1945,
-        "height": 2432
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/02_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2058,
-        "height": 2572
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/03_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 3253,
-        "height": 2169
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/04_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2003,
-        "height": 2504
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/05_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2169,
-        "height": 2711
-      },
-      {
-        "index": 6,
-        "state": "view",
-        "fileName": "06_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/06_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2124,
-        "height": 2654
-      },
-      {
-        "index": 7,
-        "state": "view",
-        "fileName": "07_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/07_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2122,
-        "height": 2653
-      },
-      {
-        "index": 8,
-        "state": "view",
-        "fileName": "08_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/08_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2137,
-        "height": 2671
-      },
-      {
-        "index": 9,
-        "state": "view",
-        "fileName": "09_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/09_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2834,
-        "height": 1889
-      },
-      {
-        "index": 10,
-        "state": "view",
-        "fileName": "10_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "url": "downloads/images/vera-sconce-artist-edition-swans-in-love/10_view_17112025_InCommonWith_Lifestyle_Lighting_VeraSconceArtistEdi.jpg",
-        "width": 2045,
-        "height": 2557
-      }
-    ],
-    "variantsCount": 1,
-    "tags": [
-      "Surface Mount"
-    ]
-  },
-  {
-    "id": 8290439954602,
-    "index": 85,
-    "handle": "chromatic-glass-up-down-sconce-artist-edition-sakura",
-    "title": "Chromatic Glass Up Down Sconce, Artist Edition: Sakura",
-    "shortTitle": "Chromatic Glass Up Down Sconce, Artist Edition: Sakura",
-    "subtitle": "",
-    "category": "Sconce",
-    "price": "$1400",
-    "rawPrice": 1400,
-    "url": "https://www.incommonwith.com/products/chromatic-glass-up-down-sconce-artist-edition-sakura",
-    "offImage": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/01_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-    "onImage": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/02_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/01_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 2168,
-        "height": 2710
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/02_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 2172,
-        "height": 2715
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/03_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 2959,
-        "height": 1972
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/04_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 2157,
-        "height": 2696
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/05_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 2116,
-        "height": 1410
-      },
-      {
-        "index": 6,
-        "state": "view",
-        "fileName": "06_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/06_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 3109,
-        "height": 2072
-      },
-      {
-        "index": 7,
-        "state": "view",
-        "fileName": "07_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/07_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 2139,
-        "height": 2674
-      },
-      {
-        "index": 8,
-        "state": "view",
-        "fileName": "08_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "url": "downloads/images/chromatic-glass-up-down-sconce-artist-edition-sakura/08_view_17112025_InCommonWith_Lifestyle_Lighting_ChromaticUpDownScon.jpg",
-        "width": 3213,
-        "height": 2142
-      }
-    ],
-    "variantsCount": 1,
-    "tags": [
-      "Surface Mount"
-    ]
-  },
-  {
-    "id": 8290485403818,
-    "index": 86,
-    "handle": "arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never",
-    "title": "Arundel Flush Mount Mod. 36, Artist Edition: A Long Walk To Never",
-    "shortTitle": "Arundel Flush Mount Mod. 36, Artist Edition: A Long Walk To Never",
-    "subtitle": "",
-    "category": "Surface Mount",
-    "price": "$16000",
-    "rawPrice": 16000,
-    "url": "https://www.incommonwith.com/products/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never",
-    "offImage": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/01_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-    "onImage": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/02_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "url": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/01_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "width": 2086,
-        "height": 2608
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "url": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/02_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "width": 2150,
-        "height": 2687
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "url": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/03_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "width": 3073,
-        "height": 2049
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "url": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/04_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "width": 2086,
-        "height": 2608
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "url": "downloads/images/arundel-flush-mount-mod-36-artist-edition-a-long-walk-to-never/05_view_17112025_InCommonWith_Lifestyle_Lighting_ArundelFlushMountMo.jpg",
-        "width": 1798,
-        "height": 2248
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 8293953798314,
-    "index": 87,
-    "handle": "opaline-orb-pendant-artist-edition-hop-hop-friends",
-    "title": "Opaline Orb Pendant, Artist Edition: Hop-Hop & Friends",
-    "shortTitle": "Opaline Orb Pendant, Artist Edition: Hop",
-    "subtitle": "Hop & Friends",
-    "category": "Pendant",
-    "price": "$6000",
-    "rawPrice": 6000,
-    "url": "https://www.incommonwith.com/products/opaline-orb-pendant-artist-edition-hop-hop-friends",
-    "offImage": "downloads/images/opaline-orb-pendant-artist-edition-hop-hop-friends/01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-    "onImage": "downloads/images/opaline-orb-pendant-artist-edition-hop-hop-friends/02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-hop-hop-friends/01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2077,
-        "height": 2596
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-hop-hop-friends/02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2136,
-        "height": 2669
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-hop-hop-friends/03_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2077,
-        "height": 2596
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-hop-hop-friends/04_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2022,
-        "height": 2528
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 8293954093226,
-    "index": 88,
-    "handle": "opaline-orb-pendant-artist-edition-looking-up",
-    "title": "Opaline Orb Pendant, Artist Edition: Looking Up",
-    "shortTitle": "Opaline Orb Pendant, Artist Edition: Looking Up",
-    "subtitle": "",
-    "category": "Pendant",
-    "price": "$6000",
-    "rawPrice": 6000,
-    "url": "https://www.incommonwith.com/products/opaline-orb-pendant-artist-edition-looking-up",
-    "offImage": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-    "onImage": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/01_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 1545,
-        "height": 1932
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/02_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2136,
-        "height": 2669
-      },
-      {
-        "index": 3,
-        "state": "view",
-        "fileName": "03_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/03_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 1545,
-        "height": 1932
-      },
-      {
-        "index": 4,
-        "state": "view",
-        "fileName": "04_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/04_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 3178,
-        "height": 2119
-      },
-      {
-        "index": 5,
-        "state": "view",
-        "fileName": "05_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "url": "downloads/images/opaline-orb-pendant-artist-edition-looking-up/05_view_17112025_InCommonWith_Lifestyle_Lighting_OpalineOrbPendantAr.jpg",
-        "width": 2022,
-        "height": 2528
-      }
-    ],
-    "variantsCount": 1,
-    "tags": []
-  },
-  {
-    "id": 7918160904362,
-    "index": 89,
-    "handle": "simon-flush-mount",
-    "title": "Simon Flush Mount",
-    "shortTitle": "Simon Flush Mount",
-    "subtitle": "",
-    "category": "Flush Mount",
-    "price": "$2900",
-    "rawPrice": 2900,
-    "url": "https://www.incommonwith.com/products/simon-flush-mount",
-    "offImage": "downloads/images/simon-flush-mount/03_off_InCommonWith_SimonSurfaceMount_CeilingView_Off_Chestnut.jpg",
-    "onImage": "downloads/images/simon-flush-mount/05_on_InCommonWith_SimonSurfaceMount_CeilingView_On_Ivy.jpg",
-    "hasOnOffPair": true,
-    "images": [
-      {
-        "index": 1,
-        "state": "view",
-        "fileName": "01_view_InCommonWith_SimonSurfaceMount_WilliamJessLaird.jpg",
-        "url": "downloads/images/simon-flush-mount/01_view_InCommonWith_SimonSurfaceMount_WilliamJessLaird.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 2,
-        "state": "view",
-        "fileName": "02_view_InCommonWith_SimonSurfaceMount_WilliamJessLaird_1dc34961-10d.jpg",
-        "url": "downloads/images/simon-flush-mount/02_view_InCommonWith_SimonSurfaceMount_WilliamJessLaird_1dc34961-10d.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 3,
-        "state": "off",
-        "fileName": "03_off_InCommonWith_SimonSurfaceMount_CeilingView_Off_Chestnut.jpg",
-        "url": "downloads/images/simon-flush-mount/03_off_InCommonWith_SimonSurfaceMount_CeilingView_Off_Chestnut.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 4,
-        "state": "off",
-        "fileName": "04_off_InCommonWith_SimonSurfaceMount_CeilingView_Off_Ivy_75de5da5-.jpg",
-        "url": "downloads/images/simon-flush-mount/04_off_InCommonWith_SimonSurfaceMount_CeilingView_Off_Ivy_75de5da5-.jpg",
-        "width": 2000,
-        "height": 2500
-      },
-      {
-        "index": 5,
-        "state": "on",
-        "fileName": "05_on_InCommonWith_SimonSurfaceMount_CeilingView_On_Ivy.jpg",
-        "url": "downloads/images/simon-flush-mount/05_on_InCommonWith_SimonSurfaceMount_CeilingView_On_Ivy.jpg",
-        "width": 2000,
-        "height": 2500
-      }
-    ],
-    "variantsCount": 1,
-    "tags": [
-      "Surface Mount"
-    ]
-  },
-  {
     "id": 8388233887914,
-    "index": 90,
+    "index": 75,
     "handle": "ceramic-up-down-sconce-tan-clay-green-clay-black-plug-in-inline-dimmer-switch-1",
     "title": "Ceramic Up Down Sconce – Tan Clay / Green Clay / Black / Plug-in, inline dimmer switch",
     "shortTitle": "Ceramic Up Down Sconce",
@@ -3946,7 +2975,7 @@
   },
   {
     "id": 8383238439082,
-    "index": 91,
+    "index": 76,
     "handle": "up-down-sconce-bone-reed-green-black-slim-1",
     "title": "Up Down Sconce – Bone / Reed Green / Black / Slim",
     "shortTitle": "Up Down Sconce",
@@ -3992,7 +3021,7 @@
   },
   {
     "id": 7917966753962,
-    "index": 92,
+    "index": 77,
     "handle": "chromatic-glass-up-down-sconce-pistachio-reed-green-plug-in-inline-dimmer-switch",
     "title": "Chromatic Glass Up Down Sconce – Pistachio / Reed Green / Plug-in, inline dimmer switch",
     "shortTitle": "Chromatic Glass Up Down Sconce",
@@ -4029,7 +3058,7 @@
   },
   {
     "id": 8383274778794,
-    "index": 93,
+    "index": 78,
     "handle": "up-down-sconce-bone-bone-reed-green-plug-in-inline-dimmer-switch-1",
     "title": "Up Down Sconce – Bone / Bone / Reed Green / Plug-in, inline dimmer switch",
     "shortTitle": "Up Down Sconce",
@@ -4074,7 +3103,7 @@
   },
   {
     "id": 7918125777066,
-    "index": 94,
+    "index": 79,
     "handle": "glass-up-down-sconce-bone-plug-in-inline-dimmer-switch",
     "title": "Glass Up Down Sconce – Bone / Plug-in, inline dimmer switch",
     "shortTitle": "Glass Up Down Sconce",
@@ -4111,7 +3140,7 @@
   },
   {
     "id": 7918127218858,
-    "index": 95,
+    "index": 80,
     "handle": "glass-up-down-sconce-slim-oxide-red",
     "title": "Glass Up Down Sconce, Slim – Oxide Red",
     "shortTitle": "Glass Up Down Sconce, Slim",
@@ -4149,7 +3178,7 @@
   },
   {
     "id": 8388191486122,
-    "index": 96,
+    "index": 81,
     "handle": "ceramic-up-down-sconce-slim-green-clay-terracotta-pewter-1",
     "title": "Ceramic Up Down Sconce – Green Clay / Terracotta / Pewter / Slim",
     "shortTitle": "Ceramic Up Down Sconce",
@@ -4195,7 +3224,7 @@
   },
   {
     "id": 7917973078186,
-    "index": 97,
+    "index": 82,
     "handle": "chromatic-glass-up-down-sconce-slim-sandblasted-white-reed-green",
     "title": "Chromatic Glass Up Down Sconce, Slim – Sandblasted White / Reed Green",
     "shortTitle": "Chromatic Glass Up Down Sconce, Slim",
@@ -4229,27 +3258,6 @@
     "tags": [
       "ADA",
       "New",
-      "Surface Mount"
-    ]
-  },
-  {
-    "id": 8602033193130,
-    "index": 98,
-    "handle": "vera-sconce-artist-edition-swans-in-love-copy",
-    "title": "Vera Sconce, Artist Edition: Custom - Sun",
-    "shortTitle": "Vera Sconce, Artist Edition: Custom",
-    "subtitle": "Sun",
-    "category": "Customization",
-    "price": "$3850",
-    "rawPrice": 3850,
-    "url": "https://www.incommonwith.com/products/vera-sconce-artist-edition-swans-in-love-copy",
-    "offImage": null,
-    "onImage": null,
-    "hasOnOffPair": null,
-    "images": [],
-    "variantsCount": 1,
-    "tags": [
-      "Hidden",
       "Surface Mount"
     ]
   }
