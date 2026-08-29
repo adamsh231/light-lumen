@@ -84,6 +84,8 @@ export function handleRouteChange() {
     }
 
     state.currentView = 'studio';
+    document.documentElement.classList.add('route-studio');
+    document.documentElement.classList.remove('route-gallery');
 
     if (studioViewPanel) studioViewPanel.classList.add('active');
     if (galleryViewPanel) galleryViewPanel.classList.remove('active');
@@ -98,6 +100,8 @@ export function handleRouteChange() {
   } else {
     // Default: Gallery Collection View
     state.currentView = 'gallery';
+    document.documentElement.classList.add('route-gallery');
+    document.documentElement.classList.remove('route-studio');
 
     if (studioViewPanel) studioViewPanel.classList.remove('active');
     if (galleryViewPanel) galleryViewPanel.classList.add('active');

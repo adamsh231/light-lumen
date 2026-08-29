@@ -572,7 +572,6 @@ body.dark-mode .dock-nav-btn {
 
 .dock-nav-btn:hover {
   background: rgba(0, 0, 0, 0.08);
-  transform: scale(1.06);
 }
 
 body.dark-mode .dock-nav-btn:hover {
@@ -634,11 +633,11 @@ body.dark-mode .studio-dock-slider {
   background: #f59e0b;
   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   cursor: pointer;
-  transition: transform 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .studio-dock-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 .studio-dimmer-percent {

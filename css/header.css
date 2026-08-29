@@ -162,7 +162,7 @@ body.dark-mode .icon-btn:hover {
 }
 
 /* ==========================================================================
-   VIEW CONTAINER PANELS
+   VIEW CONTAINER PANELS (ZERO-BLINK SYNCHRONOUS ROUTING)
    ========================================================================== */
 .view-panel {
   position: relative;
@@ -175,10 +175,30 @@ body.dark-mode .icon-btn:hover {
 .view-panel.active {
   display: flex;
   flex-direction: column;
-  animation: fadeIn 0.35s var(--ease-out);
+}
+
+/* Hardcoded Zero-Blink View Guarantees on Refresh */
+html.route-studio #galleryViewPanel,
+html.route-studio #galleryFloatingDockWrapper {
+  display: none !important;
+}
+
+html.route-gallery #studioViewPanel,
+html.route-gallery #studioFloatingDockWrapper {
+  display: none !important;
+}
+
+#galleryViewPanel:not(.active),
+#galleryViewPanel:not(.active) #galleryFloatingDockWrapper {
+  display: none !important;
+}
+
+#studioViewPanel:not(.active),
+#studioViewPanel:not(.active) #studioFloatingDockWrapper {
+  display: none !important;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
