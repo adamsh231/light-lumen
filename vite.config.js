@@ -22,7 +22,7 @@ function copyDownloadsPlugin() {
 
 export default defineConfig({
   root: './',
-  base: './',
+  base: '/',
   plugins: [copyDownloadsPlugin()],
   server: {
     port: 5173,
