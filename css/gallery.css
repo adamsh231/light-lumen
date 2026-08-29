@@ -172,19 +172,17 @@ body.dark-mode .dock-search-input:focus {
   opacity: 1;
 }
 
-/* Segment 2: Custom Category Select */
-.dock-category-segment {
+/* Segment 2: Custom Glassmorphism Category Dropdown */
+.dock-category-segment.custom-dropdown {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
-.dock-category-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.dock-category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   height: 34px;
-  padding: 0 1.9rem 0 0.85rem;
+  padding: 0 0.75rem;
   border-radius: 999px;
   border: 1px solid transparent;
   background-color: rgba(0, 0, 0, 0.04);
@@ -194,30 +192,157 @@ body.dark-mode .dock-search-input:focus {
   color: var(--text-primary-light);
   outline: none;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 9px center;
-  background-size: 10px 10px;
   transition: all 0.2s ease;
 }
 
-body.dark-mode .dock-category-select {
+body.dark-mode .dock-category-btn {
   background-color: rgba(255, 255, 255, 0.05);
   color: var(--text-primary-dark);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23aaaaaa' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
-.dock-category-select:hover {
-  background-color: rgba(0, 0, 0, 0.07);
+.dock-category-btn:hover,
+.dock-category-btn.active {
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
-body.dark-mode .dock-category-select:hover {
-  background-color: rgba(255, 255, 255, 0.09);
+body.dark-mode .dock-category-btn:hover,
+body.dark-mode .dock-category-btn.active {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.dock-category-select:focus {
-  border-color: rgba(245, 158, 11, 0.4);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+.category-btn-badge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.42rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-secondary-light);
+}
+
+body.dark-mode .category-btn-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary-dark);
+}
+
+.dock-category-btn .chevron-arrow {
+  transition: transform 0.25s var(--ease-spring);
+}
+
+.dock-category-btn.active .chevron-arrow {
+  transform: rotate(180deg);
+}
+
+/* Custom Dropdown Menu (Opens Upward Above Dock) */
+.custom-dropdown-menu.upward-menu {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  padding: 0.6rem;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2), 0 6px 16px rgba(0, 0, 0, 0.08);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  animation: popoverFadeInUp 0.2s var(--ease-out);
+}
+
+body.dark-mode .custom-dropdown-menu.upward-menu {
+  background: rgba(24, 24, 28, 0.98);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.custom-dropdown-menu.open {
+  display: flex;
+}
+
+.dropdown-menu-header {
+  padding: 0.35rem 0.55rem 0.45rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 0.25rem;
+}
+
+body.dark-mode .dropdown-menu-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-menu-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary-light);
+}
+
+body.dark-mode .dropdown-menu-title {
+  color: var(--text-secondary-dark);
+}
+
+.dropdown-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.48rem 0.65rem;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-primary-light);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+body.dark-mode .dropdown-option {
+  color: var(--text-primary-dark);
+}
+
+.dropdown-option:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateX(2px);
+}
+
+body.dark-mode .dropdown-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-option.active {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  font-weight: 700;
+}
+
+body.dark-mode .dropdown-option.active {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+}
+
+.dropdown-option .option-count {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.6;
 }
 
 /* Segment 3: Grid Switcher */

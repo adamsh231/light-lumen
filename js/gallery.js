@@ -251,7 +251,6 @@ export function renderGalleryGrid() {
 
 export function setGridColumns(cols) {
   const { state } = getStore();
-  const { showToast } = getToast();
   state.galleryGridCols = cols;
 
   const lampProductsGrid = document.getElementById('lampProductsGrid');
@@ -262,16 +261,20 @@ export function setGridColumns(cols) {
   document.querySelectorAll('.dock-grid-btn, .grid-col-btn').forEach(btn => {
     btn.classList.toggle('active', parseInt(btn.dataset.cols, 10) === cols);
   });
-
-  showToast(`Tata Letak Grid: ${cols} Kolom`);
 }
 
 export function initGallery() {
   const { state } = getStore();
   const lampProductsGrid = document.getElementById('lampProductsGrid');
-  const galleryCategorySelect = document.getElementById('galleryCategorySelect');
   const gallerySearchInput = document.getElementById('gallerySearchInput');
   const galleryMasterToggleBtn = document.getElementById('galleryMasterToggleBtn');
+
+  // Custom Category Dropdown Elements
+  const categoryDropdownBtn = document.getElementById('categoryDropdownBtn');
+  const categoryDropdownMenu = document.getElementById('categoryDropdownMenu');
+  const categoryBtnLabel = document.getElementById('categoryBtnLabel');
+  const categoryBtnBadge = document.getElementById('categoryBtnBadge');
+  const categoryOptions = document.querySelectorAll('.dropdown-option');
 
   // Overlay Config UI Elements
   const overlayConfigTriggerBtn = document.getElementById('overlayConfigTriggerBtn');
@@ -287,7 +290,7 @@ export function initGallery() {
     lampProductsGrid.style.setProperty('--gallery-grid-cols', state.galleryGridCols || 4);
   }
 
-  // Grid Density buttons
+  // Grid Density buttons (Silent - No alert)
   document.querySelectorAll('.dock-grid-btn, .grid-col-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const cols = parseInt(btn.dataset.cols, 10);
@@ -297,10 +300,60 @@ export function initGallery() {
     });
   });
 
+  // Custom Category Dropdown Toggle & Selection
+  if (categoryDropdownBtn && categoryDropdownMenu) {
+    categoryDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (overlayConfigPopover) {
+        overlayConfigPopover.classList.remove('open');
+        if (overlayConfigTriggerBtn) overlayConfigTriggerBtn.classList.remove('active');
+      }
+      const isOpen = categoryDropdownMenu.classList.toggle('open');
+      categoryDropdownBtn.classList.toggle('active', isOpen);
+      categoryDropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    categoryOptions.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const cat = opt.dataset.cat;
+        state.galleryFilter = cat;
+        categoryOptions.forEach(o => {
+          const isCurrent = o.dataset.cat === cat;
+          o.classList.toggle('active', isCurrent);
+          o.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+        });
+
+        const nameSpan = opt.querySelector('.option-name');
+        const countSpan = opt.querySelector('.option-count');
+        if (categoryBtnLabel && nameSpan) categoryBtnLabel.textContent = nameSpan.textContent;
+        if (categoryBtnBadge && countSpan) categoryBtnBadge.textContent = countSpan.textContent;
+
+        categoryDropdownMenu.classList.remove('open');
+        categoryDropdownBtn.classList.remove('active');
+        categoryDropdownBtn.setAttribute('aria-expanded', 'false');
+
+        renderGalleryGrid();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!categoryDropdownMenu.contains(e.target) && e.target !== categoryDropdownBtn) {
+        categoryDropdownMenu.classList.remove('open');
+        categoryDropdownBtn.classList.remove('active');
+        categoryDropdownBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   // Overlay Popover Toggle
   if (overlayConfigTriggerBtn && overlayConfigPopover) {
     overlayConfigTriggerBtn.addEventListener('click', (e) => {
       e.stopPropagation();
+      if (categoryDropdownMenu) {
+        categoryDropdownMenu.classList.remove('open');
+        if (categoryDropdownBtn) categoryDropdownBtn.classList.remove('active');
+      }
       const isOpen = overlayConfigPopover.classList.toggle('open');
       overlayConfigTriggerBtn.classList.toggle('active', isOpen);
       overlayConfigTriggerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -342,14 +395,6 @@ export function initGallery() {
       cfg.showStudioBtn = newState;
       cfg.showTopBar = newState;
       applyOverlayVisibilityConfig();
-    });
-  }
-
-  if (galleryCategorySelect) {
-    galleryCategorySelect.value = state.galleryFilter || 'all';
-    galleryCategorySelect.addEventListener('change', (e) => {
-      state.galleryFilter = e.target.value;
-      renderGalleryGrid();
     });
   }
 

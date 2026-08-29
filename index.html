@@ -238,19 +238,58 @@
 
         <span class="dock-divider" aria-hidden="true"></span>
 
-        <!-- Category Dropdown Segment -->
-        <div class="dock-category-segment">
-          <select class="dock-category-select" id="galleryCategorySelect" aria-label="Filter Kategori">
-            <option value="all" selected>Semua Kategori (82)</option>
-            <option value="Surface Mount">Surface Mount (20)</option>
-            <option value="Pendant">Pendant (18)</option>
-            <option value="Sconce">Sconce (15)</option>
-            <option value="Table Lamp">Table Lamp (15)</option>
-            <option value="Floor Lamp">Floor Lamp (4)</option>
-            <option value="Plug-in Sconce">Plug-in (4)</option>
-            <option value="ADA Sconce">ADA Sconce (4)</option>
-            <option value="Chandelier">Chandelier (2)</option>
-          </select>
+        <!-- Custom Category Dropdown Segment -->
+        <div class="dock-category-segment custom-dropdown" id="categoryDropdownWrapper">
+          <button type="button" class="dock-category-btn" id="categoryDropdownBtn" aria-haspopup="listbox" aria-expanded="false" title="Pilih Kategori">
+            <span class="category-btn-label" id="categoryBtnLabel">Semua Kategori</span>
+            <span class="category-btn-badge" id="categoryBtnBadge">82</span>
+            <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <!-- Custom Glassmorphism Dropdown Menu (Opens Upward Above Dock) -->
+          <div class="custom-dropdown-menu upward-menu" id="categoryDropdownMenu" role="listbox" aria-label="Daftar Kategori Lampu">
+            <div class="dropdown-menu-header">
+              <span class="dropdown-menu-title">KATEGORI KOLEKSI</span>
+            </div>
+            <div class="dropdown-options-list" id="categoryOptionsList">
+              <button type="button" class="dropdown-option active" role="option" data-cat="all" aria-selected="true">
+                <span class="option-name">Semua Kategori</span>
+                <span class="option-count">82</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Surface Mount">
+                <span class="option-name">Surface Mount</span>
+                <span class="option-count">20</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Pendant">
+                <span class="option-name">Pendant</span>
+                <span class="option-count">18</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Sconce">
+                <span class="option-name">Sconce</span>
+                <span class="option-count">15</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Table Lamp">
+                <span class="option-name">Table Lamp</span>
+                <span class="option-count">15</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Floor Lamp">
+                <span class="option-name">Floor Lamp</span>
+                <span class="option-count">4</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Plug-in Sconce">
+                <span class="option-name">Plug-in Sconce</span>
+                <span class="option-count">4</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="ADA Sconce">
+                <span class="option-name">ADA Sconce</span>
+                <span class="option-count">4</span>
+              </button>
+              <button type="button" class="dropdown-option" role="option" data-cat="Chandelier">
+                <span class="option-name">Chandelier</span>
+                <span class="option-count">2</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <span class="dock-divider" aria-hidden="true"></span>
