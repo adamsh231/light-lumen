@@ -677,32 +677,6 @@ body.dark-mode .tile-quick-toggle-btn {
   opacity: 0;
 }
 
-/* Floating State Indicator Pill on Hover */
-.tile-hover-state-pill {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.25s ease;
-  z-index: 14;
-  backdrop-filter: blur(8px);
-}
-
-.lamp-tile:hover .tile-hover-state-pill {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
 /* ==========================================================================
    BOTTOM OVERLAY: NAMA & HARGA DI ATAS GAMBAR DI BAGIAN BAWAH
    ========================================================================== */

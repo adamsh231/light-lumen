@@ -77,11 +77,6 @@ export function toggleMasterGallerySwitch() {
     const isLit = state.litLamps.has(lampId);
     tile.classList.toggle('is-lit', isLit);
 
-    const pill = tile.querySelector('.tile-hover-state-pill');
-    if (pill) {
-      pill.textContent = isLit ? 'HOVER: SISI OFF' : 'HOVER: SISI ON';
-    }
-
     const quickBtn = tile.querySelector('.tile-quick-toggle-btn');
     if (quickBtn) {
       quickBtn.title = isLit ? 'Matikan Lampu' : 'Nyalakan Lampu';
@@ -171,9 +166,6 @@ export function renderGalleryGrid() {
         </button>
       </div>
 
-      <!-- Hover State Floating Pill -->
-      <div class="tile-hover-state-pill">${isLit ? 'HOVER: SISI OFF' : 'HOVER: SISI ON'}</div>
-
       <!-- Bottom Content Overlay: Nama & Harga di Atas Gambar di Bawah -->
       <div class="tile-bottom-overlay">
         <div class="tile-category-label">${lamp.category}</div>
@@ -203,9 +195,7 @@ export function renderGalleryGrid() {
         playSwitchSound('on');
       }
 
-      const pill = tile.querySelector('.tile-hover-state-pill');
       const nowLit = state.litLamps.has(lamp.id);
-      if (pill) pill.textContent = nowLit ? 'HOVER: SISI OFF' : 'HOVER: SISI ON';
       miniToggle.title = nowLit ? 'Matikan Lampu' : 'Nyalakan Lampu';
 
       updateMasterSwitchUI();
