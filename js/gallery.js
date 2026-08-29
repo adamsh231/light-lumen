@@ -1,5 +1,5 @@
 /**
- * Atelier Lumen — All Lighting Collection (Full-Bleed Mosaic, Hover Flip, Master Switch)
+ * Atelier Lumen — All Lighting Collection (Full-Bleed Mosaic, Hover Flip, Master Switch, Overlay Visibility Config)
  */
 import { AppStore } from './state.js';
 import { AppAudio } from './audio.js';
@@ -55,7 +55,6 @@ export function updateMasterSwitchUI() {
 export function toggleMasterGallerySwitch() {
   const { catalog, state } = getStore();
   const { playSwitchSound } = getAudio();
-  const { showToast } = getToast();
 
   const totalCount = catalog.length;
   const allLit = state.litLamps.size === totalCount;
@@ -104,6 +103,45 @@ export function openLampInStudio(lampId) {
   }
 }
 
+export function applyOverlayVisibilityConfig() {
+  const { state } = getStore();
+  const cfg = state.overlayConfig || {
+    showTitle: false,
+    showCategory: false,
+    showPrice: false,
+    showStudioBtn: false,
+    showTopBar: false
+  };
+
+  const lampProductsGrid = document.getElementById('lampProductsGrid');
+  if (lampProductsGrid) {
+    lampProductsGrid.classList.toggle('show-title', !!cfg.showTitle);
+    lampProductsGrid.classList.toggle('show-category', !!cfg.showCategory);
+    lampProductsGrid.classList.toggle('show-price', !!cfg.showPrice);
+    lampProductsGrid.classList.toggle('show-studio-btn', !!cfg.showStudioBtn);
+    lampProductsGrid.classList.toggle('show-top-bar', !!cfg.showTopBar);
+  }
+
+  // Update Checkboxes in Popover if present
+  const checkTitle = document.getElementById('overlayCheckTitle');
+  const checkCategory = document.getElementById('overlayCheckCategory');
+  const checkPrice = document.getElementById('overlayCheckPrice');
+  const checkStudio = document.getElementById('overlayCheckStudio');
+  const checkTopBar = document.getElementById('overlayCheckTopBar');
+  const toggleAllBtn = document.getElementById('overlayToggleAllBtn');
+
+  if (checkTitle) checkTitle.checked = !!cfg.showTitle;
+  if (checkCategory) checkCategory.checked = !!cfg.showCategory;
+  if (checkPrice) checkPrice.checked = !!cfg.showPrice;
+  if (checkStudio) checkStudio.checked = !!cfg.showStudioBtn;
+  if (checkTopBar) checkTopBar.checked = !!cfg.showTopBar;
+
+  const allActive = cfg.showTitle && cfg.showCategory && cfg.showPrice && cfg.showStudioBtn && cfg.showTopBar;
+  if (toggleAllBtn) {
+    toggleAllBtn.textContent = allActive ? 'Sembunyikan Semua' : 'Tampilkan Semua';
+  }
+}
+
 export function renderGalleryGrid() {
   const lampProductsGrid = document.getElementById('lampProductsGrid');
   if (!lampProductsGrid) return;
@@ -127,6 +165,7 @@ export function renderGalleryGrid() {
   }
 
   updateMasterSwitchUI();
+  applyOverlayVisibilityConfig();
 
   if (filtered.length === 0) {
     lampProductsGrid.innerHTML = `
@@ -183,30 +222,34 @@ export function renderGalleryGrid() {
 
     // Quick mini switch on tile
     const miniToggle = tile.querySelector('.tile-quick-toggle-btn');
-    miniToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (state.litLamps.has(lamp.id)) {
-        state.litLamps.delete(lamp.id);
-        tile.classList.remove('is-lit');
-        playSwitchSound('off');
-      } else {
-        state.litLamps.add(lamp.id);
-        tile.classList.add('is-lit');
-        playSwitchSound('on');
-      }
+    if (miniToggle) {
+      miniToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (state.litLamps.has(lamp.id)) {
+          state.litLamps.delete(lamp.id);
+          tile.classList.remove('is-lit');
+          playSwitchSound('off');
+        } else {
+          state.litLamps.add(lamp.id);
+          tile.classList.add('is-lit');
+          playSwitchSound('on');
+        }
 
-      const nowLit = state.litLamps.has(lamp.id);
-      miniToggle.title = nowLit ? 'Matikan Lampu' : 'Nyalakan Lampu';
+        const nowLit = state.litLamps.has(lamp.id);
+        miniToggle.title = nowLit ? 'Matikan Lampu' : 'Nyalakan Lampu';
 
-      updateMasterSwitchUI();
-    });
+        updateMasterSwitchUI();
+      });
+    }
 
     // Studio opener button click
     const studioBtn = tile.querySelector('.tile-studio-link-btn');
-    studioBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLampInStudio(lamp.id);
-    });
+    if (studioBtn) {
+      studioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLampInStudio(lamp.id);
+      });
+    }
 
     // Entire Tile Click
     tile.addEventListener('click', () => {
@@ -242,6 +285,16 @@ export function initGallery() {
   const gallerySortSelect = document.getElementById('gallerySortSelect');
   const galleryMasterToggleBtn = document.getElementById('galleryMasterToggleBtn');
 
+  // Overlay Config UI Elements
+  const overlayConfigTriggerBtn = document.getElementById('overlayConfigTriggerBtn');
+  const overlayConfigPopover = document.getElementById('overlayConfigPopover');
+  const overlayToggleAllBtn = document.getElementById('overlayToggleAllBtn');
+  const checkTitle = document.getElementById('overlayCheckTitle');
+  const checkCategory = document.getElementById('overlayCheckCategory');
+  const checkPrice = document.getElementById('overlayCheckPrice');
+  const checkStudio = document.getElementById('overlayCheckStudio');
+  const checkTopBar = document.getElementById('overlayCheckTopBar');
+
   if (lampProductsGrid) {
     lampProductsGrid.style.setProperty('--gallery-grid-cols', state.galleryGridCols || 4);
   }
@@ -255,6 +308,54 @@ export function initGallery() {
       }
     });
   });
+
+  // Overlay Popover Toggle
+  if (overlayConfigTriggerBtn && overlayConfigPopover) {
+    overlayConfigTriggerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = overlayConfigPopover.classList.toggle('open');
+      overlayConfigTriggerBtn.classList.toggle('active', isOpen);
+      overlayConfigTriggerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!overlayConfigPopover.contains(e.target) && e.target !== overlayConfigTriggerBtn) {
+        overlayConfigPopover.classList.remove('open');
+        overlayConfigTriggerBtn.classList.remove('active');
+        overlayConfigTriggerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Overlay Checkboxes
+  function bindCheckbox(el, key) {
+    if (!el) return;
+    el.addEventListener('change', () => {
+      state.overlayConfig[key] = el.checked;
+      applyOverlayVisibilityConfig();
+    });
+  }
+
+  bindCheckbox(checkTitle, 'showTitle');
+  bindCheckbox(checkCategory, 'showCategory');
+  bindCheckbox(checkPrice, 'showPrice');
+  bindCheckbox(checkStudio, 'showStudioBtn');
+  bindCheckbox(checkTopBar, 'showTopBar');
+
+  if (overlayToggleAllBtn) {
+    overlayToggleAllBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cfg = state.overlayConfig;
+      const allActive = cfg.showTitle && cfg.showCategory && cfg.showPrice && cfg.showStudioBtn && cfg.showTopBar;
+      const newState = !allActive;
+      cfg.showTitle = newState;
+      cfg.showCategory = newState;
+      cfg.showPrice = newState;
+      cfg.showStudioBtn = newState;
+      cfg.showTopBar = newState;
+      applyOverlayVisibilityConfig();
+    });
+  }
 
   if (categoryPillsRow) {
     categoryPillsRow.addEventListener('click', (e) => {
@@ -297,6 +398,7 @@ export const AppGallery = {
   setGridColumns,
   updateMasterSwitchUI,
   toggleMasterGallerySwitch,
+  applyOverlayVisibilityConfig,
   openLampInStudio
 };
 

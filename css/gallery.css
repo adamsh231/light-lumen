@@ -775,3 +775,238 @@ body.dark-mode .tile-quick-toggle-btn {
   width: 12px;
   height: 12px;
 }
+
+/* ==========================================================================
+   OVERLAY VISIBILITY TOGGLES (DEFAULT: HIDE ALL)
+   ========================================================================== */
+.lamp-products-grid:not(.show-title) .tile-lamp-title {
+  display: none !important;
+}
+
+.lamp-products-grid:not(.show-category) .tile-category-label,
+.lamp-products-grid:not(.show-category) .tile-category-pill {
+  display: none !important;
+}
+
+.lamp-products-grid:not(.show-price) .tile-price-tag {
+  display: none !important;
+}
+
+.lamp-products-grid:not(.show-studio-btn) .tile-studio-link-btn {
+  display: none !important;
+}
+
+.lamp-products-grid:not(.show-top-bar) .tile-top-bar {
+  display: none !important;
+}
+
+/* Hide price row if both price and studio are hidden */
+.lamp-products-grid:not(.show-price):not(.show-studio-btn) .tile-price-action-row {
+  display: none !important;
+}
+
+/* Hide entire bottom overlay if title, category, price, and studio are all hidden */
+.lamp-products-grid:not(.show-title):not(.show-category):not(.show-price):not(.show-studio-btn) .tile-bottom-overlay {
+  display: none !important;
+}
+
+/* Overlay Configuration Popover Menu */
+.overlay-config-menu-wrapper {
+  position: relative;
+}
+
+.overlay-config-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-primary-light);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s var(--ease-smooth);
+}
+
+body.dark-mode .overlay-config-trigger-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary-dark);
+}
+
+.overlay-config-trigger-btn:hover,
+.overlay-config-trigger-btn.active {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+body.dark-mode .overlay-config-trigger-btn:hover,
+body.dark-mode .overlay-config-trigger-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-config-trigger-btn .chevron-arrow {
+  transition: transform 0.2s ease;
+}
+
+.overlay-config-trigger-btn.active .chevron-arrow {
+  transform: rotate(180deg);
+}
+
+/* Floating Popover */
+.overlay-config-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 250px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: popoverFadeIn 0.2s var(--ease-out);
+}
+
+body.dark-mode .overlay-config-popover {
+  background: rgba(24, 24, 28, 0.94);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-config-popover.open {
+  display: flex;
+}
+
+@keyframes popoverFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.overlay-popover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+body.dark-mode .overlay-popover-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.overlay-popover-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary-light);
+}
+
+body.dark-mode .overlay-popover-title {
+  color: var(--text-secondary-dark);
+}
+
+.overlay-popover-toggle-all {
+  background: none;
+  border: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--amber-warm);
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.overlay-popover-toggle-all:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.overlay-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.overlay-option-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.35rem 0.25rem;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.overlay-option-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body.dark-mode .overlay-option-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.overlay-option-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-primary-light);
+}
+
+body.dark-mode .overlay-option-label {
+  color: var(--text-primary-dark);
+}
+
+.overlay-checkbox-input {
+  display: none;
+}
+
+.overlay-switch-slider {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  transition: background 0.25s ease;
+}
+
+body.dark-mode .overlay-switch-slider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.overlay-switch-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.overlay-checkbox-input:checked + .overlay-switch-slider {
+  background: var(--amber-warm);
+}
+
+.overlay-checkbox-input:checked + .overlay-switch-slider::after {
+  transform: translateX(14px);
+}

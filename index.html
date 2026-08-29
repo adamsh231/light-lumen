@@ -276,6 +276,55 @@
             </div>
           </div>
 
+          <!-- Overlay Visibility Customizer Popover -->
+          <div class="overlay-config-menu-wrapper" id="overlayConfigMenuWrapper">
+            <button type="button" class="overlay-config-trigger-btn" id="overlayConfigTriggerBtn" aria-expanded="false" title="Pengaturan Tampilan Info (Overlay)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Info Grid</span>
+              <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <!-- Floating Glassmorphism Popover -->
+            <div class="overlay-config-popover" id="overlayConfigPopover" role="dialog" aria-label="Pengaturan Tampilan Overlay Grid">
+              <div class="overlay-popover-header">
+                <span class="overlay-popover-title">TAMPILAN OVERLAY</span>
+                <button type="button" class="overlay-popover-toggle-all" id="overlayToggleAllBtn">Tampilkan Semua</button>
+              </div>
+
+              <div class="overlay-options-list">
+                <label class="overlay-option-item">
+                  <span class="overlay-option-label">Nama Produk</span>
+                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTitle">
+                  <span class="overlay-switch-slider"></span>
+                </label>
+
+                <label class="overlay-option-item">
+                  <span class="overlay-option-label">Kategori / Label</span>
+                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckCategory">
+                  <span class="overlay-switch-slider"></span>
+                </label>
+
+                <label class="overlay-option-item">
+                  <span class="overlay-option-label">Harga Lampu</span>
+                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckPrice">
+                  <span class="overlay-switch-slider"></span>
+                </label>
+
+                <label class="overlay-option-item">
+                  <span class="overlay-option-label">Tombol Studio</span>
+                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckStudio">
+                  <span class="overlay-switch-slider"></span>
+                </label>
+
+                <label class="overlay-option-item">
+                  <span class="overlay-option-label">Pojok Kanan Atas</span>
+                  <input type="checkbox" class="overlay-checkbox-input" id="overlayCheckTopBar">
+                  <span class="overlay-switch-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
           <!-- Sort Select (By Name Only) -->
           <select class="gallery-sort-select" id="gallerySortSelect" aria-label="Urutkan nama koleksi">
             <option value="name-asc" selected>Nama: A ke Z</option>

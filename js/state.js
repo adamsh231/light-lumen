@@ -20,7 +20,15 @@ export const state = {
   gallerySort: 'name-asc',
   galleryGridCols: 4,
   galleryMasterOn: false,
-  litLamps: new Set()
+  litLamps: new Set(),
+  // Custom Overlay Visibility (Default: ALL FALSE / HIDDEN)
+  overlayConfig: {
+    showTitle: false,
+    showCategory: false,
+    showPrice: false,
+    showStudioBtn: false,
+    showTopBar: false
+  }
 };
 
 export const colorPalettes = {
