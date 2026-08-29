@@ -5,7 +5,6 @@ import { AppStore } from './state.js';
 import { AppToast } from './toast.js';
 import { AppStudio } from './studio.js';
 import { AppGallery } from './gallery.js';
-import { AppDrawer } from './drawer.js';
 import { AppRouter } from './router.js';
 
 function getStore() {
@@ -127,12 +126,6 @@ export function initApp() {
     AppGallery.initGallery();
   }
 
-  if (window.AppDrawer && window.AppDrawer.initDrawer) {
-    window.AppDrawer.initDrawer();
-  } else if (AppDrawer && AppDrawer.initDrawer) {
-    AppDrawer.initDrawer();
-  }
-
   // Initialize SPA Router
   if (window.AppRouter && window.AppRouter.initRouter) {
     window.AppRouter.initRouter();
@@ -188,9 +181,6 @@ export function initApp() {
         if (window.AppRouter && lamp) window.AppRouter.navigate('/studio/' + lamp.handle);
         else switchView('studio');
       }
-    } else if (e.key === 'Escape') {
-      const backdrop = document.getElementById('lampDrawerBackdrop');
-      if (backdrop) backdrop.classList.remove('open');
     }
   });
 }

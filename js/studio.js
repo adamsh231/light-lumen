@@ -244,10 +244,6 @@ export function loadLampIntoStudio(index, updateRoute = false, showNotification 
       imgOn.onload = () => applyGlowPalette(extractColorsFromImage(imgOn));
     }
   }
-
-  if (window.AppDrawer && window.AppDrawer.updateDrawerActiveCard) {
-    window.AppDrawer.updateDrawerActiveCard();
-  }
 }
 
 export function initStudio() {

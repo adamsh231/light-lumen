@@ -24,31 +24,23 @@ export function updateMasterSwitchUI() {
   const allLit = litCount === totalCount && totalCount > 0;
   const allOff = litCount === 0;
 
-  const masterSwitchCard = document.querySelector('.gallery-master-switch-card');
-  const masterSwitchStatusText = document.getElementById('masterSwitchStatusText');
-  const masterSwitchBtnLabel = document.getElementById('masterSwitchBtnLabel');
   const galleryMasterToggleBtn = document.getElementById('galleryMasterToggleBtn');
+  const galleryCountBadge = document.getElementById('galleryCountBadge');
 
-  if (masterSwitchCard) {
-    masterSwitchCard.classList.toggle('all-lit', allLit);
-  }
-
-  if (masterSwitchStatusText) {
-    if (allLit) {
-      masterSwitchStatusText.textContent = `SEMUA NYALA (${litCount}/${totalCount})`;
-    } else if (allOff) {
-      masterSwitchStatusText.textContent = `SEMUA MATI (0/${totalCount})`;
+  if (galleryCountBadge) {
+    if (litCount > 0) {
+      galleryCountBadge.textContent = `${litCount}/${totalCount} on`;
+      galleryCountBadge.classList.add('lit');
     } else {
-      masterSwitchStatusText.textContent = `${litCount}/${totalCount} MENYALA`;
+      galleryCountBadge.textContent = `${totalCount} pieces`;
+      galleryCountBadge.classList.remove('lit');
     }
-  }
-
-  if (masterSwitchBtnLabel) {
-    masterSwitchBtnLabel.textContent = allLit ? 'MATIKAN SEMUA' : 'NYALAKAN SEMUA';
   }
 
   if (galleryMasterToggleBtn) {
     galleryMasterToggleBtn.setAttribute('aria-checked', allLit ? 'true' : (allOff ? 'false' : 'mixed'));
+    galleryMasterToggleBtn.classList.toggle('is-lit', allLit);
+    galleryMasterToggleBtn.title = allLit ? 'Matikan Semua Lampu' : 'Nyalakan Semua Lampu';
   }
 }
 
