@@ -1,8 +1,11 @@
 /**
  * Atelier Lumen — HTML5 History API SPA Router (Clean URLs without '#')
  * Provides clean paths: '/' (Collection Grid) and '/studio/:handle' (Interactive Studio)
+ * Guarantees active studio lamp persistence across page reloads.
  */
 import { AppStore } from './state.js';
+import { AppStudio } from './studio.js';
+import { AppGallery } from './gallery.js';
 
 function getStore() {
   return window.AppStore || AppStore;
@@ -59,6 +62,9 @@ export function handleRouteChange() {
   const route = parsePath();
   const { catalog, state } = getStore();
 
+  const studioViewPanel = document.getElementById('studioViewPanel');
+  const galleryViewPanel = document.getElementById('galleryViewPanel');
+
   if (route.path === 'studio') {
     if (route.param) {
       const decodedParam = decodeURIComponent(route.param).toLowerCase();
@@ -73,18 +79,32 @@ export function handleRouteChange() {
       }
     }
 
+    state.currentView = 'studio';
+
+    if (studioViewPanel) studioViewPanel.classList.add('active');
+    if (galleryViewPanel) galleryViewPanel.classList.remove('active');
+
     if (window.AppStudio && window.AppStudio.loadLampIntoStudio) {
       window.AppStudio.loadLampIntoStudio(state.activeLampIndex, false, false);
+    } else if (AppStudio && AppStudio.loadLampIntoStudio) {
+      AppStudio.loadLampIntoStudio(state.activeLampIndex, false, false);
     }
 
-    if (window.AppMain && window.AppMain.switchView) {
-      window.AppMain.switchView('studio', false);
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     // Default: Gallery Collection View
-    if (window.AppMain && window.AppMain.switchView) {
-      window.AppMain.switchView('gallery', false);
+    state.currentView = 'gallery';
+
+    if (studioViewPanel) studioViewPanel.classList.remove('active');
+    if (galleryViewPanel) galleryViewPanel.classList.add('active');
+
+    if (window.AppGallery && window.AppGallery.renderGalleryGrid) {
+      window.AppGallery.renderGalleryGrid();
+    } else if (AppGallery && AppGallery.renderGalleryGrid) {
+      AppGallery.renderGalleryGrid();
     }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 

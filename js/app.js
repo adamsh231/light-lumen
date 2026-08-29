@@ -195,15 +195,6 @@ export function initApp() {
   });
 }
 
-// Auto-init on DOM ready
-if (typeof document !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
-  } else {
-    initApp();
-  }
-}
-
 export const AppMain = {
   initApp,
   switchView
@@ -211,6 +202,15 @@ export const AppMain = {
 
 if (typeof window !== 'undefined') {
   window.AppMain = AppMain;
+}
+
+// Auto-init on DOM ready
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
 }
 
 export default AppMain;

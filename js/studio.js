@@ -1,5 +1,6 @@
 /**
  * Atelier Lumen — Interactive Studio Switch Controller
+ * Animated Dimmer Slider following cubic-bezier(0.25, 1, 0.5, 1) over 2.0s
  */
 import { AppStore } from './state.js';
 import { AppAudio } from './audio.js';
@@ -22,9 +23,53 @@ function getToast() {
   return window.AppToast || AppToast || { showToast: () => {} };
 }
 
-export function updateLighting(targetBrightness) {
+// Cubic Bezier (0.25, 1, 0.5, 1) timing solver
+function createCubicBezier(p1x, p1y, p2x, p2y) {
+  const cx = 3 * p1x;
+  const bx = 3 * (p2x - p1x) - cx;
+  const ax = 1 - cx - bx;
+
+  const cy = 3 * p1y;
+  const by = 3 * (p2y - p1y) - cy;
+  const ay = 1 - cy - by;
+
+  function sampleCurveX(t) { return ((ax * t + bx) * t + cx) * t; }
+  function sampleCurveY(t) { return ((ay * t + by) * t + cy) * t; }
+
+  function solveCurveX(x) {
+    let t0 = 0, t1 = 1, t2 = x, i;
+    for (i = 0; i < 8; i++) {
+      const x2 = sampleCurveX(t2) - x;
+      if (Math.abs(x2) < 1e-4) return t2;
+      const d2 = (3 * ax * t2 + 2 * bx) * t2 + cx;
+      if (Math.abs(d2) < 1e-5) break;
+      t2 = t2 - x2 / d2;
+    }
+    while (t0 < t1) {
+      const x2 = sampleCurveX(t2);
+      if (Math.abs(x2 - x) < 1e-4) return t2;
+      if (x > x2) t0 = t2;
+      else t1 = t2;
+      t2 = (t1 + t0) * 0.5;
+    }
+    return t2;
+  }
+
+  return function (x) {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    return sampleCurveY(solveCurveX(x));
+  };
+}
+
+const studioEase = createCubicBezier(0.25, 1, 0.5, 1);
+let brightnessAnimationId = null;
+
+export function updateLighting(targetBrightness, updateState = true) {
   const { state } = getStore();
-  state.brightness = targetBrightness;
+  if (updateState) {
+    state.brightness = Math.round(targetBrightness);
+  }
   const normalized = targetBrightness / 100;
 
   const imgOn = document.getElementById('imgOn');
@@ -47,8 +92,44 @@ export function updateLighting(targetBrightness) {
     }
   }
 
-  if (brightnessSlider) brightnessSlider.value = targetBrightness;
-  if (brightnessValue) brightnessValue.textContent = `${targetBrightness}%`;
+  if (brightnessSlider) brightnessSlider.value = Math.round(targetBrightness);
+  if (brightnessValue) brightnessValue.textContent = `${Math.round(targetBrightness)}%`;
+}
+
+export function animateBrightnessTo(targetVal, duration = 2000) {
+  const { state } = getStore();
+  const brightnessSlider = document.getElementById('brightnessSlider');
+  const fromVal = brightnessSlider ? parseFloat(brightnessSlider.value) || 0 : (state.brightness || 0);
+
+  if (brightnessAnimationId) {
+    cancelAnimationFrame(brightnessAnimationId);
+    brightnessAnimationId = null;
+  }
+
+  if (Math.abs(fromVal - targetVal) < 0.5) {
+    updateLighting(targetVal, true);
+    return;
+  }
+
+  const startTime = performance.now();
+
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(1, elapsed / duration);
+    const eased = studioEase(progress);
+    const currentVal = fromVal + (targetVal - fromVal) * eased;
+
+    updateLighting(currentVal, false);
+
+    if (progress < 1) {
+      brightnessAnimationId = requestAnimationFrame(step);
+    } else {
+      updateLighting(targetVal, true);
+      brightnessAnimationId = null;
+    }
+  }
+
+  brightnessAnimationId = requestAnimationFrame(step);
 }
 
 export function toggleLight(forceState = null) {
@@ -65,12 +146,12 @@ export function toggleLight(forceState = null) {
     body.classList.add('lamp-is-on');
     if (powerText) powerText.textContent = 'ON';
     const target = state.brightness === 0 ? 100 : state.brightness;
-    updateLighting(target);
+    animateBrightnessTo(target, 2000);
     playSwitchSound('on');
   } else {
     body.classList.remove('lamp-is-on');
     if (powerText) powerText.textContent = 'OFF';
-    updateLighting(0);
+    animateBrightnessTo(0, 2000);
     playSwitchSound('off');
   }
 }
@@ -259,6 +340,11 @@ export function initStudio() {
   // Dimmer Range Slider
   if (brightnessSlider) {
     brightnessSlider.addEventListener('input', function (e) {
+      if (brightnessAnimationId) {
+        cancelAnimationFrame(brightnessAnimationId);
+        brightnessAnimationId = null;
+      }
+
       const val = parseInt(e.target.value, 10);
       if (val > 0 && !state.isOn) {
         state.isOn = true;
@@ -271,7 +357,7 @@ export function initStudio() {
         if (powerText) powerText.textContent = 'OFF';
         getAudio().playSwitchSound('off');
       }
-      updateLighting(val);
+      updateLighting(val, true);
     });
   }
 
@@ -296,6 +382,7 @@ export function initStudio() {
 export const AppStudio = {
   initStudio,
   updateLighting,
+  animateBrightnessTo,
   toggleLight,
   setGradientEnabled,
   updateColorSource,
