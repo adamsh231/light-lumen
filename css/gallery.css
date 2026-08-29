@@ -260,7 +260,18 @@ body.dark-mode .category-btn-badge {
   display: none;
   flex-direction: column;
   gap: 0.25rem;
-  animation: popoverFadeInUp 0.2s var(--ease-out);
+  animation: dropdownFadeInCenter 0.18s var(--ease-out);
+}
+
+@keyframes dropdownFadeInCenter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 body.dark-mode .custom-dropdown-menu.upward-menu {
