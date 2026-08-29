@@ -1,29 +1,27 @@
 /**
- * In Common With — Toast Notification Pill
+ * Atelier Lumen — Toast Notification Pill
  */
-(function (root, factory) {
-  if (typeof module === 'object' && module.exports) {
-    module.exports = factory();
-  } else {
-    root.AppToast = factory();
-  }
-}(typeof self !== 'undefined' ? self : this, function () {
-  'use strict';
 
-  let toastTimer = null;
+let toastTimer = null;
+
+export function showToast(text) {
+  if (typeof document === 'undefined') return;
   const toastPill = document.getElementById('toastPill');
+  if (!toastPill) return;
+  toastPill.textContent = text;
+  toastPill.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastPill.classList.remove('show');
+  }, 2200);
+}
 
-  function showToast(text) {
-    if (!toastPill) return;
-    toastPill.textContent = text;
-    toastPill.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toastPill.classList.remove('show');
-    }, 2200);
-  }
+export const AppToast = {
+  showToast
+};
 
-  return {
-    showToast
-  };
-}));
+if (typeof window !== 'undefined') {
+  window.AppToast = AppToast;
+}
+
+export default AppToast;

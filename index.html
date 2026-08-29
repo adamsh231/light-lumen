@@ -23,18 +23,6 @@
       <span class="brand-tag">Architectural Lighting</span>
     </div>
 
-    <!-- Center Navigation Tabs -->
-    <nav class="view-switcher-nav">
-      <button class="view-nav-btn active" id="tabStudioBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
-        Studio Switch
-      </button>
-      <button class="view-nav-btn" id="tabGalleryBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        Collection Grid (<span id="totalHeaderCount">98</span>)
-      </button>
-    </nav>
-
     <!-- Header Actions -->
     <div class="header-actions">
       <!-- Drawer Toggle -->
@@ -57,8 +45,17 @@
   <!-- =========================================================================
        VIEW 1: MAIN SHOWROOM DISPLAY (STUDIO SWITCH)
        ========================================================================= -->
-  <main class="view-panel active" id="studioViewPanel">
+  <main class="view-panel" id="studioViewPanel">
     <div class="main-container">
+      
+      <!-- Studio Top Navigation (Back to Collection) -->
+      <div class="studio-top-nav">
+        <a href="#/" class="studio-back-btn" id="studioBackBtn" title="Kembali ke Galeri Koleksi">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>Koleksi Lampu</span>
+        </a>
+      </div>
+
       <div class="stage-wrapper">
         
         <!-- SCONCE LIGHT FIXTURE DISPLAY STAGE -->
@@ -226,9 +223,9 @@
   </main>
 
   <!-- =========================================================================
-       VIEW 2: CURATED COLLECTION GALLERY (98 LAMPS)
+       VIEW 2: CURATED COLLECTION GALLERY
        ========================================================================= -->
-  <section class="view-panel gallery-view" id="galleryViewPanel">
+  <section class="view-panel gallery-view active" id="galleryViewPanel">
     
     <!-- Gallery Top Header -->
     <div class="gallery-header-section">
@@ -337,15 +334,7 @@
   <!-- Hidden Auto-Sampler Canvas -->
   <canvas id="colorSamplerCanvas" width="40" height="40" style="display:none;"></canvas>
 
-  <!-- External Scripts (Modular Architecture) -->
-  <script src="lampCatalog.js"></script>
-  <script src="js/state.js"></script>
-  <script src="js/audio.js"></script>
-  <script src="js/toast.js"></script>
-  <script src="js/colorExtractor.js"></script>
-  <script src="js/studio.js"></script>
-  <script src="js/gallery.js"></script>
-  <script src="js/drawer.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Main Application Entrypoint (Bundled via Vite) -->
+  <script type="module" src="/main.js"></script>
 </body>
 </html>

@@ -19,6 +19,58 @@
   margin: 0 auto;
 }
 
+/* Studio Breadcrumb / Back Navigation */
+.studio-top-nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.studio-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary-light);
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s var(--ease-smooth);
+}
+
+body.dark-mode .studio-back-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary-dark);
+}
+
+.studio-back-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+body.dark-mode .studio-back-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.studio-back-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.studio-back-btn:hover svg {
+  transform: translateX(-3px);
+}
+
 .stage-wrapper {
   display: grid;
   grid-template-columns: 1fr 390px;
@@ -801,34 +853,4 @@ body.dark-mode .color-btn.active {
   background: #ffffff;
   color: #111;
   border-color: #ffffff;
-}
-
-/* Link to Official Store */
-.official-link-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.7rem;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.04);
-  font-size: 0.74rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-body.dark-mode .official-link-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.official-link-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-body.dark-mode .official-link-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
 }

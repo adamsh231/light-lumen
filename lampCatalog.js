@@ -1,13 +1,6 @@
-// Generated Lamp Catalog from In Common With - All Lighting Collection
+// Generated Lamp Catalog - Atelier Lumen All Lighting Collection
 // Total Products: 82
-(function(root, factory) {
-  if (typeof module === 'object' && module.exports) {
-    module.exports = factory();
-  } else {
-    root.LAMP_CATALOG = factory();
-  }
-}(typeof self !== 'undefined' ? self : this, function() {
-  return [
+export const LAMP_CATALOG = [
   {
     "id": 8425374384298,
     "index": 1,
@@ -3262,4 +3255,12 @@
     ]
   }
 ];
-}));
+
+if (typeof window !== 'undefined') {
+  window.LAMP_CATALOG = LAMP_CATALOG;
+}
+if (typeof globalThis !== 'undefined') {
+  globalThis.LAMP_CATALOG = LAMP_CATALOG;
+}
+
+export default LAMP_CATALOG;
